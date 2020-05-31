@@ -1,0 +1,15 @@
+{
+
+Sexta-FeiraConfigs{
+
+}
+
+ServerConfigs{
+
+}
+
+InterfaceConfigs{
+
+}
+
+}
