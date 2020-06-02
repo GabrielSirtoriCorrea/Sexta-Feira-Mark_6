@@ -1,0 +1,13 @@
+{
+    "FridayConfigs": {
+        "ID": "Sexta-Feira"
+    },
+    "ServerConfigs": {
+        "ID": "Server",
+        "Host": "localhost",
+        "Port": 5000
+    },
+    "InterfaceConfigs": {
+        "ID": "Interface"
+    }
+}
