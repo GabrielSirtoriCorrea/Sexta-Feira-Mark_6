@@ -1,10 +1,12 @@
 {
     "FridayConfigs": {
-        "ID": "Sexta-Feira"
+        "ID": "Sexta-Feira",
+        "ServerHost": "gazeboindustries.hopto.org",
+        "Port": 5000
     },
     "ServerConfigs": {
         "ID": "Server",
-        "Host": "localhost",
+        "Host": "192.168.0.4",
         "Port": 5000
     },
     "InterfaceConfigs": {
