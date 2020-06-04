@@ -1,7 +1,7 @@
 import json
 
 def serverConfigs():
-    file = open('Configurations.json', 'r')
+    file = open('E:/Sexta-Feira-Mark_6/Configurations.json', 'r')
     return json.load(file)['ServerConfigs']
 
 def setConfigs(list):

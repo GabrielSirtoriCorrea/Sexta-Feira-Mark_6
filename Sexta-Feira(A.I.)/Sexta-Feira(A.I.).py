@@ -1,11 +1,14 @@
 import Functions
+from Commands import callCommand
 
-server = Functions.ServerConnection()
+connection, interactions = Functions.setup()
 
-msg = {
-        'header': 'gazeboindustries09082004',
-        'request': 'getDevicesJsons'
-        }
+while True:  
+    speech = Functions.languageUnderstanding(Functions.Recognition())
+ 
+    for interaction in interactions:
+        if interaction[1][1] in speech and interaction[1][2] in speech and interaction[1][3] in speech:
+            Functions.speak(interaction[1][Functions.responseSelector()])
+            callCommand(interaction[1][7], speech, connection)
+            break
 
-
-#print(server.send(msg))

@@ -2,20 +2,24 @@ import speech_recognition as sr
 import pyttsx3, random, json
 from unicodedata import normalize
 from socket import socket, AF_INET, SOCK_STREAM
+from datetime import datetime
 
 def Recognition():
     recognizer = sr.Recognizer()
 
-    with sr.Microphone() as source:
-        recognizer.adjust_for_ambient_noise(source)
+    try:
+        with sr.Microphone() as source:
+            recognizer.adjust_for_ambient_noise(source)
 
-        print('Say:')
+            print('Say:')
 
-        sound = recognizer.listen(source)
-        speech = recognizer.recognize_google(sound, language='pt').lower()
-        print('You said: ', speech)
+            sound = recognizer.listen(source)
+            speech = recognizer.recognize_google(sound, language='pt').lower()
+            print('You said: ', speech)
 
-        return ' ' + speech + ' '
+            return ' ' + speech + ' '
+    except:
+        return ''
 
 def speak(text):
     speaker = pyttsx3.init('sapi5')
@@ -23,7 +27,7 @@ def speak(text):
     speaker.runAndWait()
 
 def responseSelector():
-    return random.randint(3, 5)
+    return random.randint(4, 6)
 
 def languageUnderstanding(phrase):
     phraseFilter = [' o ', ' a ', ' os ', ' as ', ' um ', ' uma ', ' uns ', ' umas ', ' ante ', ' apos ',
@@ -39,36 +43,52 @@ def languageUnderstanding(phrase):
         if word in phraseFiltered:
             phraseFiltered = phraseFiltered.replace(word, ' ')
 
-    print('Filtered: ', phraseFiltered)
+    print('Filtered:', phraseFiltered)
     return phraseFiltered
 
+def setRequestJson(request, status, action):
+    requestJson = json.dumps({
+                'header': 'gazeboindustries09082004',
+                'request': request,
+                'status': status,
+                'action': action
+        
+        })
+
+    return requestJson
+
+def setup():
+    server = ServerConnection()
+
+    interactions = list(server.send(setRequestJson('getInteractions', True, 1)).items())
+
+    hour = int(datetime.now().hour)
+    if 5 <= hour <= 11:
+        speak('Bom dia chefe!')
+    elif 12 <= hour <= 17:
+        speak('Boa tarde chefe!')
+    else:
+        speak('Boa noite chefe!')
+
+    return [server, interactions]
 
 class ServerConnection:
     def __init__(self):
-        file = open('E:/Sexta-Feira-Mark_6/Configurations.json', 'r')
-        configs =  json.load(file)['FridayConfigs']
+        try:
+            file = open('E:/Sexta-Feira-Mark_6/Configurations.json', 'r')
+            configs =  json.load(file)['FridayConfigs']
 
-        self.connection = socket(AF_INET, SOCK_STREAM, 0)
-        #connection.connect((configs['ServerHost'], configs['Port'] ))      
-        self.connection.connect(('192.168.0.5', 3000 ))     
-
-        message = json.dumps({
-                            'header': 'gazeboindustries09082004',
-                            'request': 'getDevicesJsons'
+            self.connection = socket(AF_INET, SOCK_STREAM, 0)
+            self.connection.connect((configs['ServerHost'], configs['Port'] ))
+        except:
+            print('ERRO AO CONECTAR-SE COM O SERVIDOR')      
         
-        }).encode()
+    def send(self, message):
+        self.connection.send(message.encode())
 
-        self.connection.send(message)
+        return json.loads(self.connection.recv(1024).decode())
 
-        self.devicesJson = json.loads(self.connection.recv(1024).decode())
 
-    def send(self, dict):
-        message = json.dumps(dict).encode()
-
-        self.connection.send(message)
-
-        return self.connection.recv(1024)
-   
 
 
 
