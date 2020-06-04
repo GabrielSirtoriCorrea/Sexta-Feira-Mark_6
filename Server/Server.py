@@ -5,14 +5,21 @@ from Configurations import serverConfigs, setConfigs
 
 configs = serverConfigs()
 
-#host = configs['Host']
-#port = configs['Port']
-
-host = '192.168.0.5'
-port = 3000
-
+host = configs['Host']
+port = configs['Port']
 
 print('---SERVER STARTED---')
+
+def convertList(dataBaseList):
+    indexes = list()
+
+    for deviceIndex in range(0, len(dataBaseList)):
+        indexes.append(str(deviceIndex))
+
+    dictionary = dict(zip(indexes, dataBaseList))
+
+    print(dictionary)
+    return dictionary
 
 
 class ClientManage(socketserver.BaseRequestHandler):
@@ -33,15 +40,23 @@ class ClientManage(socketserver.BaseRequestHandler):
                     if clientRequest['header'] == 'gazeboindustries09082004':
                         
                         if clientRequest['request'] == 'getDevicesJsons':
-                            devicesJsons = dataBaseConnection.getDevices()
+                            '''devicesJsons = dataBaseConnection.getDevices()
                             devicesIndex = list()
 
                             for deviceIndex in range(1, len(devicesJsons)+1):
                                 devicesIndex.append('Device ' + str(deviceIndex))
 
                             device = dict(zip(devicesIndex, devicesJsons))
-                            print(device)
+                            print(device)'''
+                            device = convertList(dataBaseConnection.getDevices())
+
                             self.request.send(json.dumps(device).encode())
+                        
+                        if clientRequest['request'] == 'getInteractions':
+                            interactions = convertList(dataBaseConnection.getInteractions())
+
+                            self.request.send(json.dumps(interactions).encode())
+                        
                 else:
                     break
 
