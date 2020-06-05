@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="bodybg" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblTime" layoutX="120.0" layoutY="41.0" prefHeight="112.0" prefWidth="187.0" text="12:20" textFill="#ff6600" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="41.0">
+         <font>
+            <Font name="Impact" size="68.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWeekDay" layoutX="952.0" layoutY="55.0" prefHeight="84.0" prefWidth="358.0" text="Sexta-Feira " textFill="#ff6600" AnchorPane.rightAnchor="-30.0" AnchorPane.topAnchor="55.0">
+         <font>
+            <Font name="Impact" size="55.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDayMonth" layoutX="709.0" layoutY="63.0" text="30/06" textFill="#ff6600" AnchorPane.rightAnchor="431.0" AnchorPane.topAnchor="63.0">
+         <font>
+            <Font name="Impact" size="55.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView" layoutX="309.0" layoutY="163.0" prefHeight="518.0" prefWidth="659.0" visible="false" />
+      <ImageView fx:id="imageView" fitHeight="529.0" fitWidth="819.0" layoutX="223.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+   </children>
+</AnchorPane>
