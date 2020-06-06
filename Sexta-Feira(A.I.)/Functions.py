@@ -46,12 +46,13 @@ def languageUnderstanding(phrase):
     print('Filtered:', phraseFiltered)
     return phraseFiltered
 
-def setRequestJson(request, status, action):
+def setRequestJson(request, status, action, url):
     requestJson = json.dumps({
                 'header': 'gazeboindustries09082004',
                 'request': request,
                 'status': status,
-                'action': action
+                'action': action,
+                'url': url
         
         })
 
