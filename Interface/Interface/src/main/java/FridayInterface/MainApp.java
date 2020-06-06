@@ -20,6 +20,9 @@ public class MainApp extends Application {
         stage.setTitle("Sexta-Feira");
         stage.setScene(scene);
         stage.show();
+
+        ServerConnection connection = new ServerConnection();
+        connection.send("getDevicesJsons", "true", "1", "connection");
     }
 
     /**

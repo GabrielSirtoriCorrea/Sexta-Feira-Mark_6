@@ -10,6 +10,8 @@
         "Port": 3000
     },
     "InterfaceConfigs": {
-        "ID": "Interface"
+        "ID": "Interface",
+        "ServerHost": "gazeboindustries.hopto.org",
+        "Port": 3000
     }
 }
