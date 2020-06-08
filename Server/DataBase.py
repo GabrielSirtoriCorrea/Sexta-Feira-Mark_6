@@ -46,4 +46,8 @@ class DataBaseConnection:
     def insertDevice(self, name, desc, json):
         self.dataBaseCursor.execute('INSERT INTO Device(DeviceName, DeviceDescription, DeviceJson) VALUES (%s,%s,%s)', (name, desc, json))
         self.dataBaseConnector.commit()
+    
+    def getInteractionsHeader(self):
+        self.dataBaseCursor.execute('DESC Interactions')
+        return self.dataBaseCursor.fetchall()
 

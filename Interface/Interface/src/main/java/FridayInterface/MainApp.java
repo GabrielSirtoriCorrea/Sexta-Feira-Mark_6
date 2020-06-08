@@ -22,7 +22,7 @@ public class MainApp extends Application {
         stage.show();
 
         ServerConnection connection = new ServerConnection();
-        connection.send("getDevicesJsons", "true", "1", "connection");
+        System.out.println(connection.receive());
     }
 
     /**
