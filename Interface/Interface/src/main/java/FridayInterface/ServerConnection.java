@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 import javax.sound.sampled.SourceDataLine;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -38,17 +40,37 @@ public class ServerConnection {
         }
     }
 
-    public String send(String request, String status, String action, String url){
-        jsonRequest = new JSONObject();
+    public String receive(){
+        /*jsonRequest = new JSONObject();
         jsonRequest.put("header", "gazeboindustries09082004");
         jsonRequest.put("request", request);
         jsonRequest.put("status", status);
         jsonRequest.put("action", action);
         jsonRequest.put("url", url);
 
-        this.out.print(jsonRequest);
+        this.out.print(jsonRequest);*/
 
-        String line = this.in.readLine();
+        char[] buffer = new char[1024];
+        try {
+            System.out.println(this.in.read(buffer));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        jsonResponse = new JSONObject();
+        String data = new String(buffer);
+
+        System.out.println(data);
+
+        try {
+            jsonResponse = (JSONObject) JSONValue.parse(data.trim());     
+            System.out.println(jsonResponse.get("request"));
+            /*JSONArray array = (JSONArray) jsonResponse.get("Header");
+            System.out.println(array.get(0));*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         return null;
     }

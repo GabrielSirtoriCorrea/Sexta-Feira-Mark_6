@@ -46,9 +46,10 @@ def languageUnderstanding(phrase):
     print('Filtered:', phraseFiltered)
     return phraseFiltered
 
-def setRequestJson(request, status, action, url):
+def setRequestJson(request, receiverID, status, action, url):
     requestJson = json.dumps({
                 'header': 'gazeboindustries09082004',
+                'receiverID': receiverID,
                 'request': request,
                 'status': status,
                 'action': action,
@@ -61,7 +62,7 @@ def setRequestJson(request, status, action, url):
 def setup():
     server = ServerConnection()
 
-    interactions = list(server.send(setRequestJson('getInteractions', True, 1)).items())
+    interactions = list(server.send(setRequestJson('getInteractions', 'server', True, 1, ".com")).items())
 
     hour = int(datetime.now().hour)
     if 5 <= hour <= 11:

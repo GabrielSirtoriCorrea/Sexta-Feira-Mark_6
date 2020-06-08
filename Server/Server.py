@@ -21,6 +21,15 @@ def convertList(dataBaseList):
     print(dictionary)
     return dictionary
 
+def convertHeader(header):
+    headerList = list()
+
+    for index in range(0, len(header)):
+        headerList.append(header[index][0])
+
+    dictionary = dict(zip(['Header'], [headerList]))
+
+    return dictionary
 
 class ClientManage(socketserver.BaseRequestHandler):
     def handle(self):
@@ -51,11 +60,20 @@ class ClientManage(socketserver.BaseRequestHandler):
                             device = convertList(dataBaseConnection.getDevices())
 
                             self.request.send(json.dumps(device).encode())
-                        
+
                         if clientRequest['request'] == 'getInteractions':
                             interactions = convertList(dataBaseConnection.getInteractions())
 
                             self.request.send(json.dumps(interactions).encode())
+
+                        if clientRequest['request'] == 'getInteractionsHeader':
+                            header = convertHeader(dataBaseConnection.getInteractionsHeader())
+
+                            self.request.send(json.dumps(header).encode())
+
+                        if clientRequest['request'] == 'sendToOrther':
+                            print('Enviado')
+                            self.request.send(json.dumps(clientRequest).encode())
                         
                 else:
                     break
