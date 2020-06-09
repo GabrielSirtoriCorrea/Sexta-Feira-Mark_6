@@ -3,6 +3,8 @@ from Commands import callCommand
 
 connection, interactions = Functions.setup()
 
+callCommand('dateTime', ' ', connection)
+
 while True:  
     speech = Functions.languageUnderstanding(Functions.Recognition())
  

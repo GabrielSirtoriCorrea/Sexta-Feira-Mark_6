@@ -31,6 +31,24 @@ def convertHeader(header):
 
     return dictionary
 
+def getDevicesStatus():
+    file = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    return json.load(file)
+
+def setDevicesStatus(receiverID, action, status, url):
+    readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    
+    newJson = json.load(readFile)
+
+    print(newJson)
+
+    newJson[receiverID]['action'] = action
+    newJson[receiverID]['status'] = status
+    newJson[receiverID]['url'] = url
+
+    writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+    json.dump(newJson, writeFile, indent=4)
+
 class ClientManage(socketserver.BaseRequestHandler):
     def handle(self):
         dataBaseConnection = DataBaseConnection()
@@ -49,31 +67,30 @@ class ClientManage(socketserver.BaseRequestHandler):
                     if clientRequest['header'] == 'gazeboindustries09082004':
                         
                         if clientRequest['request'] == 'getDevicesJsons':
-                            '''devicesJsons = dataBaseConnection.getDevices()
-                            devicesIndex = list()
-
-                            for deviceIndex in range(1, len(devicesJsons)+1):
-                                devicesIndex.append('Device ' + str(deviceIndex))
-
-                            device = dict(zip(devicesIndex, devicesJsons))
-                            print(device)'''
                             device = convertList(dataBaseConnection.getDevices())
 
                             self.request.send(json.dumps(device).encode())
 
-                        if clientRequest['request'] == 'getInteractions':
+                        elif clientRequest['request'] == 'getInteractions':
                             interactions = convertList(dataBaseConnection.getInteractions())
 
                             self.request.send(json.dumps(interactions).encode())
 
-                        if clientRequest['request'] == 'getInteractionsHeader':
+                        elif clientRequest['request'] == 'getInteractionsHeader':
                             header = convertHeader(dataBaseConnection.getInteractionsHeader())
 
                             self.request.send(json.dumps(header).encode())
 
-                        if clientRequest['request'] == 'sendToOrther':
+                        elif clientRequest['request'] == 'getDevicesStatus':
                             print('Enviado')
-                            self.request.send(json.dumps(clientRequest).encode())
+                            self.request.send(json.dumps(getDevicesStatus()).encode())
+
+                        elif clientRequest['request'] == 'setDevicesStatus':
+                            try:
+                                setDevicesStatus(clientRequest['receiverID'], clientRequest['action'], clientRequest['status'], clientRequest['url'])
+                                self.request.send(json.dumps(getDevicesStatus()).encode())
+                            except:
+                                print('ERROR')
                         
                 else:
                     break

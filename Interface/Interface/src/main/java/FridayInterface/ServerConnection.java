@@ -41,20 +41,18 @@ public class ServerConnection {
     }
 
     public String receive(){
-        /*jsonRequest = new JSONObject();
-        jsonRequest.put("header", "gazeboindustries09082004");
-        jsonRequest.put("request", request);
-        jsonRequest.put("status", status);
-        jsonRequest.put("action", action);
-        jsonRequest.put("url", url);
 
-        this.out.print(jsonRequest);*/
+        jsonRequest = new JSONObject();
+        jsonRequest.put("header", "gazeboindustries09082004");
+        jsonRequest.put("request", "getDevicesStatus");
+
+        this.out.print(jsonRequest);
+
 
         char[] buffer = new char[1024];
         try {
             System.out.println(this.in.read(buffer));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -65,9 +63,7 @@ public class ServerConnection {
 
         try {
             jsonResponse = (JSONObject) JSONValue.parse(data.trim());     
-            System.out.println(jsonResponse.get("request"));
-            /*JSONArray array = (JSONArray) jsonResponse.get("Header");
-            System.out.println(array.get(0));*/
+            System.out.println(jsonResponse.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
         }
