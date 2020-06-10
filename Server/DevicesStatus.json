@@ -1,11 +1,9 @@
 {
     "Interface": {
-        "status": true,
         "action": 1,
         "url": ".com"
     },
     "Friday": {
-        "status": false,
         "action": 0,
         "url": ".com"
     }

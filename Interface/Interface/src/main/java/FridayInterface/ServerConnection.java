@@ -40,11 +40,11 @@ public class ServerConnection {
         }
     }
 
-    public String receive(){
+    public JSONObject receive(String request){
 
         jsonRequest = new JSONObject();
         jsonRequest.put("header", "gazeboindustries09082004");
-        jsonRequest.put("request", "getDevicesStatus");
+        jsonRequest.put("request", request);
 
         this.out.print(jsonRequest);
 
@@ -56,19 +56,19 @@ public class ServerConnection {
             e.printStackTrace();
         }
         
-        jsonResponse = new JSONObject();
+        this.jsonResponse = new JSONObject();
         String data = new String(buffer);
 
         System.out.println(data);
 
         try {
-            jsonResponse = (JSONObject) JSONValue.parse(data.trim());     
-            System.out.println(jsonResponse.toJSONString());
+            this.jsonResponse = (JSONObject) JSONValue.parse(data.trim());     
+            System.out.println(this.jsonResponse.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return null;
+
+        return (JSONObject) this.jsonResponse;
     }
 
 }
