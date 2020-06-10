@@ -21,8 +21,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
 
-        ServerConnection connection = new ServerConnection();
-        System.out.println(connection.receive());
+        
     }
 
     /**
@@ -34,7 +33,6 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         launch(args);
     }
 

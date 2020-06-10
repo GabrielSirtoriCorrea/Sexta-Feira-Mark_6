@@ -35,7 +35,7 @@ def getDevicesStatus():
     file = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
     return json.load(file)
 
-def setDevicesStatus(receiverID, action, status, url):
+def setDevicesStatus(receiverID, action, url):
     readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
     
     newJson = json.load(readFile)
@@ -43,7 +43,6 @@ def setDevicesStatus(receiverID, action, status, url):
     print(newJson)
 
     newJson[receiverID]['action'] = action
-    newJson[receiverID]['status'] = status
     newJson[receiverID]['url'] = url
 
     writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
@@ -87,7 +86,7 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                         elif clientRequest['request'] == 'setDevicesStatus':
                             try:
-                                setDevicesStatus(clientRequest['receiverID'], clientRequest['action'], clientRequest['status'], clientRequest['url'])
+                                setDevicesStatus(clientRequest['receiverID'], clientRequest['action'], clientRequest['url'])
                                 self.request.send(json.dumps(getDevicesStatus()).encode())
                             except:
                                 print('ERROR')
