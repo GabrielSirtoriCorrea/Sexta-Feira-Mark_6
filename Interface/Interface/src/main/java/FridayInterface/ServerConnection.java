@@ -49,7 +49,7 @@ public class ServerConnection {
         this.out.print(jsonRequest);
 
 
-        char[] buffer = new char[1024];
+        char[] buffer = new char[5800];
         try {
             System.out.println(this.in.read(buffer));
         } catch (IOException e) {
