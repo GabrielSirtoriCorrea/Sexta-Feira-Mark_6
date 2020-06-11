@@ -87,7 +87,7 @@ class ServerConnection:
     def send(self, message):
         self.connection.send(message.encode())
 
-        return json.loads(self.connection.recv(1024).decode())
+        return json.loads(self.connection.recv(5800).decode('utf-8'))
 
 
 

@@ -56,7 +56,7 @@ class ClientManage(socketserver.BaseRequestHandler):
         print(f'Connected by {self.client_address} at {dateTimeNow.hour}:{dateTimeNow.minute} ')
 
         while True:
-            data = self.request.recv(1024).decode()
+            data = self.request.recv(5800).decode()
             print(data)
 
             try:
