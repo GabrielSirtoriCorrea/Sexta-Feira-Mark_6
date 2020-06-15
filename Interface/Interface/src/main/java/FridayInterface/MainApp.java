@@ -12,7 +12,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+                
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
@@ -20,9 +20,10 @@ public class MainApp extends Application {
         
         stage.setTitle("Sexta-Feira");
         stage.setScene(scene);
-        stage.show();
 
         Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
+
+        stage.show();
         
     }
 

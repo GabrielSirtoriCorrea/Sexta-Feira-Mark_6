@@ -23,6 +23,7 @@ import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 
 public class FXMLController implements Initializable {
@@ -38,31 +39,38 @@ public class FXMLController implements Initializable {
     @FXML
     private TableView<JSONArray> tableView;
 
-    private TableColumn idColumn = new TableColumn<>("ID");
+    private TableColumn idColumn = new TableColumn<JSONArray, Integer>("ID");
 
-    private TableColumn keyWord1Column = new TableColumn<>("Palavra chave 1");
-    private TableColumn keyWord2Column = new TableColumn<>("Palavra chave 2");
-    private TableColumn keyWord3Column = new TableColumn<>("Palavra chave 3");
-    private TableColumn respose1Column = new TableColumn<>("Resposta 1");
-    private TableColumn respose2Column = new TableColumn<>("Resposta 2");
-    private TableColumn respose3Column = new TableColumn<>("Resposta 3");
-    private TableColumn commandColumn = new TableColumn<>("Comando");
+    private TableColumn keyWord1Column = new TableColumn<JSONArray, String>("Palavra chave 1");
+    private TableColumn keyWord2Column = new TableColumn<JSONArray, String>("Palavra chave 2");
+    private TableColumn keyWord3Column = new TableColumn<JSONArray, String>("Palavra chave 3");
+    private TableColumn respose1Column = new TableColumn<JSONArray, String>("Resposta 1");
+    private TableColumn respose2Column = new TableColumn<JSONArray, String>("Resposta 2");
+    private TableColumn respose3Column = new TableColumn<JSONArray, String>("Resposta 3");
+    private TableColumn commandColumn = new TableColumn<JSONArray, String>("Comando");
 
-    private TableColumn homeWorkTypeColumn = new TableColumn<>("Tipo");
-    private TableColumn homeWorkSubjectColumn = new TableColumn<>("Matéria");
-    private TableColumn homeWorkColumn = new TableColumn<>("tarefa");
-    private TableColumn homeWorkDeliveryColumn = new TableColumn<>("Entrega");
-    private TableColumn homeWorkDescColumn = new TableColumn<>("Descrição");
+    private TableColumn homeWorkTypeColumn = new TableColumn<JSONArray, String>("Tipo");
+    private TableColumn homeWorkSubjectColumn = new TableColumn<JSONArray, String>("Matéria");
+    private TableColumn homeWorkColumn = new TableColumn<JSONArray, String>("tarefa");
+    private TableColumn homeWorkDeliveryColumn = new TableColumn<JSONArray, String>("Entrega");
+    private TableColumn homeWorkDescColumn = new TableColumn<JSONArray, String>("Descrição");
 
-    private TableColumn projectColumn = new TableColumn<>("Projeto");
-    private TableColumn languagesColumn = new TableColumn<>("Linguagens");
+    private TableColumn projectColumn = new TableColumn<JSONArray, String>("Projeto");
+    private TableColumn languagesColumn = new TableColumn<JSONArray, String>("Linguagens");
 
-    private TableColumn DeviceColumn = new TableColumn<>("Device");
-    private TableColumn DeviceDescColumn = new TableColumn<>("Descrição");
-    private TableColumn DeviceJsonColumn = new TableColumn<>("JSON");
+    private TableColumn DeviceColumn = new TableColumn<JSONArray, String>("Device");
+    private TableColumn DeviceDescColumn = new TableColumn<JSONArray, String>("Descrição");
+    private TableColumn DeviceJsonColumn = new TableColumn<JSONArray, String>("JSON");
+
+    ServerConnection connection;
+    JSONArray arrayResponse;
+    JSONObject response;
+    int action;
+    ObservableList<JSONArray> tableViewData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         EventHandler handler = new EventHandler() {
 
             @Override
@@ -82,14 +90,10 @@ public class FXMLController implements Initializable {
 
     private void connectionLoop() {
 
-        ServerConnection connection = new ServerConnection();
+        connection = new ServerConnection();
+        response = (JSONObject) connection.receive("getDevicesStatus").get("Interface");
 
-        JSONArray arrayResponse;
-        JSONObject response = (JSONObject) connection.receive("getDevicesStatus").get("Interface");
-
-        int action = Integer.parseInt(response.get("action").toString());
-
-        System.out.println(action);
+        action = Integer.parseInt(response.get("action").toString());
 
         switch (action) {
             case 0:
@@ -100,15 +104,15 @@ public class FXMLController implements Initializable {
             case 1:
                 response = (JSONObject) connection.receive("getInteractions");
 
-
                 if(!tableView.getColumns().contains(commandColumn)){
 
                     for (int c = 0; c < response.size(); c++) {
                         arrayResponse = (JSONArray) response.get(Integer.toString(c));
-
-                        tableView.getItems().add(arrayResponse);
+                        tableViewData.add(arrayResponse);
                     }
-
+                    System.out.println(tableViewData.getClass().getName());
+                    tableView.setItems(tableViewData);
+                
                     addInteractionsColumns();
                     
                 }
@@ -128,7 +132,18 @@ public class FXMLController implements Initializable {
                 break;
 
             case 4:
+
                 if(!tableView.getColumns().contains(DeviceColumn)){
+                    response = (JSONObject) connection.receive("getDevicesJsons");
+
+                    for (int c = 0; c < response.size(); c++) {
+                        arrayResponse = (JSONArray) response.get(Integer.toString(c));
+                        tableViewData.add(arrayResponse);
+                        System.out.println(arrayResponse);
+                    }
+                    tableView.setItems(tableViewData);
+                    System.out.println("TableView dados >>> " + tableView.getItems());
+
                     addDevicesColumns();
                 }
                 break;
@@ -163,8 +178,14 @@ public class FXMLController implements Initializable {
     private void addDevicesColumns(){
         tableView.getColumns().clear();
 
+        idColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, Integer>("ID"));
+        DeviceColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("Device"));
+        DeviceDescColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("Descrição"));
+        DeviceJsonColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("JSON"));
         tableView.getColumns().addAll(idColumn, DeviceColumn, DeviceDescColumn, DeviceJsonColumn);
-        tableView.setVisible(true);
 
+        tableView.setVisible(true);
     }
+
 }
+
