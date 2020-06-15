@@ -25,7 +25,7 @@
             <Font name="Impact" size="55.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="72.0" layoutY="163.0" prefHeight="518.0" prefWidth="1139.0" visible="false">
+      <TableView fx:id="tableView" editable="true" layoutX="72.0" layoutY="163.0" prefHeight="518.0" prefWidth="1139.0" visible="false">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy></TableView>

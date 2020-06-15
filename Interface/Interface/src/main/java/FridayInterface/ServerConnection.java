@@ -51,15 +51,13 @@ public class ServerConnection {
 
         char[] buffer = new char[5800];
         try {
-            System.out.println(this.in.read(buffer));
+            this.in.read(buffer);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
         this.jsonResponse = new JSONObject();
         String data = new String(buffer);
-
-        System.out.println(data);
 
         try {
             this.jsonResponse = (JSONObject) JSONValue.parse(data.trim());     
