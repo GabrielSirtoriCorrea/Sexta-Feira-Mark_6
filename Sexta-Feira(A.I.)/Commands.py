@@ -26,7 +26,11 @@ def sendHomeWorksToInterface(speech, connection):
     connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 2, '.com'))
 
 def sendProjectsToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 3, ".com"))
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 3, '.com'))
 
 def sendDevicesToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 4, ".com"))
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 4, '.com'))
+
+def sendPeriodicTableToInterface(speech, connection):
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaPeriodica.jpg'))
+
