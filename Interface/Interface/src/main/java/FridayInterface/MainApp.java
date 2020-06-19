@@ -21,7 +21,7 @@ public class MainApp extends Application {
         stage.setTitle("Sexta-Feira");
         stage.setScene(scene);
 
-        Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
+        //Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
 
         stage.show();
         stage.setFullScreen(true);

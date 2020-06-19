@@ -1,5 +1,5 @@
 import socketserver, json, time, os
-from datetime import datetime
+from datetime import *
 from DataBase import DataBaseConnection
 from Configurations import serverConfigs, setConfigs
 
@@ -75,6 +75,21 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                             self.request.send(json.dumps(interactions).encode())
 
+                        elif clientRequest['request'] == 'getProjects':
+                            projects = convertList(dataBaseConnection.getProjects())
+                            self.request.send(json.dumps(projects).encode())
+
+                        elif clientRequest['request'] == 'getHomeWorks':
+                            homeWork = convertList(dataBaseConnection.getHomeWorks())
+
+                            #for date in range(0, len(homeWork) - 1):
+                            #    homeWork[date][4] = datetime.strftime(homeWork[date][4])
+                                
+
+                            print(homeWork)
+
+                            self.request.send(json.dumps(homeWork).encode())
+
                         elif clientRequest['request'] == 'getInteractionsHeader':
                             header = convertHeader(dataBaseConnection.getInteractionsHeader())
 
@@ -90,6 +105,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                                 self.request.send(json.dumps(getDevicesStatus()).encode())
                             except:
                                 print('ERROR')
+                        
                         
                 else:
                     break
