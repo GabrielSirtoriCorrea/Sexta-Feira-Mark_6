@@ -32,6 +32,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.util.Callback;
 
 public class FXMLController implements Initializable {
 
@@ -51,9 +55,9 @@ public class FXMLController implements Initializable {
     private TableColumn keyWord1Column = new TableColumn<JSONArray, String>("Palavra chave 1");
     private TableColumn keyWord2Column = new TableColumn<JSONArray, String>("Palavra chave 2");
     private TableColumn keyWord3Column = new TableColumn<JSONArray, String>("Palavra chave 3");
-    private TableColumn respose1Column = new TableColumn<JSONArray, String>("Resposta 1");
-    private TableColumn respose2Column = new TableColumn<JSONArray, String>("Resposta 2");
-    private TableColumn respose3Column = new TableColumn<JSONArray, String>("Resposta 3");
+    private TableColumn response1Column = new TableColumn<JSONArray, String>("Resposta 1");
+    private TableColumn response2Column = new TableColumn<JSONArray, String>("Resposta 2");
+    private TableColumn response3Column = new TableColumn<JSONArray, String>("Resposta 3");
     private TableColumn commandColumn = new TableColumn<JSONArray, String>("Comando");
 
     private TableColumn homeWorkTypeColumn = new TableColumn<JSONArray, String>("Tipo");
@@ -122,16 +126,16 @@ public class FXMLController implements Initializable {
                 break;
 
             case 1:
-                response = (JSONObject) connection.receive("getInteractions");
-
+                
                 if (!tableView.getColumns().contains(commandColumn)) {
 
-                    for (int c = 0; c < response.size(); c++) {
+                    /*for (int c = 0; c < response.size(); c++) {
                         arrayResponse = (JSONArray) response.get(Integer.toString(c));
                         tableViewData.add(arrayResponse);
                     }
                     System.out.println(tableViewData.getClass().getName());
-                    tableView.setItems(tableViewData);
+                    tableView.setItems(tableViewData);*/
+                    setTableData("getInteractions");
 
                     addInteractionsColumns();
 
@@ -141,20 +145,14 @@ public class FXMLController implements Initializable {
 
             case 2:
                 if (!tableView.getColumns().contains(homeWorkColumn)) {
+                    setTableData("getHomeWorks");
                     addHomeWorksColumns();
                 }
                 break;
 
             case 3:
                 if (!tableView.getColumns().contains(projectColumn)) {
-                    addProjectsColumns();
-                }
-                break;
-
-            case 4:
-
-                if (!tableView.getColumns().contains(DeviceColumn)) {
-                    response = (JSONObject) connection.receive("getDevicesJsons");
+                    /*response = (JSONObject) connection.receive("getDevicesJsons");
 
                     for (int c = 0; c < response.size(); c++) {
                         arrayResponse = (JSONArray) response.get(Integer.toString(c));
@@ -162,14 +160,28 @@ public class FXMLController implements Initializable {
                         System.out.println(arrayResponse);
                     }
                     tableView.setItems(tableViewData);
-                    System.out.println("TableView dados >>> " + tableView.getItems());
+                    System.out.println("TableView dados >>> " + tableView.getItems());*/
+                    setTableData("getProjects");
+                    addProjectsColumns();
+                }
+                break;
+
+            case 4:
+
+                if (!tableView.getColumns().contains(DeviceColumn)) {
+                    /*response = (JSONObject) connection.receive("getDevicesJsons");
+
+                    for (int c = 0; c < response.size(); c++) {
+                        arrayResponse = (JSONArray) response.get(Integer.toString(c));
+                        tableViewData.add(arrayResponse);
+                        System.out.println(arrayResponse);
+                    }
+                    tableView.setItems(tableViewData);
+                    System.out.println("TableView dados >>> " + tableView.getItems());*/
+                    setTableData("getDevicesJsons");
 
                     addDevicesColumns();
 
-                    /*AINDA
-                      NÃO
-                    FUNCIONANDO
-                    */
 
                 }
                 break;
@@ -190,14 +202,128 @@ public class FXMLController implements Initializable {
 
     private void addInteractionsColumns() {
         tableView.getColumns().clear();
-        tableView.getColumns().addAll(idColumn, keyWord1Column, keyWord2Column, keyWord3Column, respose1Column,
-                respose2Column, respose3Column, commandColumn);
+
+        idColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(CellDataFeatures<JSONArray, Integer> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(0));
+            }
+         });
+
+         keyWord1Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(1));
+            }
+         });
+
+         keyWord2Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        keyWord3Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        response1Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        response2Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        response3Column.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        commandColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        tableView.getColumns().addAll(idColumn, keyWord1Column, keyWord2Column, keyWord3Column, response1Column,
+                response2Column, response3Column, commandColumn);
 
         tableView.setVisible(true);
     }
 
     private void addHomeWorksColumns() {
         tableView.getColumns().clear();
+
+        idColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(CellDataFeatures<JSONArray, Integer> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(0));
+            }
+         });
+
+        homeWorkTypeColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(1));
+            }
+         });
+
+        homeWorkSubjectColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        homeWorkColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(3));
+            }
+         });
+
+        homeWorkDeliveryColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(4));
+            }
+         });
+
+        homeWorkDescColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(5));
+            }
+         });
+
         tableView.getColumns().addAll(idColumn, homeWorkTypeColumn, homeWorkSubjectColumn, homeWorkColumn,
                 homeWorkDeliveryColumn, homeWorkDescColumn);
 
@@ -206,6 +332,31 @@ public class FXMLController implements Initializable {
 
     private void addProjectsColumns() {
         tableView.getColumns().clear();
+
+        languagesColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        projectColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(1));
+            }
+         });
+
+        idColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(CellDataFeatures<JSONArray, Integer> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(0));
+            }
+         });
+
         tableView.getColumns().addAll(idColumn, projectColumn, languagesColumn);
 
         tableView.setVisible(true);
@@ -214,13 +365,56 @@ public class FXMLController implements Initializable {
     private void addDevicesColumns() {
         tableView.getColumns().clear();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, Integer>("ID"));
-        DeviceColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("Device"));
-        DeviceDescColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("Descrição"));
-        DeviceJsonColumn.setCellValueFactory(new PropertyValueFactory<JSONArray, String>("JSON"));
+        idColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(CellDataFeatures<JSONArray, Integer> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(0));
+            }
+         });
+
+        
+        DeviceColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(1));
+            }
+         });
+
+
+
+        DeviceDescColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+            }
+         });
+
+        DeviceJsonColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
+                // TODO Auto-generated method stub
+                return new ReadOnlyObjectWrapper(param.getValue().get(3));
+            }
+         });
+
         tableView.getColumns().addAll(idColumn, DeviceColumn, DeviceDescColumn, DeviceJsonColumn);
 
         tableView.setVisible(true);
+    }
+
+    private void setTableData(String request){
+        response = (JSONObject) connection.receive(request);
+
+        for (int c = 0; c < response.size(); c++) {
+            arrayResponse = (JSONArray) response.get(Integer.toString(c));
+            tableViewData.add(arrayResponse);
+            System.out.println(arrayResponse);
+            }
+            tableView.setItems(tableViewData);
+            System.out.println("TableView dados >>> " + tableView.getItems());
     }
 
     private void setClock() {
