@@ -212,7 +212,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(3));
             }
          });
 
@@ -220,7 +220,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(4));
             }
          });
 
@@ -228,7 +228,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(5));
             }
          });
 
@@ -236,7 +236,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(6));
             }
          });
 
@@ -244,7 +244,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(7));
             }
          });
 
@@ -387,7 +387,10 @@ public class FXMLController implements Initializable {
     }
 
     private void setTableData(String request){
+        tableView.getItems().clear();
+
         response = (JSONObject) connection.receive(request);
+        System.out.println(response);
 
         for (int c = 0; c < response.size(); c++) {
             arrayResponse = (JSONArray) response.get(Integer.toString(c));
