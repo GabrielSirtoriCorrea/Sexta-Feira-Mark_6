@@ -10,7 +10,7 @@ port = configs['Port']
 
 print('---SERVER STARTED---')
 
-def convertList(dataBaseList):
+def convertList(dataBaseList): 
     indexes = list()
 
     for deviceIndex in range(0, len(dataBaseList)):
@@ -80,15 +80,19 @@ class ClientManage(socketserver.BaseRequestHandler):
                             self.request.send(json.dumps(projects).encode())
 
                         elif clientRequest['request'] == 'getHomeWorks':
-                            homeWork = convertList(dataBaseConnection.getHomeWorks())
+                            listHomeWorks = list()
+                            dataBaseHomeWorks = dataBaseConnection.getHomeWorks()
 
-                            #for date in range(0, len(homeWork) - 1):
-                            #    homeWork[date][4] = datetime.strftime(homeWork[date][4])
-                                
+                            for homeWork in dataBaseHomeWorks:
+                                homeWork = list(homeWork)
+                                date = datetime.strftime(homeWork[4], '%d/%m/%Y')
+                                homeWork[4] = date
 
-                            print(homeWork)
+                                listHomeWorks.append(homeWork)
 
-                            self.request.send(json.dumps(homeWork).encode())
+                            homeWorkconverted = convertList(listHomeWorks)
+
+                            self.request.send(json.dumps(homeWorkconverted).encode())
 
                         elif clientRequest['request'] == 'getInteractionsHeader':
                             header = convertHeader(dataBaseConnection.getInteractionsHeader())

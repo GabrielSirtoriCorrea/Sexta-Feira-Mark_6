@@ -128,13 +128,7 @@ public class FXMLController implements Initializable {
             case 1:
                 
                 if (!tableView.getColumns().contains(commandColumn)) {
-
-                    /*for (int c = 0; c < response.size(); c++) {
-                        arrayResponse = (JSONArray) response.get(Integer.toString(c));
-                        tableViewData.add(arrayResponse);
-                    }
-                    System.out.println(tableViewData.getClass().getName());
-                    tableView.setItems(tableViewData);*/
+                    imageView.setVisible(false);
                     setTableData("getInteractions");
 
                     addInteractionsColumns();
@@ -145,6 +139,7 @@ public class FXMLController implements Initializable {
 
             case 2:
                 if (!tableView.getColumns().contains(homeWorkColumn)) {
+                    imageView.setVisible(false);
                     setTableData("getHomeWorks");
                     addHomeWorksColumns();
                 }
@@ -152,15 +147,7 @@ public class FXMLController implements Initializable {
 
             case 3:
                 if (!tableView.getColumns().contains(projectColumn)) {
-                    /*response = (JSONObject) connection.receive("getDevicesJsons");
-
-                    for (int c = 0; c < response.size(); c++) {
-                        arrayResponse = (JSONArray) response.get(Integer.toString(c));
-                        tableViewData.add(arrayResponse);
-                        System.out.println(arrayResponse);
-                    }
-                    tableView.setItems(tableViewData);
-                    System.out.println("TableView dados >>> " + tableView.getItems());*/
+                    imageView.setVisible(false);
                     setTableData("getProjects");
                     addProjectsColumns();
                 }
@@ -169,15 +156,7 @@ public class FXMLController implements Initializable {
             case 4:
 
                 if (!tableView.getColumns().contains(DeviceColumn)) {
-                    /*response = (JSONObject) connection.receive("getDevicesJsons");
-
-                    for (int c = 0; c < response.size(); c++) {
-                        arrayResponse = (JSONArray) response.get(Integer.toString(c));
-                        tableViewData.add(arrayResponse);
-                        System.out.println(arrayResponse);
-                    }
-                    tableView.setItems(tableViewData);
-                    System.out.println("TableView dados >>> " + tableView.getItems());*/
+                    imageView.setVisible(false);
                     setTableData("getDevicesJsons");
 
                     addDevicesColumns();
@@ -187,13 +166,15 @@ public class FXMLController implements Initializable {
                 break;
 
             case 5:
+                tableView.setVisible(false);
+
                 imagePath = response.get("url").toString();
                 System.out.println(imagePath);
                 imageFile = new File(imagePath);
                 image = new Image(imageFile.toURI().toString());
                 imageView.setImage(image);
-
                 imageView.setVisible(true);
+
 
             default:
                 break;

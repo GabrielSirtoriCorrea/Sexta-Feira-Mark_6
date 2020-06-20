@@ -12,16 +12,15 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-                
+        Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
+        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-        
+
         stage.setTitle("Sexta-Feira");
         stage.setScene(scene);
-
-        //Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
 
         stage.show();
         stage.setFullScreen(true);
