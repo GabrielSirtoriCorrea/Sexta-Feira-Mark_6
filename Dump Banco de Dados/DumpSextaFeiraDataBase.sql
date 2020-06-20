@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `sextafeiradatabase` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sextafeiradatabase`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sextafeiradatabase
@@ -28,7 +30,7 @@ CREATE TABLE `device` (
   `DeviceDescription` text,
   `DeviceJson` text,
   PRIMARY KEY (`DeviceID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +39,7 @@ CREATE TABLE `device` (
 
 LOCK TABLES `device` WRITE;
 /*!40000 ALTER TABLE `device` DISABLE KEYS */;
+INSERT INTO `device` VALUES (1,'Device','Description','Json'),(2,'newDevice','newDevice','newDevice'),(3,'newDevice','newDevice','newDevice');
 /*!40000 ALTER TABLE `device` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +58,7 @@ CREATE TABLE `homeworkmanagement` (
   `HomeWorkDelivery` date DEFAULT NULL,
   `HomeWorkDescription` text,
   PRIMARY KEY (`HomeWorkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +67,7 @@ CREATE TABLE `homeworkmanagement` (
 
 LOCK TABLES `homeworkmanagement` WRITE;
 /*!40000 ALTER TABLE `homeworkmanagement` DISABLE KEYS */;
+INSERT INTO `homeworkmanagement` VALUES (1,'Type','subject','homework','2020-06-02','desc'),(2,'newHomeWork','newHomeWork','newHomeWork','2020-06-02','newHomeWork');
 /*!40000 ALTER TABLE `homeworkmanagement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +88,7 @@ CREATE TABLE `interactions` (
   `Response3` text,
   `Command` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`InteractionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +97,7 @@ CREATE TABLE `interactions` (
 
 LOCK TABLES `interactions` WRITE;
 /*!40000 ALTER TABLE `interactions` DISABLE KEYS */;
+INSERT INTO `interactions` VALUES (1,'ola','ola','ola','olá chefe','olá chefe','olá chefe',''),(2,'horas','sao','sao','','','','dateTime'),(3,'fech','tabela','tabela','','','','sendCloseToInterface'),(4,'mostr','interacoes','interacoes','Atualmente essas são as interações contidas no meu banco de dados','Essas são todas as interações contidas no meu banco de dados','Aqui estão as interações contidas no meu banco de dados','sendInteractionsToInterface'),(5,'mostr','tarefa','tarefa','Essas são todas as suas tarefas pendentes','Aqui estão as suas tarefas pendentes','Atualmente essas são suas tarefas pendentes','sendHomeWorksToInterface'),(6,'mostr','projeto','projeto','Esses são todos os projetos em andamento','Aqui estão os projetos em desenvolvimento','Atualmente esse são os projetos em desenvolvimento','sendProjectsToInterface'),(7,'mostr','device','device','Esses são os devices sincronizados','Aqui estão os devices sincronizados','Atualmente esse são os devices sincronizados com o meu sistema','sendDevicesToInterface'),(8,'fech','image','image','','','','sendCloseToInterface'),(9,'mostr','tabela','periodica','tabela periodica aberta','tabela periodica aberta','tabela periodica aberta','sendPeriodicTableToInterface'),(10,'mostr','mapa','brasil politico','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','sendPoliticalBrazilToInterface');
 /*!40000 ALTER TABLE `interactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +113,7 @@ CREATE TABLE `projects` (
   `ProjectName` varchar(60) DEFAULT NULL,
   `ProjectLanguages` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ProjectID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +122,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` VALUES (1,'Project','language'),(2,'NewProject','Python');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -129,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-31 21:53:52
+-- Dump completed on 2020-06-19 21:00:51

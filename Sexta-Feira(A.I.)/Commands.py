@@ -34,3 +34,15 @@ def sendDevicesToInterface(speech, connection):
 def sendPeriodicTableToInterface(speech, connection):
     connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaPeriodica.jpg'))
 
+def sendPoliticalBrazilToInterface(speech, connection):
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\Brasil Político.jpg'))
+
+def sendEletronicDestToInterface(speech, connection):
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\diagrama-de-pauling.jpg'))
+
+def sendAnglesTableToInterface(speech, connection):
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaSenoCossenoTangente.png'))
+
+def sendFisicEquationsToInterface(speech, connection):
+    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\Equações Dinamica.png'))
+
