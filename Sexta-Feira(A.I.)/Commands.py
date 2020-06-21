@@ -13,7 +13,8 @@ def dateTime(speech, connection):
     Functions.speak(f'Agora são {datetime.now().hour} horas e {datetime.now().minute} minutos ')
 
 def updateFriday(speech, connection):
-    Functions.speak('Certo. Estou baixando as atualizações de meu sistema')
+    os.system('git fetch')
+    Functions.speak('Instalando atualizações')
     os.system('git reset --hard origin/master')
 
 def sendCloseToInterface(speech, connection):
