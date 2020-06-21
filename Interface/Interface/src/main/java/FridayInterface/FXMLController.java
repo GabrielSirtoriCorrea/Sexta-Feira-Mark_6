@@ -67,7 +67,7 @@ public class FXMLController implements Initializable {
     private TableColumn homeWorkDescColumn = new TableColumn<JSONArray, String>("Descrição");
 
     private TableColumn projectColumn = new TableColumn<JSONArray, String>("Projeto");
-    private TableColumn languagesColumn = new TableColumn<JSONArray, String>("Linguagens");
+    private TableColumn RepositoryColumn = new TableColumn<JSONArray, String>("Repositório");
 
     private TableColumn DeviceColumn = new TableColumn<JSONArray, String>("Device");
     private TableColumn DeviceDescColumn = new TableColumn<JSONArray, String>("Descrição");
@@ -314,7 +314,7 @@ public class FXMLController implements Initializable {
     private void addProjectsColumns() {
         tableView.getColumns().clear();
 
-        languagesColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+        RepositoryColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
@@ -338,7 +338,7 @@ public class FXMLController implements Initializable {
             }
          });
 
-        tableView.getColumns().addAll(idColumn, projectColumn, languagesColumn);
+        tableView.getColumns().addAll(idColumn, projectColumn, RepositoryColumn);
 
         tableView.setVisible(true);
     }

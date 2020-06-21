@@ -1,4 +1,4 @@
-﻿CREATE DATABASE  IF NOT EXISTS `sextafeiradatabase` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `sextafeiradatabase` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `sextafeiradatabase`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
@@ -88,7 +88,7 @@ CREATE TABLE `interactions` (
   `Response3` text,
   `Command` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`InteractionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `interactions` (
 
 LOCK TABLES `interactions` WRITE;
 /*!40000 ALTER TABLE `interactions` DISABLE KEYS */;
-INSERT INTO `interactions` VALUES (1,'ola','ola','ola','olá chefe','olá chefe','olá chefe',''),(2,'horas','sao','sao','','','','dateTime'),(3,'fech','tabela','tabela','','','','sendCloseToInterface'),(4,'mostr','interacoes','interacoes','Atualmente essas são as interações contidas no meu banco de dados','Essas são todas as interações contidas no meu banco de dados','Aqui estão as interações contidas no meu banco de dados','sendInteractionsToInterface'),(5,'mostr','tarefa','tarefa','Essas são todas as suas tarefas pendentes','Aqui estão as suas tarefas pendentes','Atualmente essas são suas tarefas pendentes','sendHomeWorksToInterface'),(6,'mostr','projeto','projeto','Esses são todos os projetos em andamento','Aqui estão os projetos em desenvolvimento','Atualmente esse são os projetos em desenvolvimento','sendProjectsToInterface'),(7,'mostr','device','device','Esses são os devices sincronizados','Aqui estão os devices sincronizados','Atualmente esse são os devices sincronizados com o meu sistema','sendDevicesToInterface'),(8,'fech','image','image','','','','sendCloseToInterface'),(9,'mostr','tabela','periodica','tabela periodica aberta','tabela periodica aberta','tabela periodica aberta','sendPeriodicTableToInterface'),(10,'mostr','mapa','brasil politico','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','sendPoliticalBrazilToInterface');
+INSERT INTO `interactions` VALUES (1,'ola','ola','ola','olá chefe','olá chefe','olá chefe',''),(2,'horas','sao','sao','','','','dateTime'),(3,'fech','tabela','tabela','','','','sendCloseToInterface'),(4,'mostr','interacoes','interacoes','Atualmente essas são as interações contidas no meu banco de dados','Essas são todas as interações contidas no meu banco de dados','Aqui estão as interações contidas no meu banco de dados','sendInteractionsToInterface'),(5,'mostr','tarefa','tarefa','Essas são todas as suas tarefas pendentes','Aqui estão as suas tarefas pendentes','Atualmente essas são suas tarefas pendentes','sendHomeWorksToInterface'),(6,'mostr','projeto','projeto','Esses são todos os projetos em andamento','Aqui estão os projetos em desenvolvimento','Atualmente esse são os projetos em desenvolvimento','sendProjectsToInterface'),(7,'mostr','device','device','Esses são os devices sincronizados','Aqui estão os devices sincronizados','Atualmente esse são os devices sincronizados com o meu sistema','sendDevicesToInterface'),(8,'fech','image','image','','','','sendCloseToInterface'),(9,'mostr','tabela','periodica','tabela periodica aberta','tabela periodica aberta','tabela periodica aberta','sendPeriodicTableToInterface'),(10,'mostr','mapa','brasil politico','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','Esse é o mapa político do Brasil','sendPoliticalBrazilToInterface'),(11,'mostr','distribuicao','eletronica','Aqui está a distribuição eletrônica dos elementos','Aqui está a distribuição eletrônica dos elementos','Aqui está a distribuição eletrônica dos elementos','sendEletronicDestToInterface'),(12,'mostr','tabela','angulos','Aqui está a tabela dos principais angulos na trigonometria','Aqui está a tabela dos principais angulos na trigonometria','Aqui está a tabela dos principais angulos na trigonometria','sendAnglesTableToInterface'),(13,'mostr','equacoes','fisica mecanica','Aqui estão as principais equações da física mecânica','Aqui estão as principais equações da física mecânica','Aqui estão as principais equações da física mecânica','sendFisicEquationsToInterface');
 /*!40000 ALTER TABLE `interactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `ProjectID` int NOT NULL AUTO_INCREMENT,
   `ProjectName` varchar(60) DEFAULT NULL,
-  `ProjectLanguages` varchar(30) DEFAULT NULL,
+  `ProjectRepository` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`ProjectID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -135,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-19 21:00:51
+-- Dump completed on 2020-06-21 20:46:15
