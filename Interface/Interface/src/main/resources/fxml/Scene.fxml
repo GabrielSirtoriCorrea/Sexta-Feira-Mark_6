@@ -29,6 +29,6 @@
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy></TableView>
-      <ImageView fx:id="imageView" fitHeight="529.0" fitWidth="819.0" layoutX="223.0" layoutY="147.0" nodeOrientation="INHERIT" pickOnBounds="true" visible="false" AnchorPane.bottomAnchor="-66.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="200.0" />
+      <ImageView fx:id="imageView" fitHeight="589.0" fitWidth="967.0" layoutX="375.0" layoutY="147.0" nodeOrientation="INHERIT" pickOnBounds="true" visible="false" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="200.0" />
    </children>
 </AnchorPane>

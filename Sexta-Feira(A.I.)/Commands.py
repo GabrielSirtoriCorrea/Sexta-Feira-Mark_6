@@ -14,7 +14,7 @@ def dateTime(speech, connection):
 
 def updateFriday(speech, connection):
     Functions.speak('Certo. Estou baixando as atualizações de meu sistema')
-    os.system('git pull origin master')
+    os.system('git reset --hard origin/master')
 
 def sendCloseToInterface(speech, connection):
     connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 0, '.com'))
