@@ -418,11 +418,11 @@ public class FXMLController implements Initializable {
 
             weekDay = Integer.toString(calendar.get(Calendar.DAY_OF_WEEK)) + "ª Feira";
 
-            if(weekDay.equals("7º Feira")){
+            if(weekDay.equals("7ª Feira")){
                 weekDay = "Sábado";
                 
             }else{
-                if(weekDay.equals("1º Feira")){
+                if(weekDay.equals("1ª Feira")){
                     weekDay = "Domingo";
                 }
             }  
