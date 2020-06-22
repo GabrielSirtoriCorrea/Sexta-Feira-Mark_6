@@ -14,7 +14,8 @@ def dateTime(speech, connection):
 
 def updateFriday(speech, connection):
     os.system('git fetch')
-    Functions.speak('Instalando atualizações')
+    Functions.speak('Estou instalado as atualizações e reiniciarei o computador')
+    os.system('shutdown /r')
     os.system('git reset --hard origin/master')
 
 def sendCloseToInterface(speech, connection):
