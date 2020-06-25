@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SextaFeiraMobile</string>
+    <string name="title_home">Home</string>
+    <string name="interacoes">Interações</string>
+    <string name="device">Device</string>
+    <string name="skills">Skills</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="boa_tarde_chefe">Boa tarde chefe.</string>
+    <string name="city">City</string>
+    <string name="time">12:00</string>
+    <string name="startfriday">StartFriday</string>
+</resources>
