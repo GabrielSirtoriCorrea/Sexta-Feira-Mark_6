@@ -9,4 +9,16 @@
     <string name="city">City</string>
     <string name="time">12:00</string>
     <string name="startfriday">StartFriday</string>
+    <string name="adicionar_interacao">Adicionar interação</string>
+    <string name="palavra_chave_1">Palavra chave 1:</string>
+    <string name="palavra_chave_2">Palavra chave 2:</string>
+    <string name="palavra_chave_3">Palavra chave 3:</string>
+    <string name="resposta_1">Resposta 1:</string>
+    <string name="resposta_2">Resposta 2:</string>
+    <string name="resposta_3">Resposta 3:</string>
+    <string name="comando">Comando:</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="interacao">Interação</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
 </resources>
