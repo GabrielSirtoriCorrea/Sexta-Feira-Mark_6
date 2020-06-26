@@ -3,6 +3,7 @@ package com.gazeboindustries.sextafeiramobile;
 import android.os.Bundle;
 
 import com.gazeboindustries.sextafeiramobile.Fragments.HomeFragment;
+import com.gazeboindustries.sextafeiramobile.Fragments.InteractionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    changeFrame(new HomeFragment());
                     return true;
+                case R.id.navigation_interacoes:
+                    changeFrame(new InteractionFragment());
             }
             return false;
         }
