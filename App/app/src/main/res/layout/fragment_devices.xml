@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/interacoes"
+        android:text="@string/devices"
         android:textColor="#fff"
         android:textSize="40sp"
         android:layout_gravity="center"
@@ -20,19 +20,19 @@
 
 
     <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:id="@+id/ListInteractions">
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/listDevices">
 
     </ListView>
 
     <Button
-        android:layout_width="275dp"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
-        android:text="@string/adicionar_interacao"
+        android:text="@string/adicionar_device"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:textColor="#fff"
@@ -40,6 +40,5 @@
         android:fontFamily="sans-serif-black"
         android:drawableStart="@drawable/ic_add_circle_black_24dp"
         android:layout_marginTop="50dp"
-        android:id="@+id/btnAddNewInteraction"/>
-
+        android:id="@+id/btnAddNewDevice"/>
 </LinearLayout>
