@@ -2,7 +2,7 @@
     <string name="app_name">SextaFeiraMobile</string>
     <string name="title_home">Home</string>
     <string name="interacoes">Interações</string>
-    <string name="device">Device</string>
+    <string name="devices">Devices</string>
     <string name="skills">Skills</string>
     <string name="configuracoes">Configurações</string>
     <string name="boa_tarde_chefe">Boa tarde chefe.</string>
@@ -21,4 +21,23 @@
     <string name="interacao">Interação</string>
     <string name="editar">Editar</string>
     <string name="excluir">Excluir</string>
+    <string name="adicionar_device">Adicionar Device</string>
+    <string name="device_">Device:</string>
+    <string name="descricao">Descrição:</string>
+    <string name="device">Device</string>
+    <string name="gerenciamento_de_projetos">Gerenciamento de projetos</string>
+    <string name="gerenciamento_de_tarefas">Gerenciamento de Tarefas</string>
+    <string name="adicionar_tarefa">Adicionar Tarefa</string>
+    <string name="tipo_">Tipo:</string>
+    <string name="materia_">Matéria:</string>
+    <string name="tarefa_">Tarefa:</string>
+    <string name="entrega_">Entrega:</string>
+    <string name="descricao_">Descrição:</string>
+    <string name="tarefas">Tarefas</string>
+    <string name="adicionar_projeto">Adicionar Projeto</string>
+    <string name="projeto_">Projeto:</string>
+    <string name="repositório_">Repositório:</string>
+    <string name="salvar">Salvar</string>
+    <string name="server_address_">Server Address:</string>
+    <string name="server_port_">Server port:</string>
 </resources>

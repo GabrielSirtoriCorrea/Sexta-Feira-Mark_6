@@ -1,4 +1,4 @@
-package com.gazeboindustries.sextafeiramobile.Fragments;
+package com.gazeboindustries.sextafeiramobile.Fragments.InteractionsFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.gazeboindustries.sextafeiramobile.MainActivity;
 import com.gazeboindustries.sextafeiramobile.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class InteractionFragment extends Fragment {
     @Nullable
@@ -21,9 +18,9 @@ public class InteractionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_interactions, container, false);
 
-        Button btnAddInteraction = view.findViewById(R.id.btnAddInteraction);
+        Button btnAddNewInteraction = view.findViewById(R.id.btnAddNewInteraction);
 
-        btnAddInteraction.setOnClickListener(new View.OnClickListener() {
+        btnAddNewInteraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 assert getFragmentManager() != null;

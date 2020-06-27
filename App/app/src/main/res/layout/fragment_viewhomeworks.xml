@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/adicionar_interacao"
+        android:text="@string/tarefas"
         android:textColor="#fff"
         android:textSize="30sp"
         android:layout_gravity="center"
@@ -40,7 +40,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword1"
+            android:enabled="false"
+            android:id="@+id/viewKeyword1"
             />
 
     </LinearLayout>
@@ -69,7 +70,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword2"
+            android:id="@+id/viewKeyword2"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -97,7 +99,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword3"
+            android:id="@+id/viewKeyword3"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -125,7 +128,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtResponse1"
+            android:id="@+id/viewResponse1"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -153,7 +157,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtResponse2"
+            android:id="@+id/viewResponse2"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -181,7 +186,8 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtResponse3"
+            android:id="@+id/viewResponse3"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -209,22 +215,37 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtCommand"
-            />
+            android:id="@+id/viewCommand"
+            android:enabled="false"/>
 
     </LinearLayout>
 
-
-    <Button
-        android:layout_width="250dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/adicionar"
-        android:layout_gravity="center"
-        android:background="@drawable/button_color"
-        android:textSize="20sp"
-        android:textColor="#fff"
-        android:fontFamily="sans-serif-black"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnAddInteraction"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/editar"
+            android:textColor="#fff"
+            android:background="@drawable/button_color"
+            android:layout_marginStart="40dp"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:id="@+id/btnEditInteraction"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/excluir"
+            android:textColor="#fff"
+            android:background="@drawable/button_color"
+            android:layout_marginStart="40dp"
+            android:drawableStart="@drawable/ic_delete_black_24dp"
+            android:id="@+id/btnRemoveInteraction"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skills"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-black"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/gerenciamento_de_tarefas"
+        android:textColor="#fff"
+        android:background="@drawable/button_color"
+        android:layout_gravity="center"
+        android:id="@+id/btnHomeWorkManage"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-black"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/gerenciamento_de_projetos"
+        android:textColor="#fff"
+        android:background="@drawable/button_color"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:id="@+id/btnProjectManage"/>
+
+
+</LinearLayout>

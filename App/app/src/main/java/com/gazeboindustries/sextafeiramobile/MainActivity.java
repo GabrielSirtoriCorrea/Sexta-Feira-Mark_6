@@ -2,8 +2,11 @@ package com.gazeboindustries.sextafeiramobile;
 
 import android.os.Bundle;
 
+import com.gazeboindustries.sextafeiramobile.Fragments.ConfigurationsFragment;
+import com.gazeboindustries.sextafeiramobile.Fragments.DevicesFragments.DevicesFragment;
 import com.gazeboindustries.sextafeiramobile.Fragments.HomeFragment;
-import com.gazeboindustries.sextafeiramobile.Fragments.InteractionFragment;
+import com.gazeboindustries.sextafeiramobile.Fragments.InteractionsFragments.InteractionFragment;
+import com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.SkillsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private FrameLayout frame;
@@ -29,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_interacoes:
                     changeFrame(new InteractionFragment());
+                    return true;
+                case R.id.navigation_device:
+                    changeFrame(new DevicesFragment());
+                    return true;
+                case R.id.navigation_skills:
+                    changeFrame(new SkillsFragment());
+                    return true;
+                case R.id.navigation_configs:
+                    changeFrame(new ConfigurationsFragment());
             }
             return false;
         }
@@ -40,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         changeFrame(new HomeFragment());
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setSelectedItemId(R.id.navigation_home);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

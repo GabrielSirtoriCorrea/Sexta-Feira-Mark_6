@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_1"
+            android:text="@string/tipo_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -33,15 +33,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:enabled="false"
-            android:id="@+id/viewKeyword1"
+            android:id="@+id/txtHomeWorkType"
             />
 
     </LinearLayout>
@@ -55,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_2"
+            android:text="@string/materia_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -63,15 +62,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewKeyword2"
-            android:enabled="false"
+            android:id="@+id/txtHomeWorkSubject"
             />
 
     </LinearLayout>
@@ -84,7 +82,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_3"
+            android:text="@string/tarefa_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -92,15 +90,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewKeyword3"
-            android:enabled="false"
+            android:id="@+id/txtHomeWork"
             />
 
     </LinearLayout>
@@ -113,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/resposta_1"
+            android:text="@string/entrega_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -121,15 +118,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="265dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewResponse1"
-            android:enabled="false"
+            android:id="@+id/txtHomeWorkDelivery"
             />
 
     </LinearLayout>
@@ -142,7 +138,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/resposta_2"
+            android:text="@string/descricao_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -150,81 +146,24 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="265dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewResponse2"
-            android:enabled="false"
+            android:id="@+id/txtHomeWorkDescription"
             />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/resposta_3"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-black"/>
-
-        <EditText
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColor="#fff"
-            android:fontFamily="sans-serif-black"
-            android:textSize="20sp"
-            android:id="@+id/viewResponse3"
-            android:enabled="false"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/comando"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-black"/>
-
-        <EditText
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColor="#fff"
-            android:fontFamily="sans-serif-black"
-            android:textSize="20sp"
-            android:id="@+id/viewCommand"
-            android:enabled="false"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
 
         <Button
             android:layout_width="130dp"

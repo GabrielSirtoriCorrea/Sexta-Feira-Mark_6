@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/adicionar_interacao"
+        android:text="@string/adicionar_tarefa"
         android:textColor="#fff"
         android:textSize="30sp"
         android:layout_gravity="center"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_1"
+            android:text="@string/tipo_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -33,14 +33,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword1"
+            android:id="@+id/txtHomeWorkType"
             />
 
     </LinearLayout>
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_2"
+            android:text="@string/materia_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -62,14 +62,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword2"
+            android:id="@+id/txtHomeWorkSubject"
             />
 
     </LinearLayout>
@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/palavra_chave_3"
+            android:text="@string/tarefa_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -90,14 +90,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="220dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtKeyword3"
+            android:id="@+id/txtHomeWork"
             />
 
     </LinearLayout>
@@ -110,7 +110,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/resposta_1"
+            android:text="@string/entrega_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -118,14 +118,14 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="265dp"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtResponse1"
+            android:id="@+id/txtHomeWorkDelivery"
             />
 
     </LinearLayout>
@@ -138,7 +138,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/resposta_2"
+            android:text="@string/descricao_"
             android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginStart="10sp"
@@ -146,74 +146,17 @@
             android:fontFamily="sans-serif-black"/>
 
         <EditText
-            android:layout_width="265dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtResponse2"
+            android:id="@+id/txtHomeWorkDescription"
             />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/resposta_3"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-black"/>
-
-        <EditText
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColor="#fff"
-            android:fontFamily="sans-serif-black"
-            android:textSize="20sp"
-            android:id="@+id/txtResponse3"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/comando"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-black"/>
-
-        <EditText
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:textColor="#fff"
-            android:fontFamily="sans-serif-black"
-            android:textSize="20sp"
-            android:id="@+id/txtCommand"
-            />
-
-    </LinearLayout>
-
 
     <Button
         android:layout_width="250dp"
@@ -224,7 +167,7 @@
         android:textSize="20sp"
         android:textColor="#fff"
         android:fontFamily="sans-serif-black"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnAddInteraction"/>
+        android:layout_marginTop="100dp"
+        android:id="@+id/btnAddHomeWork"/>
 
 </LinearLayout>
