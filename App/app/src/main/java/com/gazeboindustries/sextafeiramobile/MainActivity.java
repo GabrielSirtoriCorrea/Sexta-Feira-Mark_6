@@ -53,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setSelectedItemId(R.id.navigation_home);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        new ServerConnection("getProjects");
+
     }
+
 
     public void changeFrame(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.frame, fragment).commit();
