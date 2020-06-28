@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/boa_tarde_chefe"
         android:textColor="@android:color/white"
-        android:textSize="50sp"
+        android:textSize="45sp"
         android:fontFamily="sans-serif-black"
         android:layout_gravity="center"
         android:layout_marginTop="120dp"/>
@@ -113,6 +113,7 @@
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:drawableStart="@drawable/ic_play_circle_filled_white_24dp"
+        android:id="@+id/btnStartFriday"
         />
 
 
