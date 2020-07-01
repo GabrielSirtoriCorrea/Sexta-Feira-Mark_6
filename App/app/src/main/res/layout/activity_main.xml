@@ -25,6 +25,7 @@
         android:background="?android:attr/windowBackground"
         android:layout_alignParentBottom="true"
         app:menu="@menu/nav_menu"
+
         />
 
 </RelativeLayout>

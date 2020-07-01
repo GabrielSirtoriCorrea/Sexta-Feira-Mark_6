@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
         navView.setSelectedItemId(R.id.navigation_home);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        new ServerConnection("getProjects");
-
     }
 
 

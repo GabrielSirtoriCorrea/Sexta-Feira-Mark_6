@@ -25,7 +25,7 @@ public class ServerConnection extends AsyncTask<String, Integer, String> {
     private String data;
     private ArrayList<JSONArray> list;
     private JSONArray arrayResponse;
-    private char[] buffer = new char[5800];
+    private char[] buffer = new char[9000];
 
     public ServerConnection(String request){
         execute(request);
@@ -38,32 +38,39 @@ public class ServerConnection extends AsyncTask<String, Integer, String> {
             this.out = new PrintWriter(this.socket.getOutputStream(), true);
             this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
-            jsonRequest = new JSONObject();
-            jsonRequest.put("header", "gazeboindustries09082004");
-            jsonRequest.put("request", params[0]);
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", params[0]);
 
-            this.out.println(jsonRequest);
+            this.out.println(this.jsonRequest);
 
-            this.in.read(buffer);
+            this.in.read(this.buffer);
 
-            data = new String(buffer);
+            this.data = new String(this.buffer);
 
-            this.jsonResponse = new JSONObject(data.trim());
+            this.jsonResponse = new JSONObject(this.data.trim());
 
             System.out.println(this.jsonResponse);
 
-            list = new ArrayList<>();
+            this.list = new ArrayList<>();
 
             for (int c = 0; c < jsonResponse.length(); c++){
-                arrayResponse = (JSONArray) jsonResponse.get(Integer.toString(c));
-                list.add(arrayResponse);
-                System.out.println(list);
+                this.arrayResponse = (JSONArray) this.jsonResponse.get(Integer.toString(c));
+                this.list.add(arrayResponse);
             }
+
+            this.socket.close();
+            this.out.close();
+            this.in.close();
 
         } catch (IOException | JSONException e) {
             System.out.println("DEU ERRO");
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<JSONArray> getListResponse(){
+        return this.list;
     }
 }
