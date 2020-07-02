@@ -40,4 +40,5 @@
     <string name="salvar">Salvar</string>
     <string name="server_address_">Server Address:</string>
     <string name="server_port_">Server port:</string>
+    <string name="tarefa">Tarefa</string>
 </resources>

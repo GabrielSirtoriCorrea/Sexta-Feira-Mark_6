@@ -1,9 +1,11 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.InteractionsFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,11 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.HomeworkFragments.ViewHomeWorkFragment;
 import com.gazeboindustries.sextafeiramobile.ListItemRow;
 import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,7 @@ public class InteractionFragment extends Fragment {
     private Button btnAddNewInteraction;
     private ListView listInteractions;
     private ArrayList<JSONArray> arrayList;
+    private Intent intent;
 
     @Nullable
     @Override
@@ -59,6 +64,37 @@ public class InteractionFragment extends Fragment {
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Interactions");
 
         listInteractions.setAdapter(arrayAdapter);
+
+        listInteractions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    System.out.println("RESPOSTA TESTE" + arrayList.get(i).get(6));
+
+                    intent = getActivity().getIntent();
+                    intent.putExtra("Keyword1", arrayList.get(i).get(1).toString());
+                    intent.putExtra("Keyword2", arrayList.get(i).get(2).toString());
+                    intent.putExtra("Keyword3", arrayList.get(i).get(3).toString());
+                    intent.putExtra("Response1", arrayList.get(i).get(4).toString());
+                    intent.putExtra("Response2", arrayList.get(i).get(5).toString());
+                    intent.putExtra("Response3", arrayList.get(i).get(6).toString());
+                    intent.putExtra("Command", arrayList.get(i).get(7).toString());
+
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    assert getFragmentManager() != null;
+                    getFragmentManager().beginTransaction().replace(R.id.frame, new ViewInteractionFragment()).commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
 
         return view;

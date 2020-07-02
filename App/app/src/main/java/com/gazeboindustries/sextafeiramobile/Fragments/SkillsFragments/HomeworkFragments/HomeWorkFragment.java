@@ -1,9 +1,11 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.HomeworkFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,11 +16,13 @@ import androidx.fragment.app.Fragment;
 
 import com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.ProjectsFragments.AddProjectFragment;
 import com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.ProjectsFragments.ProjectFragment;
+import com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.ProjectsFragments.ViewProjectsFragment;
 import com.gazeboindustries.sextafeiramobile.ListItemRow;
 import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -29,6 +33,7 @@ public class HomeWorkFragment extends Fragment {
     private Button btnAddNewInteraction;
     private ListView listHomeWorks;
     private ArrayList<JSONArray> arrayList;
+    private Intent intent;
 
     @Nullable
     @Override
@@ -60,6 +65,27 @@ public class HomeWorkFragment extends Fragment {
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "HomeWorks");
 
         listHomeWorks.setAdapter(arrayAdapter);
+
+        listHomeWorks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    intent = getActivity().getIntent();
+                    intent.putExtra("Type", arrayList.get(i).get(1).toString());
+                    intent.putExtra("Subject", arrayList.get(i).get(2).toString());
+                    intent.putExtra("HomeWork", arrayList.get(i).get(3).toString());
+                    intent.putExtra("Delivery", arrayList.get(i).get(4).toString());
+                    intent.putExtra("Description", arrayList.get(i).get(5).toString());
+
+                    assert getFragmentManager() != null;
+                    getFragmentManager().beginTransaction().replace(R.id.frame, new ViewHomeWorkFragment()).commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
         return view;
     }

@@ -35,7 +35,7 @@
         <EditText
             android:layout_width="295dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
@@ -64,12 +64,12 @@
         <EditText
             android:layout_width="275dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtViewDescription"
+            android:id="@+id/txtViewDeviceDescription"
             android:enabled="false"
             />
 

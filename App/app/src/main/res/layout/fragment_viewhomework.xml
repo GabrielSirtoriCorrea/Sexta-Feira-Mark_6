@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/interacao"
+        android:text="@string/tarefa"
         android:textColor="#fff"
         android:textSize="30sp"
         android:layout_gravity="center"
@@ -35,12 +35,12 @@
         <EditText
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtHomeWorkType"
+            android:id="@+id/txtViewHomeWorkType"
             />
 
     </LinearLayout>
@@ -64,12 +64,12 @@
         <EditText
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtHomeWorkSubject"
+            android:id="@+id/txtViewHomeWorkSubject"
             />
 
     </LinearLayout>
@@ -92,12 +92,12 @@
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtHomeWork"
+            android:id="@+id/txtViewHomeWork"
             />
 
     </LinearLayout>
@@ -120,12 +120,12 @@
         <EditText
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtHomeWorkDelivery"
+            android:id="@+id/txtViewHomeWorkDelivery"
             />
 
     </LinearLayout>
@@ -148,12 +148,12 @@
         <EditText
             android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtHomeWorkDescription"
+            android:id="@+id/txtViewHomeWorkDescription"
             />
 
     </LinearLayout>
