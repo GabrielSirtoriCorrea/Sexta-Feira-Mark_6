@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tarefas"
+        android:text="@string/interacao"
         android:textColor="#fff"
         android:textSize="30sp"
         android:layout_gravity="center"
@@ -35,13 +35,13 @@
         <EditText
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:enabled="false"
-            android:id="@+id/viewKeyword1"
+            android:id="@+id/txtViewInteractionKeyword1"
             />
 
     </LinearLayout>
@@ -65,12 +65,12 @@
         <EditText
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewKeyword2"
+            android:id="@+id/txtViewInteractionKeyword2"
             android:enabled="false"
             />
 
@@ -94,12 +94,12 @@
         <EditText
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewKeyword3"
+            android:id="@+id/txtViewInteractionKeyword3"
             android:enabled="false"
             />
 
@@ -123,12 +123,12 @@
         <EditText
             android:layout_width="265dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewResponse1"
+            android:id="@+id/txtViewInteractionResponse1"
             android:enabled="false"
             />
 
@@ -152,12 +152,12 @@
         <EditText
             android:layout_width="265dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewResponse2"
+            android:id="@+id/txtViewInteractionResponse2"
             android:enabled="false"
             />
 
@@ -181,12 +181,12 @@
         <EditText
             android:layout_width="265dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewResponse3"
+            android:id="@+id/txtViewInteractionResponse3"
             android:enabled="false"
             />
 
@@ -210,12 +210,12 @@
         <EditText
             android:layout_width="275dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/viewCommand"
+            android:id="@+id/txtViewInteractionCommand"
             android:enabled="false"/>
 
     </LinearLayout>

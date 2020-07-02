@@ -1,9 +1,11 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.ProjectsFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,6 +19,7 @@ import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,7 @@ public class ProjectFragment extends Fragment {
     private Button btnAddNewInteraction;
     private ListView listProjects;
     private ArrayList<JSONArray> arrayList;
+    private Intent intent;
 
     @Nullable
     @Override
@@ -48,7 +52,7 @@ public class ProjectFragment extends Fragment {
         ServerConnection connection = new ServerConnection("getProjects");
 
         try {
-            sleep(3000);
+            sleep(4500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -58,6 +62,25 @@ public class ProjectFragment extends Fragment {
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Projects");
 
         listProjects.setAdapter(arrayAdapter);
+
+        listProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    intent = getActivity().getIntent();
+                    intent.putExtra("Project", arrayList.get(i).get(1).toString());
+                    intent.putExtra("Repository", arrayList.get(i).get(2).toString());
+
+                    assert getFragmentManager() != null;
+                    getFragmentManager().beginTransaction().replace(R.id.frame, new ViewProjectsFragment()).commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
 
         return view;
     }
