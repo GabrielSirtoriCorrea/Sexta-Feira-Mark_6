@@ -23,10 +23,19 @@ public class ViewInteractionFragment extends Fragment {
     private EditText response3;
     private EditText command;
 
+    private String KeyWord1Text;
+    private String KeyWord2Text;
+    private String KeyWord3Text;
+    private String Response1Text;
+    private String Response2Text;
+    private String Response3Text;
+    private String CommandText;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_viewhomework, container, false);
+        View view = inflater.inflate(R.layout.fragment_viewinteractions, container, false);
 
         keyWord1 = view.findViewById(R.id.txtViewInteractionKeyword1);
         keyWord2 = view.findViewById(R.id.txtViewInteractionKeyword2);
@@ -38,23 +47,22 @@ public class ViewInteractionFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
-        System.out.println(intent.getSerializableExtra("Keyword1").toString());
-        System.out.println(intent.getSerializableExtra("Keyword2").toString());
-        System.out.println(intent.getSerializableExtra("Keyword3").toString());
-        System.out.println(intent.getSerializableExtra("Response1").toString());
-        System.out.println(intent.getSerializableExtra("Response2").toString());
-        System.out.println(intent.getSerializableExtra("Response3").toString());
-        System.out.println(intent.getSerializableExtra("Command").toString());
+        /*KeyWord1Text = intent.getStringExtra("Keyword1");
+        KeyWord2Text = intent.getStringExtra("Keyword2");
+        KeyWord3Text = intent.getStringExtra("Keyword3");
+        Response1Text = intent.getStringExtra("Response1");
+        Response2Text = intent.getStringExtra("Response2");
+        Response3Text = intent.getStringExtra("Response3");
+        CommandText = intent.getStringExtra("Command");*/
 
+        keyWord1.setText(intent.getStringExtra("Keyword1"));
+        keyWord2.setText(intent.getStringExtra("Keyword2"));
+        keyWord3.setText(intent.getStringExtra("Keyword3"));
+        response1.setText(intent.getStringExtra("Response1"));
+        response2.setText(intent.getStringExtra("Response2"));
+        response3.setText(intent.getStringExtra("Response3"));
+        command.setText(intent.getStringExtra("Command"));
 
-        /*keyWord1.setText(intent.getSerializableExtra("Keyword1").toString());
-        keyWord2.setText(intent.getSerializableExtra("Keyword2").toString());
-        keyWord3.setText(intent.getSerializableExtra("Keyword3").toString());
-        response1.setText(intent.getSerializableExtra("Response1").toString());
-        response2.setText(intent.getSerializableExtra("Response2").toString());
-        response3.setText(intent.getSerializableExtra("Response3").toString());
-        command.setText(intent.getSerializableExtra("Command").toString());
-        */
 
         return view;
     }

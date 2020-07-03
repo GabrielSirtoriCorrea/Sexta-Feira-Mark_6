@@ -54,7 +54,7 @@ public class InteractionFragment extends Fragment {
         ServerConnection connection = new ServerConnection("getInteractions");
 
         try {
-            sleep(3000);
+            sleep(4500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -69,16 +69,17 @@ public class InteractionFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
-                    System.out.println("RESPOSTA TESTE" + arrayList.get(i).get(6));
+                    System.out.println(arrayList.toString());
 
                     intent = getActivity().getIntent();
-                    intent.putExtra("Keyword1", arrayList.get(i).get(1).toString());
-                    intent.putExtra("Keyword2", arrayList.get(i).get(2).toString());
-                    intent.putExtra("Keyword3", arrayList.get(i).get(3).toString());
-                    intent.putExtra("Response1", arrayList.get(i).get(4).toString());
-                    intent.putExtra("Response2", arrayList.get(i).get(5).toString());
-                    intent.putExtra("Response3", arrayList.get(i).get(6).toString());
-                    intent.putExtra("Command", arrayList.get(i).get(7).toString());
+                    intent.putExtra("Keyword1", arrayList.get(i).getString(1));
+                    intent.putExtra("Keyword2", arrayList.get(i).getString(2));
+                    intent.putExtra("Keyword3", arrayList.get(i).getString(3));
+                    intent.putExtra("Response1", arrayList.get(i).getString(4));
+                    intent.putExtra("Response2", arrayList.get(i).getString(5));
+                    intent.putExtra("Response3", arrayList.get(i).getString(6));
+                    intent.putExtra("Command", arrayList.get(i).getString(7));
+
 
                     try {
                         sleep(1000);
