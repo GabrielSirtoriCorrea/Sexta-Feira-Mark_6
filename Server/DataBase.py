@@ -1,4 +1,5 @@
 import mysql.connector as mysqlConnector
+from datetime import datetime
 
 class DataBaseConnection:
     def __init__(self):
@@ -27,27 +28,53 @@ class DataBaseConnection:
         self.dataBaseCursor.execute('SELECT DeviceName, Device FROM Device')
         return self.dataBaseCursor.fetchall()
 
-    def insertInteraction(self, key1, key2, key3, res1, res2, res3):
-        self.dataBaseCursor.execute('INSERT INTO Interactions(KeyWord1, KeyWord2, KeyWord3, Response1, Response2, Response3) VALUES (%s,%s,%s,%s,%s,%s)', (key1, key2, key3, res1, res2, res3))
-        self.dataBaseConnector.commit()
 
-    def insertCommand(self, key1, key2, key3, res1, res2, res3, command):
+    def insertInteraction(self, key1, key2, key3, res1, res2, res3, command):
         self.dataBaseCursor.execute('INSERT INTO Interactions(KeyWord1, KeyWord2, KeyWord3, Response1, Response2, Response3, Command) VALUES (%s,%s,%s,%s,%s,%s,%s)', (key1, key2, key3, res1, res2, res3, command))
         self.dataBaseConnector.commit()
 
-    def insertHomeWork(self, type, subject, homeWork, delivery, desc):
-        self.dataBaseCursor.execute('INSERT INTO HomeWorkManagement(HomeWorkType, HomeWorkSubject, HomeWork, HomeWorkDelivery, HomeWorkDescription) VALUES (%s,%s,%s,%s,%s)', (type, subject, homeWork, delivery, desc))
+    def insertHomeWork(self, Type, subject, homeWork, delivery, desc):
+        self.dataBaseCursor.execute('INSERT INTO HomeWorkManagement(HomeWorkType, HomeWorkSubject, HomeWork, HomeWorkDelivery, HomeWorkDescription) VALUES (%s,%s,%s,%s,%s)', (Type, subject, homeWork, datetime.strptime(delivery, '%d/%m/%Y').date(), desc))
         self.dataBaseConnector.commit()
 
-    def insertProject(self, name, language):
-        self.dataBaseCursor.execute('INSERT INTO Projects(ProjectName, ProjectLanguages) VALUES (%s,%s)', (name, language))
+    def insertProject(self, name, repository):
+        self.dataBaseCursor.execute('INSERT INTO Projects(ProjectName, ProjectRepository) VALUES (%s,%s)', (name, repository))
         self.dataBaseConnector.commit()
 
     def insertDevice(self, name, desc, json):
         self.dataBaseCursor.execute('INSERT INTO Device(DeviceName, DeviceDescription, DeviceJson) VALUES (%s,%s,%s)', (name, desc, json))
         self.dataBaseConnector.commit()
-    
-    def getInteractionsHeader(self):
-        self.dataBaseCursor.execute('DESC Interactions')
-        return self.dataBaseCursor.fetchall()
 
+
+    def updateInteraction(self, updateId, key1, key2, key3, res1, res2, res3, command):
+        self.dataBaseCursor.execute('UPDATE Interactions set KeyWord1 = %s, KeyWord2 = %s, KeyWord3 = %s,  Response1 = %s, Response2 = %s, Response3 = %s, WHERE InteractionId = %d', (key1, key2, key3, res1, res2, res3, command, updateId))
+        self.dataBaseConnector.commit()
+
+    def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):
+        self.dataBaseCursor.execute('UPDATE HomeWorkManagement set HomeWorkType = %s, HomeWorkSubject = %s, HomeWork = %s, HomeWorkDelivery = %s, HomeWorkDescription = %s, WHERE HomeWorkID = %d', (type, subject, homeWork, delivery, desc, updateId))
+        self.dataBaseConnector.commit()
+
+    def updateProject(self, updateId, name, repository):
+        self.dataBaseCursor.execute('UPDATE Projects set ProjectName = %s, ProjectRepository = %s, WHERE ProjectID = %d' % (name, repository, updateId))
+        self.dataBaseConnector.commit()
+
+    def updateDevice(self, updateId, name, desc, json):
+        self.dataBaseCursor.execute('UPDATE Device set DeviceName = %s, DeviceDescription = %s, DeviceJsonJson = %s, WHERE DeviceID = %d', (name, desc, json))
+        self.dataBaseConnector.commit()
+
+
+    def deleteInteraction(self, deleteID):
+        self.dataBaseCursor.execute('DELETE FROM Interactions WHERE InteractionID = %d' % (deleteID))
+        self.dataBaseConnector.commit()
+
+    def deleteDevice(self, deleteID):
+        self.dataBaseCursor.execute('DELETE FROM Device WHERE DeviceID = %d' % (deleteID))
+        self.dataBaseConnector.commit()
+
+    def deleteHomeWork(self, deleteID):
+        self.dataBaseCursor.execute('DELETE FROM HomeWorkManagement WHERE HomeWorkID = %d' % (deleteID))
+        self.dataBaseConnector.commit()
+
+    def deleteProject(self, deleteID):
+        self.dataBaseCursor.execute('DELETE FROM Projects WHERE ProjectID = %d' % (deleteID))
+        self.dataBaseConnector.commit()
