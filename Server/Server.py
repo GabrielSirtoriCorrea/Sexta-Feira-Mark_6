@@ -104,13 +104,73 @@ class ClientManage(socketserver.BaseRequestHandler):
                             self.request.send(json.dumps(getDevicesStatus()).encode())
 
                         elif clientRequest['request'] == 'setDevicesStatus':
-                            try:
-                                setDevicesStatus(clientRequest['receiverID'], clientRequest['action'], clientRequest['url'])
-                                self.request.send(json.dumps(getDevicesStatus()).encode())
-                            except:
-                                print('ERROR')
+                            setDevicesStatus(clientRequest['receiverID'], clientRequest['action'], clientRequest['url'])
+                            self.request.send(json.dumps(getDevicesStatus()).encode())
                         
-                        
+                        elif clientRequest['request'] == 'insertInteraction':
+                            print('adding')
+
+                            dataBaseConnection.insertInteraction(clientRequest['keyWord1'], 
+                            clientRequest['keyWord2'],
+                            clientRequest['keyWord3'],
+                            clientRequest['response1'],
+                            clientRequest['response2'],
+                            clientRequest['response3'],
+                            clientRequest['command'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'insertDevice':
+                            dataBaseConnection.insertDevice(clientRequest['device'], 
+                            clientRequest['description'],
+                            clientRequest['json'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'insertHomeWork':
+                            print('adding')
+                            dataBaseConnection.insertHomeWork(clientRequest['type'], 
+                            clientRequest['subject'],
+                            clientRequest['homeWork'],
+                            clientRequest['delivery'],
+                            clientRequest['description'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'insertProject':
+                            dataBaseConnection.insertProject(clientRequest['project'], clientRequest['repository'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'deleteInteraction':
+                            print('Deleting')
+                            dataBaseConnection.deleteInteraction(clientRequest['deleteId'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'deleteDevice':
+                            dataBaseConnection.deleteDevice(clientRequest['deleteId'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'deleteHomeWork':
+                            dataBaseConnection.deleteHomeWork(clientRequest['deleteId'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'deleteProject':
+                            dataBaseConnection.deleteProject(clientRequest['deleteId'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'updateProject':
+                            dataBaseConnection.updateProject(clientRequest['updateId'], 
+                            clientRequest['project'],
+                            clientRequest['repository'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                  
                 else:
                     break
 
