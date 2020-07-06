@@ -47,19 +47,19 @@ class DataBaseConnection:
 
 
     def updateInteraction(self, updateId, key1, key2, key3, res1, res2, res3, command):
-        self.dataBaseCursor.execute('UPDATE Interactions set KeyWord1 = %s, KeyWord2 = %s, KeyWord3 = %s,  Response1 = %s, Response2 = %s, Response3 = %s, WHERE InteractionId = %d', (key1, key2, key3, res1, res2, res3, command, updateId))
+        self.dataBaseCursor.execute(f"UPDATE Interactions set KeyWord1 = '{key1}', KeyWord2 = '{key2}', KeyWord3 = '{key3}',  Response1 = '{res1}', Response2 = '{res2}', Response3 = '{res3}', Command = '{command}' WHERE InteractionId = '{updateId}' ")
         self.dataBaseConnector.commit()
 
     def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):
-        self.dataBaseCursor.execute('UPDATE HomeWorkManagement set HomeWorkType = %s, HomeWorkSubject = %s, HomeWork = %s, HomeWorkDelivery = %s, HomeWorkDescription = %s, WHERE HomeWorkID = %d', (type, subject, homeWork, delivery, desc, updateId))
+        self.dataBaseCursor.execute(f"UPDATE HomeWorkManagement set HomeWorkType = '{type}', HomeWorkSubject = '{subject}', HomeWork = '{homeWork}', HomeWorkDelivery = '{datetime.strptime(delivery, '%d/%m/%Y').date()}', HomeWorkDescription = '{desc}' WHERE HomeWorkID ='{updateId}' ")
         self.dataBaseConnector.commit()
 
     def updateProject(self, updateId, name, repository):
-        self.dataBaseCursor.execute('UPDATE Projects set ProjectName = %s, ProjectRepository = %s, WHERE ProjectID = %d' % (name, repository, updateId))
+        self.dataBaseCursor.execute(f"UPDATE Projects SET ProjectName='{name}', ProjectRepository='{repository}' WHERE ProjectID='{updateId}' ")
         self.dataBaseConnector.commit()
 
     def updateDevice(self, updateId, name, desc, json):
-        self.dataBaseCursor.execute('UPDATE Device set DeviceName = %s, DeviceDescription = %s, DeviceJsonJson = %s, WHERE DeviceID = %d', (name, desc, json))
+        self.dataBaseCursor.execute(f"UPDATE Device SET DeviceName = '{name}', DeviceDescription = '{desc}', DeviceJson = '{json}' WHERE DeviceID = '{updateId}' ")
         self.dataBaseConnector.commit()
 
 

@@ -59,7 +59,7 @@ class ClientManage(socketserver.BaseRequestHandler):
             data = self.request.recv(5800).decode()
             print(data)
 
-            try:
+            if True:
                 if data:
                     clientRequest = json.loads(data)
 
@@ -170,12 +170,42 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
+                        elif clientRequest['request'] == 'updateDevice':
+                            dataBaseConnection.updateDevice(clientRequest['updateId'], 
+                            clientRequest['device'],
+                            clientRequest['description'],
+                            clientRequest['json'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'updateHomeWork':
+                            dataBaseConnection.updateHomeWork(clientRequest['updateId'], 
+                            clientRequest['type'],
+                            clientRequest['subject'],
+                            clientRequest['homeWork'],
+                            clientRequest['delivery'],
+                            clientRequest['description'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
+                        elif clientRequest['request'] == 'updateInteraction':
+                            dataBaseConnection.updateInteraction(clientRequest['updateId'], 
+                            clientRequest['key1'],
+                            clientRequest['key2'],
+                            clientRequest['key3'],
+                            clientRequest['res1'],
+                            clientRequest['res2'],
+                            clientRequest['res3'],
+                            clientRequest['command'])
+
+                            self.request.send(json.dumps({'requestStatus': True}).encode())
+
                   
                 else:
                     break
 
-            except:
-                print('error')
+            #except:
+            #    print('error')
 
 server = socketserver.ThreadingTCPServer((host, port), ClientManage)
 server.serve_forever()
