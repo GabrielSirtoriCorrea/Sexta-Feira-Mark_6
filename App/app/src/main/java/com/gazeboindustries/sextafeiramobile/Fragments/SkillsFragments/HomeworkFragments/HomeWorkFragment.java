@@ -52,17 +52,11 @@ public class HomeWorkFragment extends Fragment {
 
         listHomeWorks = view.findViewById(R.id.listHomeWorks);
 
-        ServerConnection connection = new ServerConnection("getHomeWorks");
+        ServerConnection connection = new ServerConnection();
 
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        arrayList =  connection.sendRequest(connection.prepareRequest("getHomeWorks"));
 
-        arrayList =  connection.getListResponse();
-
-        arrayAdapter = new ListItemRow(view.getContext(), arrayList, "HomeWorks");
+        arrayAdapter = new ListItemRow(view.getContext(), arrayList, "HomeWork");
 
         listHomeWorks.setAdapter(arrayAdapter);
 

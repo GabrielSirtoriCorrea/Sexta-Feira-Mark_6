@@ -55,6 +55,7 @@ public class ListItemRow extends ArrayAdapter<JSONArray> {
                     listID.setText(arrayLine.get(0).toString());
                     listField1.setText(arrayLine.get(2).toString());
                     listField2.setText(arrayLine.get(3).toString());
+                    listField3.setText(arrayLine.get(4).toString());
                     break;
                 case "Interactions":
                     arrayLine = list.get(position);

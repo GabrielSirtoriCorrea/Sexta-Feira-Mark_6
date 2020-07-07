@@ -59,7 +59,7 @@ class ClientManage(socketserver.BaseRequestHandler):
             data = self.request.recv(5800).decode()
             print(data)
 
-            if True:
+            try:
                 if data:
                     clientRequest = json.loads(data)
 
@@ -204,8 +204,8 @@ class ClientManage(socketserver.BaseRequestHandler):
                 else:
                     break
 
-            #except:
-            #    print('error')
+            except:
+                print('error')
 
 server = socketserver.ThreadingTCPServer((host, port), ClientManage)
 server.serve_forever()

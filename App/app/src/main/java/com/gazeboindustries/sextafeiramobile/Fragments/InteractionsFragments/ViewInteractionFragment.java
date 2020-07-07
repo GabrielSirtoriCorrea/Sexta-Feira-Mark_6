@@ -23,14 +23,6 @@ public class ViewInteractionFragment extends Fragment {
     private EditText response3;
     private EditText command;
 
-    private String KeyWord1Text;
-    private String KeyWord2Text;
-    private String KeyWord3Text;
-    private String Response1Text;
-    private String Response2Text;
-    private String Response3Text;
-    private String CommandText;
-
 
     @Nullable
     @Override
