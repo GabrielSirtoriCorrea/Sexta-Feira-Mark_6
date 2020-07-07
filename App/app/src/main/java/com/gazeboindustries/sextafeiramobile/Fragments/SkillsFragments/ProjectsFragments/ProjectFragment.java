@@ -49,15 +49,9 @@ public class ProjectFragment extends Fragment {
 
         listProjects = view.findViewById(R.id.listProjects);
 
-        ServerConnection connection = new ServerConnection("getProjects");
+        ServerConnection connection = new ServerConnection();
 
-        try {
-            sleep(4500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        arrayList =  connection.getListResponse();
+        arrayList =  connection.sendRequest(connection.prepareRequest("getProjects"));
 
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Projects");
 

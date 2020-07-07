@@ -51,15 +51,9 @@ public class DevicesFragment extends Fragment {
 
         listDevices = view.findViewById(R.id.listDevices);
 
-        ServerConnection connection = new ServerConnection("getDevicesJsons");
+        ServerConnection connection = new ServerConnection();
 
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        arrayList =  connection.getListResponse();
+        arrayList =  connection.sendRequest(connection.prepareRequest("getDevicesJsons"));
 
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Devices");
 

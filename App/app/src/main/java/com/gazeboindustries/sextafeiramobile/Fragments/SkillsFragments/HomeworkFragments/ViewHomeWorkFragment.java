@@ -24,7 +24,7 @@ public class ViewHomeWorkFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_viewinteractions, container, false);
+        View view = inflater.inflate(R.layout.fragment_viewhomework, container, false);
 
         txtType = view.findViewById(R.id.txtViewHomeWorkType);
         txtSubject = view.findViewById(R.id.txtViewHomeWorkSubject);
@@ -34,11 +34,11 @@ public class ViewHomeWorkFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
-        txtType.setText(intent.getSerializableExtra("Type").toString());
-        txtSubject.setText(intent.getSerializableExtra("Subject").toString());
-        txtHomeWork.setText(intent.getSerializableExtra("HomeWork").toString());
-        txtDelivery.setText(intent.getSerializableExtra("Delivery").toString());
-        txtDescription.setText(intent.getSerializableExtra("Description").toString());
+        txtType.setText(intent.getStringExtra("Type"));
+        txtSubject.setText(intent.getStringExtra("Subject"));
+        txtHomeWork.setText(intent.getStringExtra("HomeWork"));
+        txtDelivery.setText(intent.getStringExtra("Delivery"));
+        txtDescription.setText(intent.getStringExtra("Description"));
 
         return view;
     }

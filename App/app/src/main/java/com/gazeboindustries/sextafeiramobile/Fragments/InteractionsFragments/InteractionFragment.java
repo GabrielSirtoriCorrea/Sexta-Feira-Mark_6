@@ -51,15 +51,9 @@ public class InteractionFragment extends Fragment {
 
         listInteractions = view.findViewById(R.id.listInteractions);
 
-        ServerConnection connection = new ServerConnection("getInteractions");
+        ServerConnection connection = new ServerConnection();
 
-        try {
-            sleep(4500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        arrayList =  connection.getListResponse();
+        arrayList =  connection.sendRequest(connection.prepareRequest("getInteractions"));
 
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Interactions");
 
