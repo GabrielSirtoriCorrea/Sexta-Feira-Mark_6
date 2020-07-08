@@ -173,7 +173,7 @@
             android:background="@drawable/button_color"
             android:layout_marginStart="40dp"
             android:drawableStart="@drawable/ic_edit_black_24dp"
-            android:id="@+id/btnEditInteraction"/>
+            android:id="@+id/btnEditHomeWork"/>
 
         <Button
             android:layout_width="130dp"
@@ -183,7 +183,7 @@
             android:background="@drawable/button_color"
             android:layout_marginStart="40dp"
             android:drawableStart="@drawable/ic_delete_black_24dp"
-            android:id="@+id/btnRemoveInteraction"/>
+            android:id="@+id/btnRemoveHomeWork"/>
 
     </LinearLayout>
 
