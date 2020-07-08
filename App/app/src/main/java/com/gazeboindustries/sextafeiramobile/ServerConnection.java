@@ -24,14 +24,16 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
     private JSONObject jsonRequest;
     private JSONObject jsonResponse;
     private String data;
-    private ArrayList<JSONArray> list;
+    private ArrayList<JSONArray> list = null;
     private JSONArray arrayResponse;
     private char[] buffer = new char[9000];
 
     public ArrayList<JSONArray> sendRequest(JSONObject request){
         try {
             execute(request);
-            sleep(4500);
+            while(this.list == null){
+                sleep(100);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

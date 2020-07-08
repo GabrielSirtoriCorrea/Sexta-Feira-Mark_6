@@ -1,10 +1,12 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.DevicesFragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,10 @@ public class ViewDevicesFragment extends Fragment {
     private EditText txtDevice;
     private EditText txtDescription;
 
+    private Button btnEditSend;
+    private Button btnDeleteCancel;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,8 +34,51 @@ public class ViewDevicesFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
-        txtDevice.setText(intent.getSerializableExtra("Device").toString());
-        txtDescription.setText(intent.getSerializableExtra("Description").toString());
+        txtDevice.setText(intent.getStringExtra("Device"));
+        txtDescription.setText(intent.getStringExtra("Description"));
+
+        btnEditSend = view.findViewById(R.id.btnEditDevice);
+        btnDeleteCancel = view.findViewById(R.id.btnRemoveDevice);
+
+
+        btnEditSend.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                if(btnEditSend.getText().equals("Editar")){
+                    txtDevice.setEnabled(true);
+                    txtDescription.setEnabled(true);
+
+                    btnDeleteCancel.setText("Cancelar");
+                    btnEditSend.setText("Salvar");
+                }else{
+                    //connection = new ServerConnection();
+                    System.out.println("ENVIAR");
+                    //connection.sendRequest(connection.prepareRequest());
+                }
+            }
+        });
+
+        btnDeleteCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnDeleteCancel.getText().equals("Remover")){
+                    //show dialog
+                    System.out.println("Remove");
+
+                }else{
+                    txtDevice.setEnabled(false);
+                    txtDescription.setEnabled(false);
+
+                    btnDeleteCancel.setText("Remover");
+                    btnEditSend.setText("Editar");
+
+                    txtDevice.setText(intent.getStringExtra("Device"));
+                    txtDescription.setText(intent.getStringExtra("Description"));
+
+                }
+            }
+        });
 
         return view;
     }
