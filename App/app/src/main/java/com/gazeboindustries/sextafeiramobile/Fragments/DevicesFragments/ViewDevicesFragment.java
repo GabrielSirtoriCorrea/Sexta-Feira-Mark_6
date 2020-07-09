@@ -2,6 +2,7 @@ package com.gazeboindustries.sextafeiramobile.Fragments.DevicesFragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,11 @@ public class ViewDevicesFragment extends Fragment {
     private Button btnEditSend;
     private Button btnDeleteCancel;
 
+    private Drawable cancelIcon;
+    private Drawable saveIcon;
+
+    private Drawable editIcon;
+    private Drawable removeIcon;
 
     @Nullable
     @Override
@@ -51,6 +57,13 @@ public class ViewDevicesFragment extends Fragment {
 
                     btnDeleteCancel.setText("Cancelar");
                     btnEditSend.setText("Salvar");
+
+                    cancelIcon = getResources().getDrawable(R.drawable.ic_clear_black_24dp);
+                    saveIcon = getResources().getDrawable(R.drawable.ic_save_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(saveIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
+
                 }else{
                     //connection = new ServerConnection();
                     System.out.println("ENVIAR");
@@ -72,6 +85,12 @@ public class ViewDevicesFragment extends Fragment {
 
                     btnDeleteCancel.setText("Remover");
                     btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
 
                     txtDevice.setText(intent.getStringExtra("Device"));
                     txtDescription.setText(intent.getStringExtra("Description"));
