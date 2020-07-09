@@ -2,6 +2,7 @@ package com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.Projects
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,12 @@ public class ViewProjectsFragment extends Fragment {
 
     private Button btnEditSend;
     private Button btnDeleteCancel;
+
+    private Drawable saveIcon;
+    private Drawable cancelIcon;
+
+    private Drawable editIcon;
+    private Drawable removeIcon;
 
     @Nullable
     @Override
@@ -50,6 +57,13 @@ public class ViewProjectsFragment extends Fragment {
 
                     btnDeleteCancel.setText("Cancelar");
                     btnEditSend.setText("Salvar");
+
+                    cancelIcon = getResources().getDrawable(R.drawable.ic_clear_black_24dp);
+                    saveIcon = getResources().getDrawable(R.drawable.ic_save_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(saveIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
+
                 }else{
                     //connection = new ServerConnection();
                     System.out.println("ENVIAR");
@@ -69,9 +83,14 @@ public class ViewProjectsFragment extends Fragment {
                     txtProject.setEnabled(false);
                     txtRepository.setEnabled(false);
 
-
                     btnDeleteCancel.setText("Remover");
                     btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
 
                     txtProject.setText(intent.getStringExtra("Project"));
                     txtRepository.setText(intent.getStringExtra("Repository"));

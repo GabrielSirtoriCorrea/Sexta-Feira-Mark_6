@@ -77,12 +77,75 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return null;
     }
 
+    public JSONObject prepareInteraction(String request, String key1, String key2, String key3, String res1, String res2, String res3, String command){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("key1", key1);
+            this.jsonRequest.put("key2", key2);
+            this.jsonRequest.put("key3", key3);
+            this.jsonRequest.put("res1", res1);
+            this.jsonRequest.put("res2", res2);
+            this.jsonRequest.put("res3", res3);
+            this.jsonRequest.put("command", command);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+    }
+
+    public JSONObject prepareDevice(String request, String device, String desc){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("device", device);
+            this.jsonRequest.put("description", desc);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+    }
+
+    public JSONObject prepareHomework(String request, String type, String subject, String homework, String delivery, String desc){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("type", type);
+            this.jsonRequest.put("subject", subject);
+            this.jsonRequest.put("homeWork", homework);
+            this.jsonRequest.put("delivery", delivery);
+            this.jsonRequest.put("description", desc);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+    }
+
+    public JSONObject prepareProject(String request, String project, String desc){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("project", project);
+            this.jsonRequest.put("description", desc);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+    }
+
     public JSONObject prepareRequest(String request){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

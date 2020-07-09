@@ -15,6 +15,15 @@ public class AddHomeWorkFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        /*checa se é uma data:
+        try {
+              sdf.parse(txtDelivery.getText().toString());
+
+             } catch (ParseException e) {
+                Toast.makeText(view.getContext(), "Insira um formato válido", Toast.LENGTH_SHORT).show();
+         }*/
+
         return inflater.inflate(R.layout.fragment_addhomework, container, false);
+
 }
 }

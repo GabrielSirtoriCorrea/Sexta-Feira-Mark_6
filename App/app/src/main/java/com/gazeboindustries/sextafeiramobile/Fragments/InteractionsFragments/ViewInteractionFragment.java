@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 
 import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
+import com.google.android.material.drawable.DrawableUtils;
 
 public class ViewInteractionFragment extends Fragment {
     private Intent intent;
@@ -39,6 +40,12 @@ public class ViewInteractionFragment extends Fragment {
     private ServerConnection connection;
     private AlertDialog.Builder removeAlert;
     private AlertDialog removeDialog;
+
+    private Drawable cancelIcon;
+    private Drawable saveIcon;
+
+    private Drawable editIcon;
+    private Drawable removeIcon;
 
 
     @Nullable
@@ -102,9 +109,11 @@ public class ViewInteractionFragment extends Fragment {
                     btnDeleteCancel.setText("Cancelar");
                     btnEditSend.setText("Salvar");
 
-                    //Drawable icon = new Drawable();
+                    cancelIcon = getResources().getDrawable(R.drawable.ic_clear_black_24dp);
+                    saveIcon = getResources().getDrawable(R.drawable.ic_save_black_24dp);
 
-                    btnDeleteCancel.setCompoundDrawables(null, null, null, null);
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(saveIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
                     //connection = new ServerConnection();
@@ -136,6 +145,12 @@ public class ViewInteractionFragment extends Fragment {
 
                     btnDeleteCancel.setText("Remover");
                     btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
 
                     keyWord1.setText(intent.getStringExtra("Keyword1"));
                     keyWord2.setText(intent.getStringExtra("Keyword2"));
