@@ -27,20 +27,8 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
     private ArrayList<JSONArray> list = null;
     private JSONArray arrayResponse;
     private char[] buffer = new char[9000];
+    private boolean msgStatus = false;
 
-    public ArrayList<JSONArray> sendRequest(JSONObject request){
-        try {
-            execute(request);
-            while(this.list == null){
-                sleep(100);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return this.list;
-
-    }
 
     @Override
     protected ArrayList<JSONArray> doInBackground(JSONObject... params) {
@@ -50,6 +38,8 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
             this.out.println(params[0]);
+
+            this.msgStatus = true;
 
             this.in.read(this.buffer);
 
@@ -77,17 +67,35 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return null;
     }
 
+    public boolean getMsgStatus(){
+        return this.msgStatus;
+    }
+
+    public ArrayList<JSONArray> sendRequest(JSONObject request){
+        try {
+            execute(request);
+            while(this.list == null){
+                sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this.list;
+
+    }
+
     public JSONObject prepareInteraction(String request, String key1, String key2, String key3, String res1, String res2, String res3, String command){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
-            this.jsonRequest.put("key1", key1);
-            this.jsonRequest.put("key2", key2);
-            this.jsonRequest.put("key3", key3);
-            this.jsonRequest.put("res1", res1);
-            this.jsonRequest.put("res2", res2);
-            this.jsonRequest.put("res3", res3);
+            this.jsonRequest.put("keyWord1", key1);
+            this.jsonRequest.put("keyWord2", key2);
+            this.jsonRequest.put("keyWord3", key3);
+            this.jsonRequest.put("response1", res1);
+            this.jsonRequest.put("response2", res2);
+            this.jsonRequest.put("response3", res3);
             this.jsonRequest.put("command", command);
 
         } catch (JSONException e) {
@@ -96,13 +104,14 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareDevice(String request, String device, String desc){
+    public JSONObject prepareDevice(String request, String device, String desc, String json){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
             this.jsonRequest.put("device", device);
             this.jsonRequest.put("description", desc);
+            this.jsonRequest.put("json", json);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -133,7 +142,7 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
             this.jsonRequest.put("project", project);
-            this.jsonRequest.put("description", desc);
+            this.jsonRequest.put("repository", desc);
 
         } catch (JSONException e) {
             e.printStackTrace();

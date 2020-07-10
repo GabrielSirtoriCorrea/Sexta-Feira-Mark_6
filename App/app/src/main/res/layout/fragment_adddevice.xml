@@ -68,7 +68,7 @@
             android:textColor="#fff"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
-            android:id="@+id/txtAddDescription"
+            android:id="@+id/txtAddDeviceDescription"
             />
 
     </LinearLayout>
@@ -84,7 +84,7 @@
         android:textColor="#fff"
         android:fontFamily="sans-serif-black"
         android:layout_marginTop="300dp"
-        android:id="@+id/bntAddDevice"/>
+        android:id="@+id/btnAddDevice"/>
 
 
 </LinearLayout>

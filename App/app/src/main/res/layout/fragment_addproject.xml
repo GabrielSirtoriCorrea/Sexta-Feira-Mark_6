@@ -55,7 +55,7 @@
         android:textColor="#fff"
         android:fontFamily="sans-serif-black"
         android:layout_marginTop="300dp"
-        android:id="@+id/bntAddProject"/>
+        android:id="@+id/btnAddProject"/>
 
 
 </LinearLayout>
