@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gazeboindustries.sextafeiramobile.R;
+import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 public class ViewProjectsFragment extends Fragment {
     private Intent intent;
@@ -30,6 +32,9 @@ public class ViewProjectsFragment extends Fragment {
     private Drawable editIcon;
     private Drawable removeIcon;
 
+    private ServerConnection connection;
+    private int ID;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class ViewProjectsFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
+        ID = intent.getIntExtra("ID", 0);
         txtProject.setText(intent.getStringExtra("Project"));
         txtRepository.setText(intent.getStringExtra("Repository"));
 
@@ -65,9 +71,15 @@ public class ViewProjectsFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    //connection = new ServerConnection();
-                    System.out.println("ENVIAR");
-                    //connection.sendRequest(connection.prepareRequest());
+                    connection = new ServerConnection();
+
+                    connection.sendRequest(connection.prepareUpdateProject("updateProject", ID, txtProject.getText().toString(), txtRepository.getText().toString()));
+
+                    if(connection.getMsgStatus()){
+                        Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Erro ao salvar o projeto", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

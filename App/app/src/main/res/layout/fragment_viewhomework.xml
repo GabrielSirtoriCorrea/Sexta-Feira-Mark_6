@@ -41,6 +41,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:id="@+id/txtViewHomeWorkType"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -70,6 +71,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:id="@+id/txtViewHomeWorkSubject"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -98,6 +100,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:id="@+id/txtViewHomeWork"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -126,6 +129,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:id="@+id/txtViewHomeWorkDelivery"
+            android:enabled="false"
             />
 
     </LinearLayout>
@@ -154,6 +158,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:id="@+id/txtViewHomeWorkDescription"
+            android:enabled="false"
             />
 
     </LinearLayout>

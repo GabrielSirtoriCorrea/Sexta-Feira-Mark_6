@@ -37,7 +37,7 @@ public class AddDeviceFragment extends Fragment {
             public void onClick(View view) {
                 connection = new ServerConnection();
 
-                connection.sendRequest(connection.prepareDevice("insertDevice", device.getText().toString(), desc.getText().toString(), "json"));
+                connection.sendRequest(connection.prepareAddDevice("insertDevice", device.getText().toString(), desc.getText().toString(), "json"));
 
                 if(connection.getMsgStatus()){
                     Toast.makeText(view.getContext(), "Device adicionado", Toast.LENGTH_SHORT).show();

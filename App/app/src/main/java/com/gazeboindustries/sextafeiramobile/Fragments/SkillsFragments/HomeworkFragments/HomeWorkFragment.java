@@ -65,6 +65,7 @@ public class HomeWorkFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
                     intent = getActivity().getIntent();
+                    intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Type", arrayList.get(i).get(1).toString());
                     intent.putExtra("Subject", arrayList.get(i).get(2).toString());
                     intent.putExtra("HomeWork", arrayList.get(i).get(3).toString());

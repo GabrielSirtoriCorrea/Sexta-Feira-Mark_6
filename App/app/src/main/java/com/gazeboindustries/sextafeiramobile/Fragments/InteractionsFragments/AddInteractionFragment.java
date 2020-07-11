@@ -48,7 +48,7 @@ public class AddInteractionFragment extends Fragment {
             public void onClick(View view) {
                 connection = new ServerConnection();
 
-                connection.sendRequest(connection.prepareInteraction("insertInteraction", key1.getText().toString(), key2.getText().toString(),
+                connection.sendRequest(connection.prepareAddInteraction("insertInteraction", key1.getText().toString(), key2.getText().toString(),
                         key3.getText().toString(), res1.getText().toString(), res2.getText().toString(), res3.getText().toString(),
                         command.getText().toString()));
                 if(connection.getMsgStatus()){

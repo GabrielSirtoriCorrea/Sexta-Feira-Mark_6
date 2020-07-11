@@ -27,6 +27,7 @@ import com.google.android.material.drawable.DrawableUtils;
 
 public class ViewInteractionFragment extends Fragment {
     private Intent intent;
+    private int ID;
     private EditText keyWord1;
     private EditText keyWord2;
     private EditText keyWord3;
@@ -85,6 +86,7 @@ public class ViewInteractionFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
+        ID = intent.getIntExtra("ID", 0);
         keyWord1.setText(intent.getStringExtra("Keyword1"));
         keyWord2.setText(intent.getStringExtra("Keyword2"));
         keyWord3.setText(intent.getStringExtra("Keyword3"));
@@ -116,9 +118,17 @@ public class ViewInteractionFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    //connection = new ServerConnection();
-                    Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
-                    //connection.sendRequest(connection.prepareRequest());
+                    connection = new ServerConnection();
+
+                    connection.sendRequest(connection.prepareUpdateInteraction("updateInteraction", ID, keyWord1.getText().toString(), keyWord2.getText().toString(),
+                            keyWord3.getText().toString(), response1.getText().toString(), response2.getText().toString(), response3.getText().toString(),
+                            command.getText().toString()));
+
+                    if(connection.getMsgStatus()){
+                        Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Erro ao salvar interação", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
