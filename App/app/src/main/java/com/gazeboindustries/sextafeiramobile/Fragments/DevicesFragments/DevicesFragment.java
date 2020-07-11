@@ -64,6 +64,7 @@ public class DevicesFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
                     intent = getActivity().getIntent();
+                    intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Device", arrayList.get(i).get(1).toString());
                     intent.putExtra("Description", arrayList.get(i).get(2).toString());
 

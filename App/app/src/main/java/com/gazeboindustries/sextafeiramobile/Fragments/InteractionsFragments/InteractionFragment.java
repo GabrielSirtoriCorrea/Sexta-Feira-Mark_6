@@ -66,6 +66,7 @@ public class InteractionFragment extends Fragment {
                     System.out.println(arrayList.toString());
 
                     intent = getActivity().getIntent();
+                    intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Keyword1", arrayList.get(i).getString(1));
                     intent.putExtra("Keyword2", arrayList.get(i).getString(2));
                     intent.putExtra("Keyword3", arrayList.get(i).getString(3));

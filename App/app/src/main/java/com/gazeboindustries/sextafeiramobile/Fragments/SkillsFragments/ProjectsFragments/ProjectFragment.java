@@ -62,6 +62,7 @@ public class ProjectFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
                     intent = getActivity().getIntent();
+                    intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Project", arrayList.get(i).get(1).toString());
                     intent.putExtra("Repository", arrayList.get(i).get(2).toString());
 

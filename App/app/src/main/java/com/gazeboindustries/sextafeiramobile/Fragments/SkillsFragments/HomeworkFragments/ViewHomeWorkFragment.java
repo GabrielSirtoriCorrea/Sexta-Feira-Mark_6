@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gazeboindustries.sextafeiramobile.R;
+import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,9 @@ public class ViewHomeWorkFragment extends Fragment {
 
     private SimpleDateFormat sdf;
 
+    private ServerConnection connection;
+    private int ID;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ public class ViewHomeWorkFragment extends Fragment {
         btnEditSend = view.findViewById(R.id.btnEditHomeWork);
         btnDeleteCancel = view.findViewById(R.id.btnRemoveHomeWork);
 
-
+        ID = intent.getIntExtra("ID", 0);
         txtType.setText(intent.getStringExtra("Type"));
         txtSubject.setText(intent.getStringExtra("Subject"));
         txtHomeWork.setText(intent.getStringExtra("HomeWork"));
@@ -93,9 +97,16 @@ public class ViewHomeWorkFragment extends Fragment {
                     } catch (ParseException e) {
                         Toast.makeText(view.getContext(), "Insira um formato válido", Toast.LENGTH_SHORT).show();
                     }
+                    connection = new ServerConnection();
 
-                    //connection = new ServerConnection();
-                    //connection.sendRequest(connection.prepareRequest());
+                    connection.sendRequest(connection.prepareUpdateHomework("updateHomeWork", ID, txtType.getText().toString(), txtSubject.getText().toString(),
+                            txtHomeWork.getText().toString(), txtDelivery.getText().toString(), txtDescription.getText().toString()));
+
+                    if(connection.getMsgStatus()){
+                        Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Erro ao salvar a tarefa", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

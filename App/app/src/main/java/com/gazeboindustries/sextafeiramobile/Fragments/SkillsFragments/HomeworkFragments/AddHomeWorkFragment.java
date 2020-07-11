@@ -52,7 +52,7 @@ public class AddHomeWorkFragment extends Fragment {
                 try {
                     sdf.parse(delivery.getText().toString());
 
-                    connection.sendRequest(connection.prepareHomework("insertHomeWork", type.getText().toString(), subject.getText().toString(),
+                    connection.sendRequest(connection.prepareAddHomework("insertHomeWork", type.getText().toString(), subject.getText().toString(),
                             homeWork.getText().toString(), delivery.getText().toString(), desc.getText().toString()));
 
                     if(connection.getMsgStatus()){

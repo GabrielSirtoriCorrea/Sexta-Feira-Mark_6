@@ -34,7 +34,7 @@ public class AddProjectFragment extends Fragment {
             public void onClick(View view) {
                 connection = new ServerConnection();
 
-                connection.sendRequest(connection.prepareProject("insertProject", project.getText().toString(), "repository"));
+                connection.sendRequest(connection.prepareAddProject("insertProject", project.getText().toString(), "repository"));
 
                 if(connection.getMsgStatus()){
                     Toast.makeText(view.getContext(), "Projeto adicionado", Toast.LENGTH_SHORT).show();

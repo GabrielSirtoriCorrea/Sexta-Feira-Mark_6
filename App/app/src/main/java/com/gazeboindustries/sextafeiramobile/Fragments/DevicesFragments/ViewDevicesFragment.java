@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gazeboindustries.sextafeiramobile.R;
+import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 public class ViewDevicesFragment extends Fragment {
     private Intent intent;
@@ -30,6 +32,10 @@ public class ViewDevicesFragment extends Fragment {
     private Drawable editIcon;
     private Drawable removeIcon;
 
+    private int ID;
+
+    private ServerConnection connection;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class ViewDevicesFragment extends Fragment {
 
         intent = getActivity().getIntent();
 
+        ID = intent.getIntExtra("ID", 0);
         txtDevice.setText(intent.getStringExtra("Device"));
         txtDescription.setText(intent.getStringExtra("Description"));
 
@@ -65,9 +72,16 @@ public class ViewDevicesFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    //connection = new ServerConnection();
-                    System.out.println("ENVIAR");
-                    //connection.sendRequest(connection.prepareRequest());
+                    connection = new ServerConnection();
+
+                    connection.sendRequest(connection.prepareUpdateDevice("updateDevice", ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
+                            "json"));
+
+                    if(connection.getMsgStatus()){
+                        Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Erro ao salvar o device", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -76,8 +90,11 @@ public class ViewDevicesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btnDeleteCancel.getText().equals("Remover")){
-                    //show dialog
-                    System.out.println("Remove");
+
+                    //Adicionar log de confirmação
+                    connection = new ServerConnection();
+
+                    connection.sendRequest(connection.prepareDelete("deleteDevice", ID));
 
                 }else{
                     txtDevice.setEnabled(false);

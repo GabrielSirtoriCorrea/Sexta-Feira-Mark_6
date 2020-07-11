@@ -190,12 +190,12 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                         elif clientRequest['request'] == 'updateInteraction':
                             dataBaseConnection.updateInteraction(clientRequest['updateId'], 
-                            clientRequest['key1'],
-                            clientRequest['key2'],
-                            clientRequest['key3'],
-                            clientRequest['res1'],
-                            clientRequest['res2'],
-                            clientRequest['res3'],
+                            clientRequest['keyWord1'],
+                            clientRequest['keyWord2'],
+                            clientRequest['keyWord3'],
+                            clientRequest['response1'],
+                            clientRequest['response2'],
+                            clientRequest['response3'],
                             clientRequest['command'])
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
