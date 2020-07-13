@@ -34,7 +34,7 @@ class DataBaseConnection:
         self.dataBaseConnector.commit()
 
     def insertHomeWork(self, Type, subject, homeWork, delivery, desc):
-        self.dataBaseCursor.execute('INSERT INTO HomeWorkManagement(HomeWorkType, HomeWorkSubject, HomeWork, HomeWorkDelivery, HomeWorkDescription) VALUES (%s,%s,%s,%s,%s)', (Type, subject, homeWork, datetime.strptime(delivery, '%d/%m/%Y').date(), desc))
+        self.dataBaseCursor.execute('INSERT INTO HomeWorkManagement(HomeWorkType, HomeWorkSubject, HomeWork, HomeWorkDelivery, HomeWorkDescription) VALUES (%s,%s,%s,%s,%s)', (Type, subject, homeWork, delivery, desc))
         self.dataBaseConnector.commit()
 
     def insertProject(self, name, repository):
@@ -50,8 +50,8 @@ class DataBaseConnection:
         self.dataBaseCursor.execute(f"UPDATE Interactions set KeyWord1 = '{key1}', KeyWord2 = '{key2}', KeyWord3 = '{key3}',  Response1 = '{res1}', Response2 = '{res2}', Response3 = '{res3}', Command = '{command}' WHERE InteractionId = '{updateId}' ")
         self.dataBaseConnector.commit()
 
-    def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):
-        self.dataBaseCursor.execute(f"UPDATE HomeWorkManagement set HomeWorkType = '{type}', HomeWorkSubject = '{subject}', HomeWork = '{homeWork}', HomeWorkDelivery = '{datetime.strptime(delivery, '%d/%m/%Y').date()}', HomeWorkDescription = '{desc}' WHERE HomeWorkID ='{updateId}' ")
+    def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):#datetime.strptime(delivery, '%d/%m/%Y').date()
+        self.dataBaseCursor.execute(f"UPDATE HomeWorkManagement set HomeWorkType = '{type}', HomeWorkSubject = '{subject}', HomeWork = '{homeWork}', HomeWorkDelivery = '{delivery}', HomeWorkDescription = '{desc}' WHERE HomeWorkID ='{updateId}' ")
         self.dataBaseConnector.commit()
 
     def updateProject(self, updateId, name, repository):

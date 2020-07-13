@@ -1,6 +1,8 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.DevicesFragments;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,10 +38,16 @@ public class ViewDevicesFragment extends Fragment {
 
     private ServerConnection connection;
 
+    private AlertDialog.Builder removeAlert;
+    private AlertDialog removeDialog;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewdevice, container, false);
+
+        connection = new ServerConnection();
 
         txtDevice = view.findViewById(R.id.txtViewDevice);
         txtDescription = view.findViewById(R.id.txtViewDeviceDescription);
@@ -53,6 +61,29 @@ public class ViewDevicesFragment extends Fragment {
         btnEditSend = view.findViewById(R.id.btnEditDevice);
         btnDeleteCancel = view.findViewById(R.id.btnRemoveDevice);
 
+        removeAlert = new AlertDialog.Builder(view.getContext());
+        removeAlert.setMessage("Deseja remover a interação?");
+        removeAlert.setCancelable(false);
+
+        removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        removeAlert.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                connection.sendRequest(connection.prepareDelete("deleteDevice", ID));
+
+                if(connection.getMsgStatus()) {
+                    Toast.makeText(getContext(), "Excluído", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Erro ao remover device", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         btnEditSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -72,7 +103,6 @@ public class ViewDevicesFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    connection = new ServerConnection();
 
                     connection.sendRequest(connection.prepareUpdateDevice("updateDevice", ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
                             "json"));
@@ -89,18 +119,14 @@ public class ViewDevicesFragment extends Fragment {
         btnDeleteCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(btnDeleteCancel.getText().equals("Remover")){
-
-                    //Adicionar log de confirmação
-                    connection = new ServerConnection();
-
-                    connection.sendRequest(connection.prepareDelete("deleteDevice", ID));
-
+                if(btnDeleteCancel.getText().equals("Excluir")){
+                    removeDialog = removeAlert.create();
+                    removeDialog.show();
                 }else{
                     txtDevice.setEnabled(false);
                     txtDescription.setEnabled(false);
 
-                    btnDeleteCancel.setText("Remover");
+                    btnDeleteCancel.setText("Excluir");
                     btnEditSend.setText("Editar");
 
                     editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);

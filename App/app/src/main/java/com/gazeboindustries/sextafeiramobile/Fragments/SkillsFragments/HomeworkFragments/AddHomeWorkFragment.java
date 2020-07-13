@@ -17,6 +17,7 @@ import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddHomeWorkFragment extends Fragment {
     private Button btnAddHomeWork;
@@ -28,11 +29,14 @@ public class AddHomeWorkFragment extends Fragment {
 
     private ServerConnection connection;
     private SimpleDateFormat sdf;
+    private SimpleDateFormat dateOutput;
+    private Date dateFormated;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         sdf = new SimpleDateFormat("dd/MM/yyyy");
+        dateOutput = new SimpleDateFormat("yyyy-MM-dd");
 
         View view = inflater.inflate(R.layout.fragment_addhomework, container, false);
 
@@ -50,10 +54,10 @@ public class AddHomeWorkFragment extends Fragment {
                 connection = new ServerConnection();
 
                 try {
-                    sdf.parse(delivery.getText().toString());
+                    dateFormated = sdf.parse(delivery.getText().toString());
 
-                    connection.sendRequest(connection.prepareAddHomework("insertHomeWork", type.getText().toString(), subject.getText().toString(),
-                            homeWork.getText().toString(), delivery.getText().toString(), desc.getText().toString()));
+                        connection.sendRequest(connection.prepareAddHomework("insertHomeWork", type.getText().toString(), subject.getText().toString(),
+                                homeWork.getText().toString(), dateOutput.format(dateFormated), desc.getText().toString()));
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(view.getContext(), "Tarefa enviada", Toast.LENGTH_SHORT).show();
