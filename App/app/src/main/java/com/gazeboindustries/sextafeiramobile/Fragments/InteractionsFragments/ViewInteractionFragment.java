@@ -54,24 +54,7 @@ public class ViewInteractionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewinteractions, container, false);
 
-        removeAlert = new AlertDialog.Builder(view.getContext());
-        removeAlert.setMessage("Deseja remover a interação?");
-        removeAlert.setCancelable(false);
-
-        removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getContext(), "Cancelado", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        removeAlert.setPositiveButton("Remover", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getContext(), "Removido", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        connection = new ServerConnection();
 
         keyWord1 = view.findViewById(R.id.txtViewInteractionKeyword1);
         keyWord2 = view.findViewById(R.id.txtViewInteractionKeyword2);
@@ -94,6 +77,30 @@ public class ViewInteractionFragment extends Fragment {
         response2.setText(intent.getStringExtra("Response2"));
         response3.setText(intent.getStringExtra("Response3"));
         command.setText(intent.getStringExtra("Command"));
+
+        removeAlert = new AlertDialog.Builder(view.getContext());
+        removeAlert.setMessage("Deseja remover a interação?");
+        removeAlert.setCancelable(false);
+
+        removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        removeAlert.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                connection.sendRequest(connection.prepareDelete("deleteInteraction", ID));
+
+                if(connection.getMsgStatus()) {
+                    Toast.makeText(getContext(), "Excluído", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Erro ao remover Interação", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         btnEditSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -118,7 +125,6 @@ public class ViewInteractionFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    connection = new ServerConnection();
 
                     connection.sendRequest(connection.prepareUpdateInteraction("updateInteraction", ID, keyWord1.getText().toString(), keyWord2.getText().toString(),
                             keyWord3.getText().toString(), response1.getText().toString(), response2.getText().toString(), response3.getText().toString(),
@@ -137,12 +143,9 @@ public class ViewInteractionFragment extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                if(btnDeleteCancel.getText().equals("Remover")){
+                if(btnDeleteCancel.getText().equals("Excluir")){
                     removeDialog = removeAlert.create();
                     removeDialog.show();
-
-                    //connection = new ServerConnection();
-
 
                 }else{
                     keyWord1.setEnabled(false);
@@ -153,7 +156,7 @@ public class ViewInteractionFragment extends Fragment {
                     response3.setEnabled(false);
                     command.setEnabled(false);
 
-                    btnDeleteCancel.setText("Remover");
+                    btnDeleteCancel.setText("Excluir");
                     btnEditSend.setText("Editar");
 
                     editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);

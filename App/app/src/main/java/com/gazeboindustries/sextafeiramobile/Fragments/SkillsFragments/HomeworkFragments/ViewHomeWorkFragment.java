@@ -1,6 +1,8 @@
 package com.gazeboindustries.sextafeiramobile.Fragments.SkillsFragments.HomeworkFragments;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -40,16 +42,24 @@ public class ViewHomeWorkFragment extends Fragment {
     private Drawable removeIcon;
 
     private SimpleDateFormat sdf;
+    private SimpleDateFormat dateOutput;
+    private Date dateFormated;
 
     private ServerConnection connection;
     private int ID;
+
+    private AlertDialog.Builder removeAlert;
+    private AlertDialog removeDialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewhomework, container, false);
 
+        connection = new ServerConnection();
+
         sdf = new SimpleDateFormat("dd/MM/yyyy");
+        dateOutput = new SimpleDateFormat("yyyy-MM-dd");
 
 
         txtType = view.findViewById(R.id.txtViewHomeWorkType);
@@ -69,6 +79,30 @@ public class ViewHomeWorkFragment extends Fragment {
         txtHomeWork.setText(intent.getStringExtra("HomeWork"));
         txtDelivery.setText(intent.getStringExtra("Delivery"));
         txtDescription.setText(intent.getStringExtra("Description"));
+
+        removeAlert = new AlertDialog.Builder(view.getContext());
+        removeAlert.setMessage("Deseja remover a interação?");
+        removeAlert.setCancelable(false);
+
+        removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getContext(), "Cancelado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        removeAlert.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                connection.sendRequest(connection.prepareDelete("deleteHomeWork", ID));
+
+                if(connection.getMsgStatus()) {
+                    Toast.makeText(getContext(), "Excluído", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "Erro ao remover tarefa", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         btnEditSend.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -92,15 +126,31 @@ public class ViewHomeWorkFragment extends Fragment {
 
                 }else{
                     try {
-                        sdf.parse(txtDelivery.getText().toString());
+                        dateFormated = sdf.parse(txtDelivery.getText().toString());
 
-                    } catch (ParseException e) {
+                        connection.sendRequest(connection.prepareUpdateHomework("updateHomeWork", ID, txtType.getText().toString(), txtSubject.getText().toString(),
+                                txtHomeWork.getText().toString(), dateOutput.format(dateFormated), txtDescription.getText().toString()));
+
+
+                        txtType.setEnabled(false);
+                        txtSubject.setEnabled(false);
+                        txtHomeWork.setEnabled(false);
+                        txtDelivery.setEnabled(false);
+                        txtDescription.setEnabled(false);
+
+                        btnDeleteCancel.setText("Excluir");
+                        btnEditSend.setText("Editar");
+
+                        editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                        removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                        btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                        btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+
+                    } catch (ParseException e ) {
                         Toast.makeText(view.getContext(), "Insira um formato válido", Toast.LENGTH_SHORT).show();
                     }
-                    connection = new ServerConnection();
 
-                    connection.sendRequest(connection.prepareUpdateHomework("updateHomeWork", ID, txtType.getText().toString(), txtSubject.getText().toString(),
-                            txtHomeWork.getText().toString(), txtDelivery.getText().toString(), txtDescription.getText().toString()));
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
@@ -114,25 +164,11 @@ public class ViewHomeWorkFragment extends Fragment {
         btnDeleteCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(btnDeleteCancel.getText().equals("Remover")){
-                    //show dialog
-                    System.out.println("Remove");
+                if(btnDeleteCancel.getText().equals("Excluir")){
+                    removeDialog = removeAlert.create();
+                    removeDialog.show();
 
                 }else{
-                    txtType.setEnabled(false);
-                    txtSubject.setEnabled(false);
-                    txtHomeWork.setEnabled(false);
-                    txtDelivery.setEnabled(false);
-                    txtDescription.setEnabled(false);
-
-                    btnDeleteCancel.setText("Remover");
-                    btnEditSend.setText("Editar");
-
-                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
-                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
-
-                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
-                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
 
                     txtType.setText(intent.getStringExtra("Type"));
                     txtSubject.setText(intent.getStringExtra("Subject"));
