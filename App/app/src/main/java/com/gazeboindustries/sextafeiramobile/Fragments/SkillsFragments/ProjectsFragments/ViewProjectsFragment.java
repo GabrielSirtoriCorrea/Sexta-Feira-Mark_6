@@ -104,6 +104,22 @@ public class ViewProjectsFragment extends Fragment {
                 }else{
                     connection.sendRequest(connection.prepareUpdateProject("updateProject", ID, txtProject.getText().toString(), txtRepository.getText().toString()));
 
+                    txtProject.setEnabled(false);
+                    txtRepository.setEnabled(false);
+
+                    btnDeleteCancel.setText("Excluir");
+                    btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+
+                    intent.putExtra("ID", ID);
+                    intent.putExtra("Project", txtProject.getText().toString());
+                    intent.putExtra("Repository", txtRepository.getText().toString());
+
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
                     }else{
@@ -135,6 +151,7 @@ public class ViewProjectsFragment extends Fragment {
 
                     txtProject.setText(intent.getStringExtra("Project"));
                     txtRepository.setText(intent.getStringExtra("Repository"));
+
 
                 }
             }
