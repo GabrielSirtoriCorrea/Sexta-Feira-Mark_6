@@ -146,6 +146,12 @@ public class ViewHomeWorkFragment extends Fragment {
 
                         btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
                         btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+                        intent.putExtra("ID", ID);
+                        intent.putExtra("Type", txtType.getText().toString());
+                        intent.putExtra("Subject", txtSubject.getText().toString());
+                        intent.putExtra("HomeWork", txtHomeWork.getText().toString());
+                        intent.putExtra("Delivery", txtDelivery.getText().toString());
+                        intent.putExtra("Description", txtDescription.getText().toString());
 
                     } catch (ParseException e ) {
                         Toast.makeText(view.getContext(), "Insira um formato válido", Toast.LENGTH_SHORT).show();
@@ -176,6 +182,17 @@ public class ViewHomeWorkFragment extends Fragment {
                     txtDelivery.setText(intent.getStringExtra("Delivery"));
                     txtDescription.setText(intent.getStringExtra("Description"));
 
+                    txtType.setEnabled(false);
+                    txtSubject.setEnabled(false);
+                    txtHomeWork.setEnabled(false);
+                    txtDelivery.setEnabled(false);
+                    txtDescription.setEnabled(false);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+
+                    btnDeleteCancel.setText("Excluir");
+                    btnEditSend.setText("Editar");
                 }
             }
         });

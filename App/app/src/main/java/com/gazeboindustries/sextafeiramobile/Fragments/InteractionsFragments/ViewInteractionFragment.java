@@ -124,11 +124,38 @@ public class ViewInteractionFragment extends Fragment {
                     btnEditSend.setCompoundDrawablesWithIntrinsicBounds(saveIcon, null, null, null);
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
+
                 }else{
 
                     connection.sendRequest(connection.prepareUpdateInteraction("updateInteraction", ID, keyWord1.getText().toString(), keyWord2.getText().toString(),
                             keyWord3.getText().toString(), response1.getText().toString(), response2.getText().toString(), response3.getText().toString(),
                             command.getText().toString()));
+
+                    keyWord1.setEnabled(false);
+                    keyWord2.setEnabled(false);
+                    keyWord3.setEnabled(false);
+                    response1.setEnabled(false);
+                    response2.setEnabled(false);
+                    response3.setEnabled(false);
+                    command.setEnabled(false);
+
+                    btnDeleteCancel.setText("Excluir");
+                    btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+
+                    intent.putExtra("ID", ID);
+                    intent.putExtra("Keyword1", keyWord1.getText().toString());
+                    intent.putExtra("Keyword2", keyWord2.getText().toString());
+                    intent.putExtra("Keyword3", keyWord3.getText().toString());
+                    intent.putExtra("Response1", response1.getText().toString());
+                    intent.putExtra("Response2", response2.getText().toString());
+                    intent.putExtra("Response3", response3.getText().toString());
+                    intent.putExtra("Command", command.getText().toString());
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();

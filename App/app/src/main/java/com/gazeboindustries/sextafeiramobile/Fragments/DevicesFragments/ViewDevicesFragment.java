@@ -103,9 +103,24 @@ public class ViewDevicesFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-
                     connection.sendRequest(connection.prepareUpdateDevice("updateDevice", ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
                             "json"));
+
+                    txtDevice.setEnabled(false);
+                    txtDescription.setEnabled(false);
+
+                    btnDeleteCancel.setText("Excluir");
+                    btnEditSend.setText("Editar");
+
+                    editIcon = getResources().getDrawable(R.drawable.ic_edit_black_24dp);
+                    removeIcon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+
+                    btnEditSend.setCompoundDrawablesWithIntrinsicBounds(editIcon, null, null, null);
+                    btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
+
+                    intent.putExtra("ID", ID);
+                    intent.putExtra("Device", txtDevice.getText().toString());
+                    intent.putExtra("Description", txtDescription.getText().toString());
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
