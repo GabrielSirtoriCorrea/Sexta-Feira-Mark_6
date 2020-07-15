@@ -27,7 +27,9 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
     private String data;
     private ArrayList<JSONArray> list = null;
     private JSONArray arrayResponse;
-    private char[] buffer = new char[9000];
+    private char[] buffer;
+    private StringBuilder requestBuilder;
+    private String requestLine;
     private boolean msgStatus = false;
 
 
@@ -42,11 +44,19 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
 
             this.msgStatus = true;
 
+            try {
+                sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            this.buffer = new char[this.socket.getReceiveBufferSize()];
+
             this.in.read(this.buffer);
 
             this.data = new String(this.buffer);
 
-            this.jsonResponse = new JSONObject(this.data.trim());
+            this.jsonResponse = new JSONObject(this.data);
 
             System.out.println(this.jsonResponse);
 
