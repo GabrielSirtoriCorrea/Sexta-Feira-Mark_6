@@ -41,4 +41,7 @@
     <string name="server_address_">Server Address:</string>
     <string name="server_port_">Server port:</string>
     <string name="tarefa">Tarefa</string>
+    <string name="on_off">ON/OFF</string>
+    <string name="action">Action</string>
+    <string name="on">ON</string>
 </resources>

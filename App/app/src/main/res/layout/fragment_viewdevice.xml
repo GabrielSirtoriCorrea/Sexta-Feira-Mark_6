@@ -85,6 +85,34 @@
         <Button
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:text="@string/on"
+            android:textColor="#fff"
+            android:background="@drawable/button_color"
+            android:layout_marginStart="40dp"
+            android:drawableStart="@drawable/ic_devices_black_24dp"
+            android:id="@+id/btnOnOffDevice"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/action"
+            android:textColor="#fff"
+            android:background="@drawable/button_color"
+            android:layout_marginStart="40dp"
+            android:drawableStart="@drawable/ic_donut_large_black_24dp"
+            android:id="@+id/btnActionDevice"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
             android:text="@string/editar"
             android:textColor="#fff"
             android:background="@drawable/button_color"
