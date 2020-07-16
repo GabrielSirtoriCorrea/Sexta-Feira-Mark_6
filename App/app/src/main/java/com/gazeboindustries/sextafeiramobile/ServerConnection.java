@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import static java.lang.Thread.sleep;
 
 public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<JSONArray>> {
-    private String IP = "gazeboindustries.hopto.org";
-    //private String IP = "192.168.0.5";
+    //private String IP = "gazeboindustries.hopto.org";
+    private String IP = "192.168.0.5";
     private int port = 5000;
     private Socket socket;
     private PrintWriter out;
@@ -45,7 +45,7 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             this.msgStatus = true;
 
             try {
-                sleep(50);
+                sleep(125);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -252,5 +252,21 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             e.printStackTrace();
         }
         return jsonRequest;
+    }
+
+    public JSONObject prepareSetDevice(String request, String device, int action){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("receiverID", device);
+            this.jsonRequest.put("action", action);
+            this.jsonRequest.put("url", "url");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+
     }
 }

@@ -44,6 +44,7 @@ def setDevicesStatus(receiverID, action, url):
 
     newJson[receiverID]['action'] = action
     newJson[receiverID]['url'] = url
+    newJson.update()
 
     writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
     json.dump(newJson, writeFile, indent=4)
@@ -124,6 +125,17 @@ class ClientManage(socketserver.BaseRequestHandler):
                             dataBaseConnection.insertDevice(clientRequest['device'], 
                             clientRequest['description'],
                             clientRequest['json'])
+
+                            readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    
+                            newJson = json.load(readFile)
+
+                            print(newJson)
+
+                            newJson[clientRequest['device']] = {'action': 0, 'url': '.com'}
+
+                            writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+                            json.dump(newJson, writeFile, indent=4)
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
