@@ -28,8 +28,6 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
     private ArrayList<JSONArray> list = null;
     private JSONArray arrayResponse;
     private char[] buffer;
-    private StringBuilder requestBuilder;
-    private String requestLine;
     private boolean msgStatus = false;
 
 
@@ -247,6 +245,20 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
             this.jsonRequest.put("deleteId", deleteId);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonRequest;
+    }
+
+    public JSONObject prepareDelete(String request, int deleteId, String name){
+        try {
+            this.jsonRequest = new JSONObject();
+            this.jsonRequest.put("header", "gazeboindustries09082004");
+            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("deleteId", deleteId);
+            this.jsonRequest.put("deleteName", name);
 
         } catch (JSONException e) {
             e.printStackTrace();
