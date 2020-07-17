@@ -75,7 +75,7 @@ public class ViewDevicesFragment extends Fragment {
         removeAlert.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                connection.sendRequest(connection.prepareDelete("deleteDevice", ID));
+                connection.sendRequest(connection.prepareDelete("deleteDevice", ID, txtDevice.getText().toString()));
 
                 if(connection.getMsgStatus()) {
                     Toast.makeText(getContext(), "Excluído", Toast.LENGTH_SHORT).show();
