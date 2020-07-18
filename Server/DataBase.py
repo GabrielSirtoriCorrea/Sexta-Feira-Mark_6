@@ -37,12 +37,12 @@ class DataBaseConnection:
         self.dataBaseCursor.execute('INSERT INTO HomeWorkManagement(HomeWorkType, HomeWorkSubject, HomeWork, HomeWorkDelivery, HomeWorkDescription) VALUES (%s,%s,%s,%s,%s)', (Type, subject, homeWork, delivery, desc))
         self.dataBaseConnector.commit()
 
-    def insertProject(self, name, repository):
-        self.dataBaseCursor.execute('INSERT INTO Projects(ProjectName, ProjectRepository) VALUES (%s,%s)', (name, repository))
+    def insertProject(self, type, name):
+        self.dataBaseCursor.execute('INSERT INTO Projects(ProjectType, ProjectName) VALUES (%s,%s)', (type, name))
         self.dataBaseConnector.commit()
 
-    def insertDevice(self, name, desc, json):
-        self.dataBaseCursor.execute('INSERT INTO Device(DeviceName, DeviceDescription, DeviceJson) VALUES (%s,%s,%s)', (name, desc, json))
+    def insertDevice(self, name, desc, actions):
+        self.dataBaseCursor.execute('INSERT INTO Device(DeviceName, DeviceDescription, DeviceActions) VALUES (%s,%s,%s)', (name, desc, actions))
         self.dataBaseConnector.commit()
 
 
@@ -50,16 +50,16 @@ class DataBaseConnection:
         self.dataBaseCursor.execute(f"UPDATE Interactions set KeyWord1 = '{key1}', KeyWord2 = '{key2}', KeyWord3 = '{key3}',  Response1 = '{res1}', Response2 = '{res2}', Response3 = '{res3}', Command = '{command}' WHERE InteractionId = '{updateId}' ")
         self.dataBaseConnector.commit()
 
-    def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):#datetime.strptime(delivery, '%d/%m/%Y').date()
+    def updateHomeWork(self, updateId, type, subject, homeWork, delivery, desc):
         self.dataBaseCursor.execute(f"UPDATE HomeWorkManagement set HomeWorkType = '{type}', HomeWorkSubject = '{subject}', HomeWork = '{homeWork}', HomeWorkDelivery = '{delivery}', HomeWorkDescription = '{desc}' WHERE HomeWorkID ='{updateId}' ")
         self.dataBaseConnector.commit()
 
-    def updateProject(self, updateId, name, repository):
-        self.dataBaseCursor.execute(f"UPDATE Projects SET ProjectName='{name}', ProjectRepository='{repository}' WHERE ProjectID='{updateId}' ")
+    def updateProject(self, updateId, type, name):
+        self.dataBaseCursor.execute(f"UPDATE Projects SET ProjectName='{name}', ProjectType='{type}' WHERE ProjectID='{updateId}' ")
         self.dataBaseConnector.commit()
 
-    def updateDevice(self, updateId, name, desc, json):
-        self.dataBaseCursor.execute(f"UPDATE Device SET DeviceName = '{name}', DeviceDescription = '{desc}', DeviceJson = '{json}' WHERE DeviceID = '{updateId}' ")
+    def updateDevice(self, updateId, name, desc, actions):
+        self.dataBaseCursor.execute(f"UPDATE Device SET DeviceName = '{name}', DeviceDescription = '{desc}', DeviceJson = '{actions}' WHERE DeviceID = '{updateId}' ")
         self.dataBaseConnector.commit()
 
 

@@ -113,14 +113,14 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareAddDevice(String request, String device, String desc, String json){
+    public JSONObject prepareAddDevice(String request, String device, String desc, int actions){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
             this.jsonRequest.put("device", device);
             this.jsonRequest.put("description", desc);
-            this.jsonRequest.put("json", json);
+            this.jsonRequest.put("actions", actions);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -145,13 +145,13 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareAddProject(String request, String project, String desc){
+    public JSONObject prepareAddProject(String request, String type, String project){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
+            this.jsonRequest.put("type", type);
             this.jsonRequest.put("project", project);
-            this.jsonRequest.put("repository", desc);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -190,7 +190,7 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareUpdateDevice(String request, int updateId, String device, String desc, String json){
+    public JSONObject prepareUpdateDevice(String request, int updateId, String device, String desc, int actions){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
@@ -198,7 +198,7 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
             this.jsonRequest.put("updateId", updateId);
             this.jsonRequest.put("device", device);
             this.jsonRequest.put("description", desc);
-            this.jsonRequest.put("json", json);
+            this.jsonRequest.put("actions", actions);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -224,14 +224,14 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareUpdateProject(String request, int updateId, String project, String desc){
+    public JSONObject prepareUpdateProject(String request, int updateId, String type, String project){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
             this.jsonRequest.put("updateId", updateId);
+            this.jsonRequest.put("type", type);
             this.jsonRequest.put("project", project);
-            this.jsonRequest.put("repository", desc);
 
         } catch (JSONException e) {
             e.printStackTrace();

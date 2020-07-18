@@ -53,7 +53,7 @@ public class DevicesFragment extends Fragment {
 
         ServerConnection connection = new ServerConnection();
 
-        arrayList =  connection.sendRequest(connection.prepareRequest("getDevicesJsons"));
+        arrayList =  connection.sendRequest(connection.prepareRequest("getDevices"));
 
         arrayAdapter = new ListItemRow(view.getContext(), arrayList, "Devices");
 
@@ -67,6 +67,7 @@ public class DevicesFragment extends Fragment {
                     intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Device", arrayList.get(i).get(1).toString());
                     intent.putExtra("Description", arrayList.get(i).get(2).toString());
+                    intent.putExtra("Actions", arrayList.get(i).getInt(3));
 
                     assert getFragmentManager() != null;
                     getFragmentManager().beginTransaction().replace(R.id.frame, new ViewDevicesFragment()).commit();

@@ -19,6 +19,7 @@ public class AddDeviceFragment extends Fragment {
     private Button btnAddDevice;
     private EditText device;
     private EditText desc;
+    private EditText actions;
 
     private ServerConnection connection;
 
@@ -31,13 +32,14 @@ public class AddDeviceFragment extends Fragment {
 
         device = view.findViewById(R.id.txtAddDevice);
         desc = view.findViewById(R.id.txtAddDeviceDescription);
+        actions = view.findViewById(R.id.txtAddDeviceActions);
 
         btnAddDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 connection = new ServerConnection();
 
-                connection.sendRequest(connection.prepareAddDevice("insertDevice", device.getText().toString(), desc.getText().toString(), "json"));
+                connection.sendRequest(connection.prepareAddDevice("insertDevice", device.getText().toString(), desc.getText().toString(), Integer.parseInt(actions.getText().toString())));
 
                 if(connection.getMsgStatus()){
                     Toast.makeText(view.getContext(), "Device adicionado", Toast.LENGTH_SHORT).show();

@@ -64,7 +64,7 @@ public class ProjectFragment extends Fragment {
                     intent = getActivity().getIntent();
                     intent.putExtra("ID", arrayList.get(i).getInt(0));
                     intent.putExtra("Project", arrayList.get(i).get(1).toString());
-                    intent.putExtra("Repository", arrayList.get(i).get(2).toString());
+                    intent.putExtra("type", arrayList.get(i).get(2).toString());
 
                     assert getFragmentManager() != null;
                     getFragmentManager().beginTransaction().replace(R.id.frame, new ViewProjectsFragment()).commit();

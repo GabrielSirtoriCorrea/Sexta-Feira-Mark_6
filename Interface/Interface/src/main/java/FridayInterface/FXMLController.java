@@ -62,16 +62,16 @@ public class FXMLController implements Initializable {
 
     private TableColumn homeWorkTypeColumn = new TableColumn<JSONArray, String>("Tipo");
     private TableColumn homeWorkSubjectColumn = new TableColumn<JSONArray, String>("Matéria");
-    private TableColumn homeWorkColumn = new TableColumn<JSONArray, String>("tarefa");
+    private TableColumn homeWorkColumn = new TableColumn<JSONArray, String>("Tarefa");
     private TableColumn homeWorkDeliveryColumn = new TableColumn<JSONArray, String>("Entrega");
     private TableColumn homeWorkDescColumn = new TableColumn<JSONArray, String>("Descrição");
 
     private TableColumn projectColumn = new TableColumn<JSONArray, String>("Projeto");
-    private TableColumn RepositoryColumn = new TableColumn<JSONArray, String>("Repositório");
+    private TableColumn projectTypeColumn = new TableColumn<JSONArray, String>("Tipo");
 
     private TableColumn DeviceColumn = new TableColumn<JSONArray, String>("Device");
     private TableColumn DeviceDescColumn = new TableColumn<JSONArray, String>("Descrição");
-    private TableColumn DeviceJsonColumn = new TableColumn<JSONArray, String>("JSON");
+    private TableColumn DeviceActionsColumn = new TableColumn<JSONArray, String>("Número de ações");
 
     ServerConnection connection;
     JSONArray arrayResponse;
@@ -157,7 +157,7 @@ public class FXMLController implements Initializable {
 
                 if (!tableView.getColumns().contains(DeviceColumn)) {
                     imageView.setVisible(false);
-                    setTableData("getDevicesJsons");
+                    setTableData("getDevices");
 
                     addDevicesColumns();
 
@@ -314,11 +314,11 @@ public class FXMLController implements Initializable {
     private void addProjectsColumns() {
         tableView.getColumns().clear();
 
-        RepositoryColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+        projectTypeColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(2));
+                return new ReadOnlyObjectWrapper(param.getValue().get(1));
             }
          });
 
@@ -326,7 +326,7 @@ public class FXMLController implements Initializable {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
-                return new ReadOnlyObjectWrapper(param.getValue().get(1));
+                return new ReadOnlyObjectWrapper(param.getValue().get(2));
             }
          });
 
@@ -338,7 +338,7 @@ public class FXMLController implements Initializable {
             }
          });
 
-        tableView.getColumns().addAll(idColumn, projectColumn, RepositoryColumn);
+        tableView.getColumns().addAll(idColumn, projectTypeColumn, projectColumn);
 
         tableView.setVisible(true);
     }
@@ -373,7 +373,7 @@ public class FXMLController implements Initializable {
             }
          });
 
-        DeviceJsonColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
+        DeviceActionsColumn.setCellValueFactory(new Callback<CellDataFeatures<JSONArray, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(CellDataFeatures<JSONArray, String> param) {
                 // TODO Auto-generated method stub
@@ -381,7 +381,7 @@ public class FXMLController implements Initializable {
             }
          });
 
-        tableView.getColumns().addAll(idColumn, DeviceColumn, DeviceDescColumn, DeviceJsonColumn);
+        tableView.getColumns().addAll(idColumn, DeviceColumn, DeviceDescColumn, DeviceActionsColumn);
 
         tableView.setVisible(true);
     }

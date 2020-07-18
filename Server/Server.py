@@ -66,7 +66,7 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                     if clientRequest['header'] == 'gazeboindustries09082004':
                         
-                        if clientRequest['request'] == 'getDevicesJsons':
+                        if clientRequest['request'] == 'getDevices':
                             device = convertList(dataBaseConnection.getDevices())
 
                             self.request.send(json.dumps(device).encode())
@@ -95,11 +95,6 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                             self.request.send(json.dumps(homeWorkconverted).encode())
 
-                        elif clientRequest['request'] == 'getInteractionsHeader':
-                            header = convertHeader(dataBaseConnection.getInteractionsHeader())
-
-                            self.request.send(json.dumps(header).encode())
-
                         elif clientRequest['request'] == 'getDevicesStatus':
                             print('Enviado')
                             self.request.send(json.dumps(getDevicesStatus()).encode())
@@ -124,7 +119,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                         elif clientRequest['request'] == 'insertDevice':
                             dataBaseConnection.insertDevice(clientRequest['device'], 
                             clientRequest['description'],
-                            clientRequest['json'])
+                            clientRequest['actions'])
 
                             readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
     
@@ -150,7 +145,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
                         elif clientRequest['request'] == 'insertProject':
-                            dataBaseConnection.insertProject(clientRequest['project'], clientRequest['repository'])
+                            dataBaseConnection.insertProject(clientRequest['type'], clientRequest['project'])
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
@@ -188,8 +183,8 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                         elif clientRequest['request'] == 'updateProject':
                             dataBaseConnection.updateProject(clientRequest['updateId'], 
-                            clientRequest['project'],
-                            clientRequest['repository'])
+                            clientRequest['type'],
+                            clientRequest['project'])
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
@@ -197,7 +192,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                             dataBaseConnection.updateDevice(clientRequest['updateId'], 
                             clientRequest['device'],
                             clientRequest['description'],
-                            clientRequest['json'])
+                            clientRequest['actions'])
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 

@@ -23,7 +23,7 @@ import com.gazeboindustries.sextafeiramobile.ServerConnection;
 public class ViewProjectsFragment extends Fragment {
     private Intent intent;
     private EditText txtProject;
-    private EditText txtRepository;
+    private EditText txtType;
 
     private Button btnEditSend;
     private Button btnDeleteCancel;
@@ -48,7 +48,7 @@ public class ViewProjectsFragment extends Fragment {
         connection = new ServerConnection();
 
         txtProject = view.findViewById(R.id.txtViewProject);
-        txtRepository = view.findViewById(R.id.txtViewRepository);
+        txtType = view.findViewById(R.id.txtViewProjectType);
 
         btnEditSend = view.findViewById(R.id.btnEditProject);
         btnDeleteCancel = view.findViewById(R.id.btnRemoveProject);
@@ -57,10 +57,10 @@ public class ViewProjectsFragment extends Fragment {
 
         ID = intent.getIntExtra("ID", 0);
         txtProject.setText(intent.getStringExtra("Project"));
-        txtRepository.setText(intent.getStringExtra("Repository"));
+        txtType.setText(intent.getStringExtra("type"));
 
         removeAlert = new AlertDialog.Builder(view.getContext());
-        removeAlert.setMessage("Deseja remover a interação?");
+        removeAlert.setMessage("Deseja remover o projeto?");
         removeAlert.setCancelable(false);
 
         removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -89,7 +89,7 @@ public class ViewProjectsFragment extends Fragment {
             public void onClick(View view) {
                 if(btnEditSend.getText().equals("Editar")){
                     txtProject.setEnabled(true);
-                    txtRepository.setEnabled(true);
+                    txtType.setEnabled(true);
 
 
                     btnDeleteCancel.setText("Cancelar");
@@ -102,10 +102,10 @@ public class ViewProjectsFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    connection.sendRequest(connection.prepareUpdateProject("updateProject", ID, txtProject.getText().toString(), txtRepository.getText().toString()));
+                    connection.sendRequest(connection.prepareUpdateProject("updateProject", ID, txtType.getText().toString(), txtProject.getText().toString()));
 
                     txtProject.setEnabled(false);
-                    txtRepository.setEnabled(false);
+                    txtType.setEnabled(false);
 
                     btnDeleteCancel.setText("Excluir");
                     btnEditSend.setText("Editar");
@@ -118,7 +118,7 @@ public class ViewProjectsFragment extends Fragment {
 
                     intent.putExtra("ID", ID);
                     intent.putExtra("Project", txtProject.getText().toString());
-                    intent.putExtra("Repository", txtRepository.getText().toString());
+                    intent.putExtra("type", txtType.getText().toString());
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
@@ -138,7 +138,7 @@ public class ViewProjectsFragment extends Fragment {
 
                 }else{
                     txtProject.setEnabled(false);
-                    txtRepository.setEnabled(false);
+                    txtType.setEnabled(false);
 
                     btnDeleteCancel.setText("Excluir");
                     btnEditSend.setText("Editar");
@@ -150,7 +150,7 @@ public class ViewProjectsFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(removeIcon, null, null, null);
 
                     txtProject.setText(intent.getStringExtra("Project"));
-                    txtRepository.setText(intent.getStringExtra("Repository"));
+                    txtType.setText(intent.getStringExtra("type"));
 
 
                 }

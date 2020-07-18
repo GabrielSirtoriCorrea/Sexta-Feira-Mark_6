@@ -17,6 +17,7 @@ import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 public class AddProjectFragment extends Fragment {
     private Button btnAddProject;
+    private EditText type;
     private EditText project;
 
     private ServerConnection connection;
@@ -28,13 +29,14 @@ public class AddProjectFragment extends Fragment {
 
         btnAddProject = view.findViewById(R.id.btnAddProject);
         project = view.findViewById(R.id.txtAddNameProject);
+        type = view.findViewById(R.id.txtAddTypeProject);
 
         btnAddProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 connection = new ServerConnection();
 
-                connection.sendRequest(connection.prepareAddProject("insertProject", project.getText().toString(), "repository"));
+                connection.sendRequest(connection.prepareAddProject("insertProject", type.getText().toString(), project.getText().toString()));
 
                 if(connection.getMsgStatus()){
                     Toast.makeText(view.getContext(), "Projeto adicionado", Toast.LENGTH_SHORT).show();

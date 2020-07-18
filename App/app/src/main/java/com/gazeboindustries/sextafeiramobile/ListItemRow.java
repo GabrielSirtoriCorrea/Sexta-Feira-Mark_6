@@ -71,12 +71,14 @@ public class ListItemRow extends ArrayAdapter<JSONArray> {
                     listID.setText(arrayLine.get(0).toString());
                     listField1.setText(arrayLine.get(1).toString());
                     listField2.setText(arrayLine.get(2).toString());
+                    listField3.setText(arrayLine.get(3).toString());
                     break;
                 case "Projects":
                     arrayLine = list.get(position);
 
                     listID.setText(arrayLine.get(0).toString());
                     listField1.setText(arrayLine.get(1).toString());
+                    listField2.setText(arrayLine.get(2).toString());
                     break;
             }
 
