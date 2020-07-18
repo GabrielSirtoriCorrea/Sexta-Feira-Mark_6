@@ -24,6 +24,7 @@ public class ViewDevicesFragment extends Fragment {
     private Intent intent;
     private EditText txtDevice;
     private EditText txtDescription;
+    private EditText txtActions;
 
     private Button btnEditSend;
     private Button btnDeleteCancel;
@@ -42,6 +43,7 @@ public class ViewDevicesFragment extends Fragment {
     private AlertDialog removeDialog;
 
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,18 +53,20 @@ public class ViewDevicesFragment extends Fragment {
 
         txtDevice = view.findViewById(R.id.txtViewDevice);
         txtDescription = view.findViewById(R.id.txtViewDeviceDescription);
+        txtActions = view.findViewById(R.id.txtViewDeviceActions);
 
         intent = getActivity().getIntent();
 
         ID = intent.getIntExtra("ID", 0);
         txtDevice.setText(intent.getStringExtra("Device"));
         txtDescription.setText(intent.getStringExtra("Description"));
+        txtActions.setText(Integer.toString(intent.getIntExtra("Actions", 0)));
 
         btnEditSend = view.findViewById(R.id.btnEditDevice);
         btnDeleteCancel = view.findViewById(R.id.btnRemoveDevice);
 
         removeAlert = new AlertDialog.Builder(view.getContext());
-        removeAlert.setMessage("Deseja remover a interação?");
+        removeAlert.setMessage("Deseja remover o device?");
         removeAlert.setCancelable(false);
 
         removeAlert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -92,6 +96,7 @@ public class ViewDevicesFragment extends Fragment {
                 if(btnEditSend.getText().equals("Editar")){
                     txtDevice.setEnabled(true);
                     txtDescription.setEnabled(true);
+                    txtActions.setEnabled(true);
 
                     btnDeleteCancel.setText("Cancelar");
                     btnEditSend.setText("Salvar");
@@ -104,10 +109,11 @@ public class ViewDevicesFragment extends Fragment {
 
                 }else{
                     connection.sendRequest(connection.prepareUpdateDevice("updateDevice", ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
-                            "json"));
+                            Integer.parseInt(txtActions.getText().toString())));
 
                     txtDevice.setEnabled(false);
                     txtDescription.setEnabled(false);
+                    txtActions.setEnabled(false);
 
                     btnDeleteCancel.setText("Excluir");
                     btnEditSend.setText("Editar");
@@ -121,6 +127,7 @@ public class ViewDevicesFragment extends Fragment {
                     intent.putExtra("ID", ID);
                     intent.putExtra("Device", txtDevice.getText().toString());
                     intent.putExtra("Description", txtDescription.getText().toString());
+                    intent.putExtra("Actions", Integer.parseInt(txtActions.getText().toString()));
 
                     if(connection.getMsgStatus()){
                         Toast.makeText(getContext(), "Salvo", Toast.LENGTH_SHORT).show();
@@ -152,6 +159,7 @@ public class ViewDevicesFragment extends Fragment {
 
                     txtDevice.setText(intent.getStringExtra("Device"));
                     txtDescription.setText(intent.getStringExtra("Description"));
+                    txtDescription.setText(intent.getIntExtra("Actions", 0));
 
                 }
             }

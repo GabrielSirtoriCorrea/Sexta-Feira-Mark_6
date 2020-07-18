@@ -25,6 +25,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/tipo_"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-black"/>
+
+        <EditText
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif-black"
+            android:textSize="20sp"
+            android:id="@+id/txtViewProjectType"
+            android:enabled="false"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/projeto_"
             android:textColor="#fff"
             android:textSize="20sp"
@@ -45,36 +74,6 @@
             />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/repositório_"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-black"/>
-
-        <EditText
-            android:layout_width="255dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:textColor="#fff"
-            android:fontFamily="sans-serif-black"
-            android:textSize="20sp"
-            android:id="@+id/txtViewRepository"
-            android:enabled="false"
-            />
-
-    </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="wrap_content"
