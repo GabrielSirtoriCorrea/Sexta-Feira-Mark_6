@@ -108,7 +108,7 @@ public class ViewDevicesFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
-                    connection.sendRequest(connection.prepareUpdateDevice("updateDevice", ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
+                    connection.sendRequest(connection.prepareUpdateDevice("updateDevice",intent.getStringExtra("Device"), ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
                             Integer.parseInt(txtActions.getText().toString())));
 
                     txtDevice.setEnabled(false);
