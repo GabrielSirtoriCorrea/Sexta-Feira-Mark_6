@@ -190,11 +190,12 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareUpdateDevice(String request, int updateId, String device, String desc, int actions){
+    public JSONObject prepareUpdateDevice(String request, String deleteName, int updateId, String device, String desc, int actions){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
             this.jsonRequest.put("request", request);
+            this.jsonRequest.put("deleteName", deleteName);
             this.jsonRequest.put("updateId", updateId);
             this.jsonRequest.put("device", device);
             this.jsonRequest.put("description", desc);

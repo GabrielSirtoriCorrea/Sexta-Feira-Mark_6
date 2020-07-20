@@ -194,6 +194,19 @@ class ClientManage(socketserver.BaseRequestHandler):
                             clientRequest['description'],
                             clientRequest['actions'])
 
+                            readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    
+                            newJson = json.load(readFile)
+
+                            print(newJson)
+
+                            del newJson[clientRequest['deleteName']]
+
+                            newJson[clientRequest['device']] = {'action': 0, 'url': '.com'}
+
+                            writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+                            json.dump(newJson, writeFile, indent=4)
+
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
                         elif clientRequest['request'] == 'updateHomeWork':

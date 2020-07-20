@@ -59,7 +59,7 @@ class DataBaseConnection:
         self.dataBaseConnector.commit()
 
     def updateDevice(self, updateId, name, desc, actions):
-        self.dataBaseCursor.execute(f"UPDATE Device SET DeviceName = '{name}', DeviceDescription = '{desc}', DeviceJson = '{actions}' WHERE DeviceID = '{updateId}' ")
+        self.dataBaseCursor.execute(f"UPDATE Device SET DeviceName = '{name}', DeviceDescription = '{desc}', DeviceActions = '{actions}' WHERE DeviceID = '{updateId}' ")
         self.dataBaseConnector.commit()
 
 
