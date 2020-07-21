@@ -84,7 +84,7 @@ public class ViewDevicesFragment extends Fragment {
             System.out.println(deviceStatus.toString());
             deviceAction = deviceStatus.getInt("action");
             if(deviceAction != 0){
-                btnOnOff.setText("OFF");
+                btnOnOff.setText("Desligar");
             }
 
         } catch (JSONException e) {
@@ -201,14 +201,14 @@ public class ViewDevicesFragment extends Fragment {
                 connection = null;
                 connection = new ServerConnection();
 
-                if(btnOnOff.getText().equals("ON")){
+                if(btnOnOff.getText().equals("Ligar")){
                     connection.sendRequest(connection.prepareSetDevice(txtDevice.getText().toString(), 1, ".com"));
                     deviceAction = 1;
-                    btnOnOff.setText("OFF");
+                    btnOnOff.setText("Desligar");
                 }else{
                     connection.sendRequest(connection.prepareSetDevice(txtDevice.getText().toString(), 0, ".com"));
                     deviceAction = 0;
-                    btnOnOff.setText("ON");
+                    btnOnOff.setText("Ligar");
 
                 }
             }
