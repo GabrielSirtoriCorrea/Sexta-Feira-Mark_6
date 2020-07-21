@@ -34,7 +34,7 @@ def convertHeader(header):
 def getDevicesStatus():
     file = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
     return json.load(file)
-
+                                                                                                                                                                                                                                                                                                                                                            
 def setDevicesStatus(receiverID, action, url):
     readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
     

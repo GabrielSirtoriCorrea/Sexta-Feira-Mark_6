@@ -34,40 +34,71 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
     @Override
     protected ArrayList<JSONArray> doInBackground(JSONObject... params) {
         try {
-            this.socket = new Socket(IP, port);
-            this.out = new PrintWriter(this.socket.getOutputStream(), true);
-            this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+            if(params[0].get("request").equals("getDevicesStatus")) {
+                this.socket = new Socket(IP, port);
+                this.out = new PrintWriter(this.socket.getOutputStream(), true);
+                this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
-            this.out.println(params[0]);
+                this.out.println(params[0]);
 
-            this.msgStatus = true;
+                this.msgStatus = true;
 
-            try {
-                sleep(125);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    sleep(125);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                this.buffer = new char[this.socket.getReceiveBufferSize()];
+
+                this.in.read(this.buffer);
+
+                this.data = new String(this.buffer);
+
+                this.jsonResponse = new JSONObject(this.data);
+
+                System.out.println(this.jsonResponse);
+
+                this.socket.close();
+                this.out.close();
+                this.in.close();
+
+            }else{
+                this.socket = new Socket(IP, port);
+                this.out = new PrintWriter(this.socket.getOutputStream(), true);
+                this.in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+
+                this.out.println(params[0]);
+
+                this.msgStatus = true;
+
+                try {
+                    sleep(125);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                this.buffer = new char[this.socket.getReceiveBufferSize()];
+
+                this.in.read(this.buffer);
+
+                this.data = new String(this.buffer);
+
+                this.jsonResponse = new JSONObject(this.data);
+
+                System.out.println(this.jsonResponse);
+
+                this.list = new ArrayList<>();
+
+                for (int c = 0; c < jsonResponse.length(); c++) {
+                    this.arrayResponse = (JSONArray) this.jsonResponse.get(Integer.toString(c));
+                    this.list.add(arrayResponse);
+                }
+
+                this.socket.close();
+                this.out.close();
+                this.in.close();
             }
-
-            this.buffer = new char[this.socket.getReceiveBufferSize()];
-
-            this.in.read(this.buffer);
-
-            this.data = new String(this.buffer);
-
-            this.jsonResponse = new JSONObject(this.data);
-
-            System.out.println(this.jsonResponse);
-
-            this.list = new ArrayList<>();
-
-            for (int c = 0; c < jsonResponse.length(); c++){
-                this.arrayResponse = (JSONArray) this.jsonResponse.get(Integer.toString(c));
-                this.list.add(arrayResponse);
-            }
-
-            this.socket.close();
-            this.out.close();
-            this.in.close();
 
         } catch (IOException | JSONException e) {
             System.out.println("DEU ERRO");
@@ -78,6 +109,20 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
 
     public boolean getMsgStatus(){
         return this.msgStatus;
+    }
+
+    public JSONObject sendJSONRequest(JSONObject request){
+        try {
+            execute(request);
+            while(this.jsonResponse == null){
+                sleep(100);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return this.jsonResponse;
+
     }
 
     public ArrayList<JSONArray> sendRequest(JSONObject request){
@@ -267,14 +312,14 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
     }
 
-    public JSONObject prepareSetDevice(String request, String device, int action){
+    public JSONObject prepareSetDevice(String device, int action, String url){
         try {
             this.jsonRequest = new JSONObject();
             this.jsonRequest.put("header", "gazeboindustries09082004");
-            this.jsonRequest.put("request", request);
+            this.jsonRequest.put("request", "setDevicesStatus");
             this.jsonRequest.put("receiverID", device);
             this.jsonRequest.put("action", action);
-            this.jsonRequest.put("url", "url");
+            this.jsonRequest.put("url", url);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -282,4 +327,6 @@ public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<J
         return jsonRequest;
 
     }
+
+
 }
