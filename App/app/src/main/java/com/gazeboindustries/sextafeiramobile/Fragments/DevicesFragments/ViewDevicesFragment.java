@@ -20,6 +20,12 @@ import androidx.fragment.app.Fragment;
 import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class ViewDevicesFragment extends Fragment {
     private Intent intent;
     private EditText txtDevice;
@@ -28,6 +34,8 @@ public class ViewDevicesFragment extends Fragment {
 
     private Button btnEditSend;
     private Button btnDeleteCancel;
+    private Button btnAction;
+    private Button btnOnOff;
 
     private Drawable cancelIcon;
     private Drawable saveIcon;
@@ -35,12 +43,16 @@ public class ViewDevicesFragment extends Fragment {
     private Drawable editIcon;
     private Drawable removeIcon;
 
+    private int deviceAction;
     private int ID;
 
     private ServerConnection connection;
 
     private AlertDialog.Builder removeAlert;
     private AlertDialog removeDialog;
+
+    private JSONObject status;
+    private JSONObject deviceStatus;
 
 
     @SuppressLint("SetTextI18n")
@@ -54,6 +66,10 @@ public class ViewDevicesFragment extends Fragment {
         txtDevice = view.findViewById(R.id.txtViewDevice);
         txtDescription = view.findViewById(R.id.txtViewDeviceDescription);
         txtActions = view.findViewById(R.id.txtViewDeviceActions);
+        btnEditSend = view.findViewById(R.id.btnEditDevice);
+        btnDeleteCancel = view.findViewById(R.id.btnRemoveDevice);
+        btnAction = view.findViewById(R.id.btnActionDevice);
+        btnOnOff = view.findViewById(R.id.btnOnOffDevice);
 
         intent = getActivity().getIntent();
 
@@ -62,8 +78,18 @@ public class ViewDevicesFragment extends Fragment {
         txtDescription.setText(intent.getStringExtra("Description"));
         txtActions.setText(Integer.toString(intent.getIntExtra("Actions", 0)));
 
-        btnEditSend = view.findViewById(R.id.btnEditDevice);
-        btnDeleteCancel = view.findViewById(R.id.btnRemoveDevice);
+        try {
+            status = (JSONObject) connection.sendJSONRequest(connection.prepareRequest("getDevicesStatus"));
+            deviceStatus = (JSONObject) status.get(txtDevice.getText().toString());
+            System.out.println(deviceStatus.toString());
+            deviceAction = deviceStatus.getInt("action");
+            if(deviceAction != 0){
+                btnOnOff.setText("OFF");
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         removeAlert = new AlertDialog.Builder(view.getContext());
         removeAlert.setMessage("Deseja remover o device?");
@@ -79,6 +105,8 @@ public class ViewDevicesFragment extends Fragment {
         removeAlert.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                connection = null;
+                connection = new ServerConnection();
                 connection.sendRequest(connection.prepareDelete("deleteDevice", ID, txtDevice.getText().toString()));
 
                 if(connection.getMsgStatus()) {
@@ -108,6 +136,8 @@ public class ViewDevicesFragment extends Fragment {
                     btnDeleteCancel.setCompoundDrawablesWithIntrinsicBounds(cancelIcon, null, null, null);
 
                 }else{
+                    connection = null;
+                    connection = new ServerConnection();
                     connection.sendRequest(connection.prepareUpdateDevice("updateDevice",intent.getStringExtra("Device"), ID, txtDevice.getText().toString(), txtDescription.getText().toString(),
                             Integer.parseInt(txtActions.getText().toString())));
 
@@ -161,6 +191,37 @@ public class ViewDevicesFragment extends Fragment {
                     txtDescription.setText(intent.getStringExtra("Description"));
                     txtDescription.setText(intent.getIntExtra("Actions", 0));
 
+                }
+            }
+        });
+
+        btnOnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                connection = null;
+                connection = new ServerConnection();
+
+                if(btnOnOff.getText().equals("ON")){
+                    connection.sendRequest(connection.prepareSetDevice(txtDevice.getText().toString(), 1, ".com"));
+                    deviceAction = 1;
+                    btnOnOff.setText("OFF");
+                }else{
+                    connection.sendRequest(connection.prepareSetDevice(txtDevice.getText().toString(), 0, ".com"));
+                    deviceAction = 0;
+                    btnOnOff.setText("ON");
+
+                }
+            }
+        });
+
+        btnAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                connection = null;
+                connection = new ServerConnection();
+                if(deviceAction != 0){
+                    deviceAction++;
+                    connection.sendRequest(connection.prepareSetDevice(txtDevice.getText().toString(), deviceAction, ".com"));
                 }
             }
         });
