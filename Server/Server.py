@@ -66,7 +66,10 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                     if clientRequest['header'] == 'gazeboindustries09082004':
                         
-                        if clientRequest['request'] == 'getDevices':
+                        if clientRequest['request'] == 'startFriday':
+                            os.startfile('E:\\Sexta-Feira-Mark_6\\Interface\\Interface\\target\\Interface-6.0.jar')
+
+                        elif clientRequest['request'] == 'getDevices':
                             device = convertList(dataBaseConnection.getDevices())
 
                             self.request.send(json.dumps(device).encode())

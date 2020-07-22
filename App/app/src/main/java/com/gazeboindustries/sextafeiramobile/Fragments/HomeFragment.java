@@ -14,11 +14,24 @@ import com.gazeboindustries.sextafeiramobile.R;
 import com.gazeboindustries.sextafeiramobile.ServerConnection;
 
 public class HomeFragment extends Fragment {
+    private Button startFriday;
+    private ServerConnection connection;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        connection = new ServerConnection();
+
+        startFriday = view.findViewById(R.id.btnStartFriday);
+
+        startFriday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                connection.sendRequest(connection.prepareRequest("startFriday"));
+            }
+        });
 
         return view;
     }
