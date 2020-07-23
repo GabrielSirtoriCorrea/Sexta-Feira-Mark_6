@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import static java.lang.Thread.sleep;
 
 public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<JSONArray>> {
-    //private String IP = "gazeboindustries.hopto.org";
-    private String IP = "192.168.0.5";
+    private String IP = "gazeboindustries.hopto.org";
+    //private String IP = "192.168.0.5";
     private int port = 5000;
     private Socket socket;
     private PrintWriter out;
