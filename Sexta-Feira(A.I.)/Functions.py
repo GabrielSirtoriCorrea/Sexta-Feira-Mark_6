@@ -3,6 +3,7 @@ import pyttsx3, random, json
 from unicodedata import normalize
 from socket import socket, AF_INET, SOCK_STREAM
 from datetime import datetime
+from threading import Thread
 
 def Recognition():
     recognizer = sr.Recognizer()
@@ -21,10 +22,19 @@ def Recognition():
     except:
         return ''
 
+class Speaker(Thread):
+    def __init__(self, text):
+        Thread.__init__(self)
+        self.text = text
+
+    def run(self):
+        speaker = pyttsx3.init('sapi5')
+        speaker.say(self.text)
+        speaker.runAndWait()
+
 def speak(text):
-    speaker = pyttsx3.init('sapi5')
-    speaker.say(text)
-    speaker.runAndWait()
+    speak = Speaker(text)
+    speak.start()
 
 def responseSelector():
     return random.randint(4, 6)
@@ -71,6 +81,9 @@ def setup():
     else:
         speak('Boa noite chefe!')
 
+    devicesStatus =  devicesStatusThread()
+    devicesStatus.start()
+
     return [server, interactions]
 
 class ServerConnection:
@@ -89,7 +102,17 @@ class ServerConnection:
 
         return json.loads(self.connection.recv(5800).decode('utf-8'))
 
+class devicesStatusThread(Thread):
+    def __init__(self):
+        Thread.__init__(self)
 
+    def run(self):
+        server = ServerConnection()
+        while True:
+            response = server.send(setRequestJson('getDevicesStatus', 'server', 1, ".com"))
+
+            writeFile = open('E:/Sexta-Feira-Mark_6/Interface/Interface/FridayComunication.json', 'w')
+            json.dump(response['Interface'], writeFile, indent=4)
 
 
 
