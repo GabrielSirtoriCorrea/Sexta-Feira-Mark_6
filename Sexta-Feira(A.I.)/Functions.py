@@ -114,7 +114,19 @@ class devicesStatusThread(Thread):
             writeFile = open('E:/Sexta-Feira-Mark_6/Interface/Interface/FridayComunication.json', 'w')
             json.dump(response['Interface'], writeFile, indent=4)
 
+def setFridayComunication(action, content, url):
+    readFile = open('E:/Sexta-Feira-Mark_6/Interface/Interface/FridayComunication.json', 'r')
+    
+    newJson = json.load(readFile)
 
+    print(newJson)
+
+    newJson['action'] = action
+    newJson['content'] = action
+    newJson['url'] = url
+
+    writeFile = open('E:/Sexta-Feira-Mark_6/Interface/Interface/FridayComunication.json', 'w')
+    json.dump(newJson, writeFile, indent=4)
 
 
 

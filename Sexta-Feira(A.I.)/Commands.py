@@ -19,10 +19,11 @@ def updateFriday(speech, connection):
     os.system('git reset --hard origin/master')
 
 def sendCloseToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 0, '.com'))
-
+    Functions.setFridayComunication(0, None, ".com")
+    
 def sendInteractionsToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 1, '.com'))
+    response = connection.send(Functions.setRequestJson('getInteractions', 'Interface', 1, '.com'))
+    Functions.setFridayComunication(1, response, ".com")
 
 def sendHomeWorksToInterface(speech, connection):
     connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 2, '.com'))

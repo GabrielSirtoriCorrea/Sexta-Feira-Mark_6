@@ -126,7 +126,7 @@ public class FXMLController implements Initializable {
                 
                 if (!tableView.getColumns().contains(commandColumn)) {
                     imageView.setVisible(false);
-                    setTableData("getInteractions");
+                    setTableData();
 
                     addInteractionsColumns();
 
@@ -137,7 +137,7 @@ public class FXMLController implements Initializable {
             case 2:
                 if (!tableView.getColumns().contains(homeWorkColumn)) {
                     imageView.setVisible(false);
-                    setTableData("getHomeWorks");
+                    setTableData();
                     addHomeWorksColumns();
                 }
                 break;
@@ -145,7 +145,7 @@ public class FXMLController implements Initializable {
             case 3:
                 if (!tableView.getColumns().contains(projectColumn)) {
                     imageView.setVisible(false);
-                    setTableData("getProjects");
+                    setTableData();
                     addProjectsColumns();
                 }
                 break;
@@ -154,7 +154,7 @@ public class FXMLController implements Initializable {
 
                 if (!tableView.getColumns().contains(DeviceColumn)) {
                     imageView.setVisible(false);
-                    setTableData("getDevices");
+                    setTableData();
 
                     addDevicesColumns();
 
@@ -383,10 +383,10 @@ public class FXMLController implements Initializable {
         tableView.setVisible(true);
     }
 
-    private void setTableData(String request){
+    private void setTableData(){
         tableView.getItems().clear();
 
-        response = (JSONObject) connection.receive(request);
+        response = (JSONObject) FridayComunication.readJsonFile().get("content");
         System.out.println(response);
 
         for (int c = 0; c < response.size(); c++) {

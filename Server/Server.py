@@ -44,7 +44,6 @@ def setDevicesStatus(receiverID, action, url):
 
     newJson[receiverID]['action'] = action
     newJson[receiverID]['url'] = url
-    newJson.update()
 
     writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
     json.dump(newJson, writeFile, indent=4)
@@ -234,8 +233,6 @@ class ClientManage(socketserver.BaseRequestHandler):
                             clientRequest['command'])
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
-
-                  
                 else:
                     break
 
