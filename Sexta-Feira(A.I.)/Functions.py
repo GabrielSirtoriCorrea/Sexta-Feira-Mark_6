@@ -69,6 +69,8 @@ def setRequestJson(request, receiverID, action, url):
     return requestJson
 
 def setup():
+    setFridayComunication(0, None, ".com")
+
     server = ServerConnection()
 
     interactions = list(server.send(setRequestJson('getInteractions', 'server', 1, ".com")).items())
@@ -81,8 +83,6 @@ def setup():
     else:
         speak('Boa noite chefe!')
 
-    devicesStatus =  devicesStatusThread()
-    devicesStatus.start()
 
     return [server, interactions]
 
@@ -111,10 +111,22 @@ class devicesStatusThread(Thread):
         while True:
             response = server.send(setRequestJson('getDevicesStatus', 'server', 1, ".com"))
 
-            writeFile = open('E:/Sexta-Feira-Mark_6/Interface/Interface/FridayComunication.json', 'w')
+            writeFile = open('E:/Sexta-Feira-Mark_6/Sexta-FeiraInterface/src/com/friday/FridayComunication.json', 'w')
             json.dump(response['Interface'], writeFile, indent=4)
 
+def setFridayComunication(action, content, url):
+    filePath = 'E:/Sexta-Feira-Mark_6/Sexta-FeiraInterface/src/com/friday/FridayComunication.json'
+    readFile = open(filePath)
+    newJson = json.load(readFile)
 
+    print(newJson)
+
+    newJson['action'] = action
+    newJson['content'] = content
+    newJson['url'] = url
+
+    writeFile = open(filePath, 'w')
+    json.dump(newJson, writeFile, indent=4)
 
 
 

@@ -1,17 +1,12 @@
 {
     "FridayConfigs": {
         "ID": "Sexta-Feira",
-        "ServerHost": "192.168.0.5",
+        "ServerHost": "192.168.0.4",
         "Port": 5000
     },
     "ServerConfigs": {
         "ID": "Server",
-        "Host": "192.168.0.5",
-        "Port": 5000
-    },
-    "InterfaceConfigs": {
-        "ID": "Interface",
-        "ServerHost": "192.168.0.5",
+        "Host": "192.168.0.4",
         "Port": 5000
     }
 }

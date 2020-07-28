@@ -19,32 +19,36 @@ def updateFriday(speech, connection):
     os.system('git reset --hard origin/master')
 
 def sendCloseToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 0, '.com'))
-
+    Functions.setFridayComunication(0, None, ".com")
+    
 def sendInteractionsToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 1, '.com'))
+    response = connection.send(Functions.setRequestJson('getInteractions', 'Interface', 1, '.com'))
+    Functions.setFridayComunication(1, response, ".com")
 
 def sendHomeWorksToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 2, '.com'))
+    response = connection.send(Functions.setRequestJson('getHomeWorks', 'Interface', 2, '.com'))
+    Functions.setFridayComunication(2, response, ".com")
 
 def sendProjectsToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 3, '.com'))
+    response = connection.send(Functions.setRequestJson('getProjects', 'Interface', 3, '.com'))
+    Functions.setFridayComunication(3, response, ".com")
 
 def sendDevicesToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 4, '.com'))
+    response = connection.send(Functions.setRequestJson('getDevice', 'Interface', 4, '.com'))
+    Functions.setFridayComunication(4, response, ".com")
 
 def sendPeriodicTableToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaPeriodica.jpg'))
+    Functions.setFridayComunication(5, response, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaPeriodica.jpg')
 
 def sendPoliticalBrazilToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\Brasil Político.jpg'))
+    Functions.setFridayComunication(5, response, 'E:\\Sexta-Feira-Mark_6\\Images\\Brasil Político.jpg')
 
 def sendEletronicDestToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\diagrama-de-pauling.jpg'))
+    Functions.setFridayComunication(5, response, 'E:\\Sexta-Feira-Mark_6\\Images\\diagrama-de-pauling.jpg')
 
 def sendAnglesTableToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaSenoCossenoTangente.png'))
+    Functions.setFridayComunication(5, response, 'E:\\Sexta-Feira-Mark_6\\Images\\TabelaSenoCossenoTangente.png')
 
 def sendFisicEquationsToInterface(speech, connection):
-    connection.send(Functions.setRequestJson('setDevicesStatus', 'Interface', 5, 'E:\\Sexta-Feira-Mark_6\\Images\\Equações Dinamica.png'))
+    Functions.setFridayComunication(5, response, 'E:\\Sexta-Feira-Mark_6\\Images\\Equações Dinamica.png')
 
