@@ -34,7 +34,7 @@ def sendProjectsToInterface(speech, connection):
     Functions.setFridayComunication(3, response, ".com")
 
 def sendDevicesToInterface(speech, connection):
-    response = connection.send(Functions.setRequestJson('getDevice', 'Interface', 4, '.com'))
+    response = connection.send(Functions.setRequestJson('getDevices', 'Interface', 4, '.com'))
     Functions.setFridayComunication(4, response, ".com")
 
 def sendPeriodicTableToInterface(speech, connection):
