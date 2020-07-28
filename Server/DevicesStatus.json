@@ -1,16 +1,12 @@
 {
     "Friday": {
         "action": 0,
-        "content":{
-
-        },
+        "content": {},
         "url": ".com"
     },
     "Interface": {
-        "action": 1,
-        "content":{
-
-        },
+        "action": 2,
+        "content": {},
         "url": ".com"
     }
 }
