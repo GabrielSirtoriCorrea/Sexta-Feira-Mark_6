@@ -274,11 +274,11 @@ do usuário conforme o pedido da Sexta-feira(A.I.). Ela foi construída em JAVA,
 a criação do layout. 
 
    #### Layout
-      ![Tela inicial](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Interface%20Tela%20inicial.JPG)
+   ![Tela inicial](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Interface%20Tela%20inicial.JPG)
    
-      ![Exemplo imagem](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20imagem%20Interface.JPG)
+   ![Exemplo imagem](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20imagem%20Interface.JPG)
 
-      ![Exemplo tabela](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20tabela%20interface.JPG)
+   ![Exemplo tabela](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20tabela%20interface.JPG)
 
    #### Comunicação com Sexta-Feira(A.I.)
    Para que possamos ler os dados contidos no **FridayComunication.json** e comunicarmos com Sexta-Feira(A.I.),
