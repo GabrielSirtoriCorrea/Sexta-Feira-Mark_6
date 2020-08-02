@@ -608,7 +608,7 @@ para a construção dos layouts.
    JAVA de controle para cada fragment. Tendo isso em mente, foi necessário criar uma estrutura de pastas para 
    melhor organização do projeto, permitindo assim uma melhor compreensão. Então foi criada a seguinte estrutura:
 
-   ![Estrutura de pastas](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Estrutura%20de%20pastas.JPG)
+   ![Estrutura de pastas] (https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Estrutura%20de%20pastas.JPG)
 
    Como o objetivo desse App é **Editar os dados do Banco de Dados**, precisamos ter a possibilidade de 
    inserir, atualizar, excluir e visualizar os dados das 4 tabelas (Interactions, Device, Projects, 
