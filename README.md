@@ -76,7 +76,7 @@ separados por Threads.
    Para a comunicação com o banco de dados MySQL, utilizamos a biblioteca mysqlConnector. Para instala-la,
 utilizamos o PIP.
 
-   ```install mysql-connector-python```
+   ```pip install mysql-connector-python```
 
    Após a instalação da biblioteca, foi criada uma classe para o gerenciamento do banco de dados. No método
 construtor, iniciamos a conexão com o banco e definimos o cursor. Em seguida, foram criados os métodos: get(),
@@ -148,8 +148,8 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
 
       ```pip install SpeechRecognition```
 
-         Todo o processo de reconhecimento de voz, é executado no método **Recognition()** e chamado no arquivo
-      principal **Sexta-Feira(A.i.)**
+   Todo o processo de reconhecimento de voz, é executado no método **Recognition()** e chamado no arquivo
+   principal **Sexta-Feira(A.i.)**
 
       ```def Recognition():
             recognizer = sr.Recognizer() #Instanciamos o objeto da classe principal 
@@ -174,13 +174,14 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
    é responsável por responder ao usuário utilizando o **Narrador do Windows**, assim dando 
    a impressão para o usuário que ele está falando com alguém real.
 
-         Para realizar a sínteze de voz, utilizamos a biblioteca **pyttsx3**, e instalamos ela novamente com o pip
+   Para realizar a sínteze de voz, utilizamos a biblioteca **pyttsx3**, e instalamos ela novamente com o pip
 
       ```pip install pyttsx3```
 
-         Para que o software não interrompa sua execução para "falar" as respostas, importamos a classe
-      **Threadiing** já contida no Python, essa bibiloteca contém a classe **Thread**, que nos permite criar
-      processos paralelos dentro do mesmo programa, então foi criada uma classe **Speaker**, subclasse de Thread, dentro do método **Run()** da classe, escrevemos o código a ser executado de forma paralela, depois iniciamos a Thread instanciando um objeto da classe Speaker, e executamos o método **start()**.
+   Para que o software não interrompa sua execução para "falar" as respostas, importamos a classe**Threading** já contida no Python,
+   essa bibiloteca contém a classe **Thread**, que nos permite criar processos paralelos dentro do mesmo programa, então foi criada 
+   uma classe **Speaker**, subclasse de Thread, dentro do método **Run()** da classe, escrevemos o código a ser executado de forma 
+   paralela, depois iniciamos a Thread instanciando um objeto da classe Speaker, e executamos o método **start()**.
 
       ```class Speaker(Thread):
             def __init__(self, text):
@@ -264,7 +265,7 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
             json.dump(newJson, writeFile, indent=4) # Escrevemos o dicionário com os novos dados
       ``` 
 
-      Todos esses métodos estão contidos no arquivo **Functions.py**
+   Todos esses métodos estão contidos no arquivo **Functions.py**
 
 
 ### Interface
@@ -273,11 +274,11 @@ do usuário conforme o pedido da Sexta-feira(A.I.). Ela foi construída em JAVA,
 a criação do layout. 
 
    #### Layout
-      - Tela inicial
+      ![Tela inicial](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Interface%20Tela%20inicial.JPG)
    
-      - Exemplo de Imagem
+      ![Exemplo imagem](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20imagem%20Interface.JPG)
 
-      - Exemplo de Tabela
+      ![Exemplo tabela](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Exemplo%20tabela%20interface.JPG)
 
    #### Comunicação com Sexta-Feira(A.I.)
    Para que possamos ler os dados contidos no **FridayComunication.json** e comunicarmos com Sexta-Feira(A.I.),
@@ -607,7 +608,7 @@ para a construção dos layouts.
    JAVA de controle para cada fragment. Tendo isso em mente, foi necessário criar uma estrutura de pastas para 
    melhor organização do projeto, permitindo assim uma melhor compreensão. Então foi criada a seguinte estrutura:
 
-   - Imagem estrutura
+   ![Estrutura de pastas](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Estrutura%20de%20pastas.JPG)
 
    Como o objetivo desse App é **Editar os dados do Banco de Dados**, precisamos ter a possibilidade de 
    inserir, atualizar, excluir e visualizar os dados das 4 tabelas (Interactions, Device, Projects, 
