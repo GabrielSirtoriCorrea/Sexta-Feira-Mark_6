@@ -1,6 +1,6 @@
 # Sexta-Feira MARK 6
-      Sexta-Feira, é uma assistente virtual desenvolvida para auxiliar o usuário nas tarefas
-     do dia-a-dia, podendo mostrar imagens, realizar pesquisas na internet etc.
+   Sexta-Feira, é uma assistente virtual desenvolvida para auxiliar o usuário nas tarefas
+do dia-a-dia, podendo mostrar imagens, realizar pesquisas na internet etc.
 
    No início, o projeto contia as seguintes ideias:
 
@@ -17,11 +17,9 @@
    - App
  
 ## Banco de dados
-
    O banco de dados foi criado com o MySQL, ele é responsável por armazenar todos os dados do sistema.
 
 ### Tabelas
-
    - Interactions - Responsável por armazenar todas as conversas e comandos com a Sexta-Feira (Assistente virtual)
    - Projects - Responsável por armazenar projetos pessoais
    - HomeWorkManagement - Responsável por armazenar tarefas escolares
@@ -29,26 +27,26 @@
 
 ### Estrutura
 
-     Interactions   |    Projects     |    HomeWorkManagement   |         Device         |
-   ---------------- | --------------- | ----------------------- | ---------------------- |
-      KeyWordID     |    ProjectID    |       HomeWorkID        |        DeviceID        |
-      KeyWord1      |   ProjectType   |       HomeWorkType      |       DeviceName       |
-      KeyWord2      |     Project     |      HomeWorkSubject    |    DeviceDescription   |
-      KeyWord3      |                 |         HomeWork        |      DeviceActions     |
-      response1     |                 |      HomeWorkDelivery   |                        |
-      response2     |                 |    HomeWorkDescription  |                        |
-      response3     |                 |                         |                        |
-      Command       |                 |                         |                        |
+   Interactions   |    Projects     |    HomeWorkManagement   |         Device         |
+ ---------------- | --------------- | ----------------------- | ---------------------- |
+    KeyWordID     |    ProjectID    |       HomeWorkID        |        DeviceID        |
+    KeyWord1      |   ProjectType   |       HomeWorkType      |       DeviceName       |
+    KeyWord2      |     Project     |      HomeWorkSubject    |    DeviceDescription   |
+    KeyWord3      |                 |         HomeWork        |      DeviceActions     |
+    response1     |                 |      HomeWorkDelivery   |                        |
+    response2     |                 |    HomeWorkDescription  |                        |
+    response3     |                 |                         |                        |
+    Command       |                 |                         |                        |
 
 ## Servidor
-      O servidor, é responsavel pela comunicação entre os subsistemas, ele tem acesso ao banco de dados e envia as
-   informações conforme as requisições. Para a conexão entre o servidor e seus clientes, foi utilizado socket, 
-   com o protocolo TCP/IP para comunicação
+   O servidor, é responsavel pela comunicação entre os subsistemas, ele tem acesso ao banco de dados e envia as
+informações conforme as requisições. Para a conexão entre o servidor e seus clientes, foi utilizado socket, 
+com o protocolo TCP/IP para comunicação
 
 ### Estrutura do servidor
-      Para criarmos a estrutura base do servidor, utilizamos a bibiloteca socketserver, assim, podemos criar uma 
-   classe extendida de **socketserver.BaseRequestHandler** para o gerenciamento de vários clientes ao mesmo tempo, ]
-   separados por Threads. 
+   Para criarmos a estrutura base do servidor, utilizamos a bibiloteca socketserver, assim, podemos criar uma 
+classe extendida de **socketserver.BaseRequestHandler** para o gerenciamento de vários clientes ao mesmo tempo, ]
+separados por Threads. 
 
 
    ```class ClientManage(socketserver.BaseRequestHandler):
