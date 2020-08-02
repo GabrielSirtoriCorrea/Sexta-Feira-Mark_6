@@ -73,14 +73,14 @@ separados por Threads.
 ```
 
 ### Comunicação banco de dados
-      Para a comunicação com o banco de dados MySQL, utilizamos a biblioteca mysqlConnector. Para instala-la,
-   utilizamos o PIP.
+   Para a comunicação com o banco de dados MySQL, utilizamos a biblioteca mysqlConnector. Para instala-la,
+utilizamos o PIP.
 
    ```install mysql-connector-python```
 
-      Após a instalação da biblioteca, foi criada uma classe para o gerenciamento do banco de dados. No método
-   construtor, iniciamos a conexão com o banco e definimos o cursor. Em seguida, foram criados os métodos: get(),
-   update(), delete() e insert() para cada tabela.
+   Após a instalação da biblioteca, foi criada uma classe para o gerenciamento do banco de dados. No método
+construtor, iniciamos a conexão com o banco e definimos o cursor. Em seguida, foram criados os métodos: get(),
+update(), delete() e insert() para cada tabela.
 
    ```
    import mysql.connector as mysqlConnector
@@ -114,38 +114,37 @@ separados por Threads.
 
 
 ## Sexta-Feira
-
-A Sexta-Feira é a assistente virtual. Ela é separada em 2 partes Interface e Sexta-Feira
+   A Sexta-Feira é a assistente virtual. Ela é separada em 2 partes Interface e Sexta-Feira
 
 ### Sexta-Feira (A.I.)
-      Sexta-Feira é o cérebro de tudo, ela é responsável pelo reconhecimento de voz do usuário, conexão com o 
-   servidor etc.
+   Sexta-Feira é o cérebro de tudo, ela é responsável pelo reconhecimento de voz do usuário, conexão com o 
+servidor etc.
 
-      Para termos um assistente virtual funcional, nós temos de ter uma atenção especial para o reconhecimento de 
-   voz. É ele o responsável por garantir a interação do usuário com o software, se não temos um bom reconhecimento, o software não é eficiente.
+   Para termos um assistente virtual funcional, nós temos de ter uma atenção especial para o reconhecimento de 
+voz. É ele o responsável por garantir a interação do usuário com o software, se não temos um bom reconhecimento, o software não é eficiente.
 
-      Tendo isso em mente, foi inventada uma estratégia para o melhor reconhecimento. O uso de **PALAVRAS CHAVE**,
-   **RESPOSTAS** e **COMANDOS**. Esses três termos, formam uma **INTERAÇÃO** que o usuário pode.
-   ter com o software.
+   Tendo isso em mente, foi inventada uma estratégia para o melhor reconhecimento. O uso de **PALAVRAS CHAVE**,
+**RESPOSTAS** e **COMANDOS**. Esses três termos, formam uma **INTERAÇÃO** que o usuário pode.
+ter com o software.
 
-      No banco de dados estão armazenadas todas as interações, quando o software é iniciado ele se conecta com o
-   servidor, e pede todas as interações e armazena em uma lista para serem tradas. 
+   No banco de dados estão armazenadas todas as interações, quando o software é iniciado ele se conecta com o
+servidor, e pede todas as interações e armazena em uma lista para serem tradas. 
 
-      Após o programa receber as interações do servidor, ele entra em um loop de repetição na qual este fica 
-   escutando o microfone do usuário a espera de um audio.
+   Após o programa receber as interações do servidor, ele entra em um loop de repetição na qual este fica 
+escutando o microfone do usuário a espera de um audio.
 
-      Ao escutar algo do microfone, o software pega as interações contidas na lista, e faz um loop até que
-   todas as **Palavras chave** de uma interação estejam na frase. Quando isso acontece, o software responde 
-   através de **Sínteze de voz** uma das respostas contidas nessa interação, escolhida de forma aleatória. 
+   Ao escutar algo do microfone, o software pega as interações contidas na lista, e faz um loop até que
+todas as **Palavras chave** de uma interação estejam na frase. Quando isso acontece, o software responde 
+através de **Sínteze de voz** uma das respostas contidas nessa interação, escolhida de forma aleatória. 
 
    Existe também a possibilidade do software executar um comando, nesse caso, o comando contido na interação,
-   é o **Nome do método a ser executado**, todos esses métodos estão no arquivo **COMMANDS.PY**, esse método é chamado
-   através de um outro método chamado **CallCommands**, executado no arquivo principal **SEXTA-FEIRA.PY**.
+é o **Nome do método a ser executado**, todos esses métodos estão no arquivo **COMMANDS.PY**, esse método é chamado
+através de um outro método chamado **CallCommands**, executado no arquivo principal **SEXTA-FEIRA.PY**.
 
 
    #### Reconhecimento de voz
-         Para fazermos o reconhecimento de voz, utilizamos a biblioteca **SpeechRecognition**, podemos instala-la com
-      o pip.
+   Para fazermos o reconhecimento de voz, utilizamos a biblioteca **SpeechRecognition**, podemos instala-la 
+   com o pip.
 
       ```pip install SpeechRecognition```
 
