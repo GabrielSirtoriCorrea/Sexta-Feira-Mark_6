@@ -24,11 +24,6 @@ class DataBaseConnection:
         self.dataBaseCursor.execute('SELECT * FROM Device')
         return self.dataBaseCursor.fetchall()
 
-    def getDevicesJsons(self):
-        self.dataBaseCursor.execute('SELECT DeviceName, Device FROM Device')
-        return self.dataBaseCursor.fetchall()
-
-
     def insertInteraction(self, key1, key2, key3, res1, res2, res3, command):
         self.dataBaseCursor.execute('INSERT INTO Interactions(KeyWord1, KeyWord2, KeyWord3, Response1, Response2, Response3, Command) VALUES (%s,%s,%s,%s,%s,%s,%s)', (key1, key2, key3, res1, res2, res3, command))
         self.dataBaseConnector.commit()
