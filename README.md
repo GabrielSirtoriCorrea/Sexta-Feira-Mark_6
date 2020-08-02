@@ -1,6 +1,6 @@
 # Sexta-Feira MARK 6
-      Sexta-Feira, é uma assistente virtual desenvolvida para auxiliar o usuário nas tarefas do dia-a-dia, podendo 
-   mostrar imagens, realizar pesquisas na internet etc.
+      Sexta-Feira, é uma assistente virtual desenvolvida para auxiliar o usuário nas tarefas
+     do dia-a-dia, podendo mostrar imagens, realizar pesquisas na internet etc.
 
    No início, o projeto contia as seguintes ideias:
 
