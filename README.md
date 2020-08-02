@@ -27,16 +27,16 @@ do dia-a-dia, podendo mostrar imagens, realizar pesquisas na internet etc.
 
 ### Estrutura
 
-   Interactions   |    Projects     |    HomeWorkManagement   |         Device         |
- ---------------- | --------------- | ----------------------- | ---------------------- |
-    KeyWordID     |    ProjectID    |       HomeWorkID        |        DeviceID        |
-    KeyWord1      |   ProjectType   |       HomeWorkType      |       DeviceName       |
-    KeyWord2      |     Project     |      HomeWorkSubject    |    DeviceDescription   |
-    KeyWord3      |                 |         HomeWork        |      DeviceActions     |
-    response1     |                 |      HomeWorkDelivery   |                        |
-    response2     |                 |    HomeWorkDescription  |                        |
-    response3     |                 |                         |                        |
-    Command       |                 |                         |                        |
+  Interactions   |    Projects     |    HomeWorkManagement   |         Device         |
+---------------- | --------------- | ----------------------- | ---------------------- |
+   KeyWordID     |    ProjectID    |       HomeWorkID        |        DeviceID        |
+   KeyWord1      |   ProjectType   |       HomeWorkType      |       DeviceName       |
+   KeyWord2      |     Project     |      HomeWorkSubject    |    DeviceDescription   |
+   KeyWord3      |                 |         HomeWork        |      DeviceActions     |
+   response1     |                 |      HomeWorkDelivery   |                        |
+   response2     |                 |    HomeWorkDescription  |                        |
+   response3     |                 |                         |                        |
+   Command       |                 |                         |                        |
 
 ## Servidor
    O servidor, é responsavel pela comunicação entre os subsistemas, ele tem acesso ao banco de dados e envia as
