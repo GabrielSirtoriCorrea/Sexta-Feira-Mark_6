@@ -170,11 +170,9 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       ```
 
    #### Sínteze de voz
-         Outra parte importante para garantirmos a boa interação do usuário com o software é a **SÍNTEZE DE VOZ**. Ela
-      é responsável por responder ao usuário utilizando o **Narrador do Windows**, assim dando 
-      a impressão para
-      o usuário
-      que ele está falando com alguém real.
+   Outra parte importante para garantirmos a boa interação do usuário com o software é a **SÍNTEZE DE VOZ**. Ela
+   é responsável por responder ao usuário utilizando o **Narrador do Windows**, assim dando 
+   a impressão para o usuário que ele está falando com alguém real.
 
          Para realizar a sínteze de voz, utilizamos a biblioteca **pyttsx3**, e instalamos ela novamente com o pip
 
@@ -201,12 +199,11 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       ```
 
    #### Comunicação com servidor
-         Para fazermos a conexão com servidor utilizamos a biblioteca **Socket** ja contida no python, e utilizamos o
-      protocolo TCP/IP para comunicação.
+   Para fazermos a conexão com servidor utilizamos a biblioteca **Socket** ja contida no python, e utilizamos o
+   protocolo TCP/IP para comunicação.
 
-         A conexão com o servidor é estabelecida através da classe **ServerConnection**, que inicializa a conexão no
-      seu método construtor e envia e recebe as informações pelo mé
-      todo **send()**  
+   A conexão com o servidor é estabelecida através da classe **ServerConnection**, que inicializa a conexão no
+   seu método construtor e envia e recebe as informações pelo método **send()**.
 
       ``` class ServerConnection:
             def __init__(self):
@@ -226,8 +223,8 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
 
       ```
 
-         Os dados enviados ao servidor, são enviados em forma de estrutura de dados **JSON**. Para formatarmos os
-      dados nessa estrutura, utilizamos o método **setRequestJson()**, e depois enviamos pelo socket.
+   Os dados enviados ao servidor, são enviados em forma de estrutura de dados **JSON**. Para formatarmos os
+   dados nessa estrutura, utilizamos o método **setRequestJson()**, e depois enviamos pelo socket.
 
       ```def setRequestJson(request, receiverID, action, url):
             requestJson = json.dumps({
@@ -243,14 +240,14 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       ```
 
    #### Comunicação com a Interface
-         Para que possamos mostrar imagens e dados na interface, precisamos criar um método para a comunicação entre
-      a **Sexta-Feira(A.I.)** e a **Interface** fazendo com que elas trabalhem em conjunto. Com isso em mente, foi criado o arquivo **FridayComunication.json**, ele é o responsável por fazer a troca de informações entre a **Sexta-Feira** e a **Interface**. 
+   Para que possamos mostrar imagens e dados na interface, precisamos criar um método para a comunicação entre
+   a **Sexta-Feira(A.I.)** e a **Interface** fazendo com que elas trabalhem em conjunto. Com isso em mente, foi criado o 
+   arquivo **FridayComunication.json**, ele é o responsável por fazer a troca de informações entre a **Sexta-Feira** e a 
+   **Interface**. 
 
-         No entanto, para termos uma comunicação em tempo real, precisamos reescrever este arquivo várias vezes. Então
-      foi criado o método **setFridayComunication()**, ele é o responsável por reescrever esse arquivo json quando alguma
-      comunicação for nece
-      ssária
-
+   No entanto, para termos uma comunicação em tempo real, precisamos reescrever este arquivo várias vezes. Então
+   foi criado o método **setFridayComunication()**, ele é o responsável por reescrever esse arquivo json quando alguma
+   comunicação for necessária
 
       ``` def setFridayComunication(action, content, url):
             filePath = 'E:/Sexta-Feira-Mark_6/Sexta-FeiraInterface/src/com/friday/FridayComunication.json'
@@ -271,9 +268,9 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
 
 
 ### Interface
-      A Interface é responsável por mostrar imagens, tabelas e dados para a melhor visualização e compreensão    
-   do usuário conforme o pedido da Sexta-feira(A.I.). Ela foi construída em JAVA, e utilizando o JavaFX para
-   a criação do layout. 
+   A Interface é responsável por mostrar imagens, tabelas e dados para a melhor visualização e compreensão    
+do usuário conforme o pedido da Sexta-feira(A.I.). Ela foi construída em JAVA, e utilizando o JavaFX para
+a criação do layout. 
 
    #### Layout
       - Tela inicial
@@ -283,10 +280,10 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       - Exemplo de Tabela
 
    #### Comunicação com Sexta-Feira(A.I.)
-         Para que possamos ler os dados contidos no **FridayComunication.json** e comunicarmos com Sexta-Feira(A.I.),
-      foi criada a classe **FridayComunication.JAVA**, ela é responsável por ler o arquivo json, e retornar os dados
-      necessários através do método **readJsonFile()**.
-
+   Para que possamos ler os dados contidos no **FridayComunication.json** e comunicarmos com Sexta-Feira(A.I.),
+   foi criada a classe **FridayComunication.JAVA**, ela é responsável por ler o arquivo json, e retornar os dados
+   necessários através do método **readJsonFile()**.
+   
       ```public class FridayComunication {
             private static JSONObject jsonObject;
             private static JSONParser parser; # Declaração dos atributos necessários
@@ -295,7 +292,7 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
                parser = new JSONParser(); # Instanciando objeto da classe JSONParser para lermos o arquivo
 
                try {
-                     jsonObject = (JSONObject) parser.parse(new FileReader("E:\\Sexta-Feira-Mark_6\\Sexta-FeiraInterface\\src\\com\\friday\\FridayComunication.json")); #Lendo
+                     jsonObject = (JSONObject) parser.parse(new FileReader("E:\\Sexta-Feira-Mark_6\\SextaFeiraInterface\\src\\com\\friday\\FridayComunication.json")); 
                } catch (ParseException | IOException e) {
                      e.printStackTrace();
                }
@@ -306,9 +303,10 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       
       ```
 
-         Agora que ja temos os dados necessários, podemos saber qual ação devemos tomar, e essa informação está no 
-      campo **Action** do JSONObject, sendo assim, no SceneController, classe que controla os itens don layout, 
-      podemos fazer o **Switch()** desse dado e executar a os comandos correspondentes, se existir algum dado que deve ser passado da Sexta-Feira(A.I.) para a Interface, colocamos isso no campo **Content** do Json, ou no caso de uma imagem, colocamos o caminho para o arquivo no campo **Url** do Json.Fazemos tudo isso no método connectionLoop().
+   Agora que ja temos os dados necessários, podemos saber qual ação devemos tomar, e essa informação está no campo **Action** do JSONObject, 
+   sendo assim, no SceneController, classe que controla os itens don layout, podemos fazer o **Switch()** desse dado e executar a os comandos 
+   correspondentes, se existir algum dado que deve ser passado da Sexta-Feira(A.I.) para a Interface, colocamos isso no campo **Content** do 
+   Json, ou no caso de uma imagem, colocamos o caminho para o arquivo no campo **Url** do Json.Fazemos tudo isso no método **connectionLoop()**.
 
       ```private void connectionLoop() {
          response = FridayComunication.readJsonFile();
@@ -378,9 +376,9 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       
       ```
 
-         Pronto. Agora ja conseguimos ler os dados e fazer as ações pedidas, porém, precisamos que tudo isso seja
-      executado continuamente, em um **loop infinito**. Para isso configuramos um EventHandler, criamos um keyFrame
-      para fazermos um loop desse Event, e depois colocamos isso no TimeLine.
+   Pronto. Agora ja conseguimos ler os dados e fazer as ações pedidas, porém, precisamos que tudo isso seja
+   executado continuamente, em um **loop infinito**. Para isso configuramos um EventHandler, criamos um keyFrame
+   para fazermos um loop desse Event, e depois colocamos isso no TimeLine.
 
       ```public void initialize(URL url, ResourceBundle rb) {
 
@@ -405,30 +403,32 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       ```   
 
 ## App
-      O app é responsável pela interação total do usuário com o banco de dados através do servidor, é nele em que o 
-   usuário pode adicionar interações, tarefas, atualizar um projeto, excluir um device etc.
+   O app é responsável pela interação total do usuário com o banco de dados através do servidor, é nele em que o 
+usuário pode adicionar interações, tarefas, atualizar um projeto, excluir um device etc.
 
-      Para a construção do App, foi utilizado o Android Studio com o JAVA como linguagem de programação, além de xml
-   para a construção dos layouts. 
+   Para a construção do App, foi utilizado o Android Studio com o JAVA como linguagem de programação, além de xml
+para a construção dos layouts. 
 
    ### Permições 
-         Antes de começar a criar os layouts e as classes JAVA, primeiro precisamos definir as permições que 
-      o nosso app precisa ter para acessarmos alguns recursos do dispositivo, no nosso caso, precisamos da permição de acesso a internet, para que possamos fazer a conexão com o servidor.
+   Antes de começar a criar os layouts e as classes JAVA, primeiro precisamos definir as permições que o nosso app precisa ter 
+   para acessarmos alguns recursos do dispositivo, no nosso caso, precisamos da permição de acesso a internet, para que possamos 
+   fazer a  conexão com o servidor.
 
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
       <uses-permission android:name="android.permission.INTERNET" />
 
    ### Layouts
-         Para a criação desse projeto, foi escolhido a utilização do recurso **Bottom navigation** para uma melhor
-      experiência do usuário, em decorrência disso, foi utilizado **FRAGMENTS** para a construção dos layouts, assim,
-      não precisamos colocar o Bottom navigation em todas as activities e apenas na MainActivity.
+   Para a criação desse projeto, foi escolhido a utilização do recurso **Bottom navigation** para uma melhor
+   experiência do usuário, em decorrência disso, foi utilizado **FRAGMENTS** para a construção dos layouts, assim,
+   não precisamos colocar o Bottom navigation em todas as activities e apenas na MainActivity.
 
       - Imagens layout
 
    ### Comunicação com servidor
-         A comunicação com o servidor, foi feita novamente com **Socket** e protocolo TCP/IP. Foi criada a classe 
-      ServerConnection para o gerenciamento da conexão. É importante ressaltar, que ao utilizarmos sockets no **Android**, temos que obrigatoriamente tornarmos a nossa classe ServerConnection uma **Subclasse** de 
-      **AsyncTask**, para que possamos fazer os request em **BACKGROUND** através do método **doInBackground()** descendente da classe AsyncTask.
+   A comunicação com o servidor, foi feita novamente com **Socket** e protocolo TCP/IP. Foi criada a classe ServerConnection para o
+   gerenciamento da conexão. É importante ressaltar, que ao utilizarmos sockets no **Android**, temos que obrigatoriamente tornarmos a 
+   nossa classe ServerConnection uma **Subclasse** de **AsyncTask**, para que possamos fazer os request em **BACKGROUND** através do 
+   método **doInBackground()** descendente da classe AsyncTask.
 
       ```public class ServerConnection extends AsyncTask<JSONObject, Integer, ArrayList<JSONArray>> {
             private String IP = "gazeboindustries.hopto.org"; // Utilizando um DNS
@@ -523,9 +523,9 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
 
       ```
 
-         Apesar de ser de simples implementação, a classe AsyncTask nos atrapalha um pouco na hora de retornarmos
-      os valores recebidos, então, para deixarmos mais simples o trabalho, criamos o método sendRequest(), que executa
-      o método doInBackground() e nos retorna os valores recebidos. Desse modo, precisamos apenas instanciar o objeto da classe ServerConnection e chamarmos o método sendRequest.
+   Apesar de ser de simples implementação, a classe AsyncTask nos atrapalha um pouco na hora de retornarmos os valores recebidos,
+   então, para deixarmos mais simples o trabalho, criamos o método sendRequest(), que executa o método doInBackground() e nos retorna 
+   os valores recebidos. Desse modo, precisamos apenas instanciar o objeto da classe ServerConnection e chamarmos o método sendRequest.
 
       ```public ArrayList<JSONArray> sendRequest(JSONObject request){
             try {
@@ -541,8 +541,9 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
 
          }
       ```
-         Após isso, toda a parte de comunicação com o servidor e envio de requests já está feita, agora precisamos
-      definir o que será enviado, nesse caso, utilizamos **JSON** para colocarmos as nossas informações em uma estrutura e criamos os métodos **prepareRequest()** para cada tipo de estrutura, assim, podemos passar os dados como parâmetro, receber o request ja prepará-lo, e depois enviá-lo.  
+   Após isso, toda a parte de comunicação com o servidor e envio de requests já está feita, agora precisamosdefinir o que será enviado,
+   nesse caso, utilizamos **JSON** para colocarmos as nossas informações em uma estrutura e criamos os métodos **prepareRequest()** para
+   cada tipo de estrutura, assim, podemos passar os dados como parâmetro, receber o request ja prepará-lo, e depois enviá-lo.  
 
       ```public JSONObject prepareRequest(String request){
             try {
@@ -597,36 +598,35 @@ através de um outro método chamado **CallCommands**, executado no arquivo prin
       ``` 
 
    ### Activity principal
-         Pelo fato da Activity principal ser a única no nosso app, ela tem a responsabilidade de comportar todos os
-      fragments, através do FrameLayout, e o bottom Navigation. Quando ela é iniciada, procura pelo fragment
-      principal da aplicação, que, nesse caso, é o HomeFragment.
+   Pelo fato da Activity principal ser a única no nosso app, ela tem a responsabilidade de comportar todos os
+   fragments, através do FrameLayout, e o bottom Navigation. Quando ela é iniciada, procura pelo fragment
+   principal da aplicação, que, nesse caso, é o HomeFragment.
 
    ### Fragments
-         Os fragments, apesar de serem diferentes de uma activity, também precisam obrigatóriamente de uma classe
-      JAVA de controle para cada fragment. Tendo isso em mente, foi necessário criar uma estrutura de pastas para 
-      melhor organização do projeto, permitindo assim uma melhor compreensão. Então foi criada a seguinte estrutura:
+   Os fragments, apesar de serem diferentes de uma activity, também precisam obrigatóriamente de uma classe
+   JAVA de controle para cada fragment. Tendo isso em mente, foi necessário criar uma estrutura de pastas para 
+   melhor organização do projeto, permitindo assim uma melhor compreensão. Então foi criada a seguinte estrutura:
 
-      - Imagem estrutura
+   - Imagem estrutura
 
-         Como o objetivo desse App é **Editar os dados do Banco de Dados**, precisamos ter a possibilidade de 
-      inserir, atualizar, excluir e visualizar os dados das 4 tabelas (Interactions, Device, Projects, 
-      HomeWorkManagement). Para que isso seja possível foram criados 3 tipos de fragments para cada tabela.
+   Como o objetivo desse App é **Editar os dados do Banco de Dados**, precisamos ter a possibilidade de 
+   inserir, atualizar, excluir e visualizar os dados das 4 tabelas (Interactions, Device, Projects, 
+   HomeWorkManagement). Para que isso seja possível foram criados 3 tipos de fragments para cada tabela.
 
-      - Fragment Principal: Esse fragment, é iniciado quando o respectivo ícone no Bottom navigation for
+   - Fragment Principal: Esse fragment, é iniciado quando o respectivo ícone no Bottom navigation for
       clicado. Ele é responsável por **Mostrar** os dados contidos na tabela através de um ListView
 
-      - View Fragment: Esse fragment é iniciado quando um determinado item do ListView for clicado. Ele mostra com
-      mais detalhes a tupla da tabela, é ele o responsável por **Editar** ou **Excluir** a tupla.
+   - View Fragment: Esse fragment é iniciado quando um determinado item do ListView for clicado. Ele mostra com
+   mais detalhes a tupla da tabela, é ele o responsável por **Editar** ou **Excluir** a tupla.
 
-      - Add Fragment: Esse fragment é iniciado quando o botão **Adicionar** localizado no Fragment principal é 
+   - Add Fragment: Esse fragment é iniciado quando o botão **Adicionar** localizado no Fragment principal é 
       clicado. Ele é responsável por adicionar uma nova tupla no banco de dados.
 
-         Agora já temos cada fragment com sua responsabilidade. E ja temos o controle total do banco de dados pelo 
-      app.
+   Agora já temos cada fragment com sua responsabilidade. E ja temos o controle total do banco de dados pelo app.
 
 
 # Considerações finais
-      Após 3 meses trabalhando nesse projeto, finalmente cheguei em uma versão que me agrada. Porém considero longe 
+   Após 3 meses trabalhando nesse projeto, finalmente cheguei em uma versão que me agrada. Porém considero longe 
    da versão final. Ainda existem implementações que devem ser feitas, como por exemplo, o Acesso da localização
    do telefone através do app, além de adicionar mais interações, comandos e devices.
    
