@@ -102,21 +102,9 @@ class ServerConnection:
 
         return json.loads(self.connection.recv(5800).decode('utf-8'))
 
-class devicesStatusThread(Thread):
-    def __init__(self):
-        Thread.__init__(self)
-
-    def run(self):
-        server = ServerConnection()
-        while True:
-            response = server.send(setRequestJson('getDevicesStatus', 'server', 1, ".com"))
-
-            writeFile = open('E:/Sexta-Feira-Mark_6/Sexta-FeiraInterface/src/com/friday/FridayComunication.json', 'w')
-            json.dump(response['Interface'], writeFile, indent=4)
-
 def setFridayComunication(action, content, url):
     filePath = 'E:/Sexta-Feira-Mark_6/Sexta-FeiraInterface/src/com/friday/FridayComunication.json'
-    readFile = open(filePath)
+    readFile = open(filePath, 'r')
     newJson = json.load(readFile)
 
     print(newJson)
