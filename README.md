@@ -423,8 +423,6 @@ para a construção dos layouts.
    experiência do usuário, em decorrência disso, foi utilizado **FRAGMENTS** para a construção dos layouts, assim,
    não precisamos colocar o Bottom navigation em todas as activities e apenas na MainActivity.
 
-      - Imagens layout
-
    ### Comunicação com servidor
    A comunicação com o servidor, foi feita novamente com **Socket** e protocolo TCP/IP. Foi criada a classe ServerConnection para o
    gerenciamento da conexão. É importante ressaltar, que ao utilizarmos sockets no **Android**, temos que obrigatoriamente tornarmos a 
