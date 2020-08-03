@@ -422,6 +422,20 @@ para a construção dos layouts.
    Para a criação desse projeto, foi escolhido a utilização do recurso **Bottom navigation** para uma melhor
    experiência do usuário, em decorrência disso, foi utilizado **FRAGMENTS** para a construção dos layouts, assim,
    não precisamos colocar o Bottom navigation em todas as activities e apenas na MainActivity.
+   
+   ![Tela inicial](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20inicial%20App.JPG)
+   ![Tela interactions](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Interactions%20App.JPG)
+   ![Tela View interactions](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20View%20Interactions.JPG)
+   ![Tela Add interactions](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20add%20Interaction%20App.JPG)
+   ![Tela Devices](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Devices%20App.JPG)
+   ![Tela View Devices](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20ViewDevice%20App.JPG)
+   ![Tela Add Devices](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Add%20Device%20App.JPG)
+   ![Tela Projects](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Projects%20App.JPG)
+   ![Tela View Projects](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20View%20Project%20App.JPG)
+   ![Tela Add Projects](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Add%20Project%20App.JPG)
+   ![Tela HomeWorks](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20HomeWorkManagement%20App.JPG)
+   ![Tela View HomeWorks](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20View%20HomeWork%20App.JPG)
+   ![Tela Add HomeWorks](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/Tela%20Add%20HomeWork%20App.JPG)
 
    ### Comunicação com servidor
    A comunicação com o servidor, foi feita novamente com **Socket** e protocolo TCP/IP. Foi criada a classe ServerConnection para o
