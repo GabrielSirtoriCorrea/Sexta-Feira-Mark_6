@@ -1,6 +1,9 @@
 import Functions, os
 from datetime import datetime
 
+def getDirectory(path):
+    return os.getcwd().replace('Sexta-FeiraInterface', '') + path
+
 def callCommand(command, speech, connection):
     commands = globals()
 
@@ -38,17 +41,17 @@ def sendDevicesToInterface(speech, connection):
     Functions.setFridayComunication(4, response, ".com")
 
 def sendPeriodicTableToInterface(speech, connection):
-    Functions.setFridayComunication(5, None, 'E:/Sexta-Feira-Mark_6/Images/TabelaPeriodica.jpg')
+    Functions.setFridayComunication(5, None, getDirectory('Images\TabelaPeriodica.jpg'))
 
 def sendPoliticalBrazilToInterface(speech, connection):
-    Functions.setFridayComunication(5, None, 'E:/Sexta-Feira-Mark_6/Images/Brasil Político.jpg')
+    Functions.setFridayComunication(5, None, getDirectory('Images\Brasil Político.jpg'))
 
 def sendEletronicDestToInterface(speech, connection):
-    Functions.setFridayComunication(5, None, 'E:/Sexta-Feira-Mark_6/Images/diagrama-de-pauling.jpg')
+    Functions.setFridayComunication(5, None, getDirectory('Images\diagrama-de-pauling.jpg'))
 
 def sendAnglesTableToInterface(speech, connection):
-    Functions.setFridayComunication(5, None, 'E:/Sexta-Feira-Mark_6/Images/TabelaSenoCossenoTangente.png')
+    Functions.setFridayComunication(5, None, getDirectory('Images\TabelaSenoCossenoTangente.png'))
 
 def sendFisicEquationsToInterface(speech, connection):
-    Functions.setFridayComunication(5, None, 'E:/Sexta-Feira-Mark_6/Images/Equações Dinamica.png')
+    Functions.setFridayComunication(5, None, getDirectory('Images\Equações Dinamica.png'))
 

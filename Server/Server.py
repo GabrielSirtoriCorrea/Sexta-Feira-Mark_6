@@ -32,11 +32,11 @@ def convertHeader(header):
     return dictionary
 
 def getDevicesStatus():
-    file = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    file = open('./Server/DevicesStatus.json', 'r')
     return json.load(file)
                                                                                                                                                                                                                                                                                                                                                             
 def setDevicesStatus(receiverID, action, url):
-    readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+    readFile = open('./Server/DevicesStatus.json', 'r')
     
     newJson = json.load(readFile)
 
@@ -45,7 +45,7 @@ def setDevicesStatus(receiverID, action, url):
     newJson[receiverID]['action'] = action
     newJson[receiverID]['url'] = url
 
-    writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+    writeFile = open('./Server/DevicesStatus.json', 'w')
     json.dump(newJson, writeFile, indent=4)
 
 class ClientManage(socketserver.BaseRequestHandler):
@@ -66,7 +66,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                     if clientRequest['header'] == 'gazeboindustries09082004':
                         
                         if clientRequest['request'] == 'startFriday':
-                            os.startfile('E:\\Sexta-Feira-Mark_6\\Sexta-FeiraInterface\\dist\\Sexta-FeiraInterface.jar')
+                            setDevicesStatus('Friday', 1, '.com')
                             self.request.send(json.dumps({'requestStatus': True}).encode())
 
                         elif clientRequest['request'] == 'getDevices':
@@ -124,15 +124,14 @@ class ClientManage(socketserver.BaseRequestHandler):
                             clientRequest['description'],
                             clientRequest['actions'])
 
-                            readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+                            readFile = open('./Server/DevicesStatus.json', 'r')
     
                             newJson = json.load(readFile)
 
                             print(newJson)
 
                             newJson[clientRequest['device']] = {'action': 0, 'url': '.com'}
-
-                            writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+                            writeFile = open('./Server/DevicesStatus.json', 'w')
                             json.dump(newJson, writeFile, indent=4)
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
@@ -161,7 +160,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                         elif clientRequest['request'] == 'deleteDevice':
                             dataBaseConnection.deleteDevice(clientRequest['deleteId'])
 
-                            readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+                            readFile = open('./Server/DevicesStatus.json', 'r')
     
                             newJson = json.load(readFile)
 
@@ -169,7 +168,7 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                             del newJson[clientRequest['deleteName']]
 
-                            writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+                            writeFile = open('./Server/DevicesStatus.json', 'w')
                             json.dump(newJson, writeFile, indent=4)
                             
                             self.request.send(json.dumps({'requestStatus': True}).encode())
@@ -197,7 +196,7 @@ class ClientManage(socketserver.BaseRequestHandler):
                             clientRequest['description'],
                             clientRequest['actions'])
 
-                            readFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'r')
+                            readFile = open('./Server/DevicesStatus.json', 'r')
     
                             newJson = json.load(readFile)
 
@@ -207,7 +206,7 @@ class ClientManage(socketserver.BaseRequestHandler):
 
                             newJson[clientRequest['device']] = {'action': 0, 'url': '.com'}
 
-                            writeFile = open('E:/Sexta-Feira-Mark_6/Server/DevicesStatus.json', 'w')
+                            writeFile = open('./Server/DevicesStatus.json', 'w')
                             json.dump(newJson, writeFile, indent=4)
 
                             self.request.send(json.dumps({'requestStatus': True}).encode())
