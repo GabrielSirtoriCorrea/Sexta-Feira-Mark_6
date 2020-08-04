@@ -89,7 +89,7 @@ def setup():
 class ServerConnection:
     def __init__(self):
         try:
-            file = open('E:/Sexta-Feira-Mark_6/Configurations.json', 'r')
+            file = open('/Sexta-Feira-Mark_6/Configurations.json', 'r')
             configs =  json.load(file)['FridayConfigs']
 
             self.connection = socket(AF_INET, SOCK_STREAM, 0)

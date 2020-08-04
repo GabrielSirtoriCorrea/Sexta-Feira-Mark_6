@@ -19,7 +19,7 @@ public class SextaFeiraInterface extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Runtime.getRuntime().exec("cmd.exe /c start E:\\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
+        Runtime.getRuntime().exec("cmd.exe /c start \\Sexta-Feira-Mark_6\\Sexta-Feira(A.I.)\\Sexta-Feira(A.I.).py");
         
         Parent root = FXMLLoader.load(getClass().getResource("Scene.fxml"));
         
