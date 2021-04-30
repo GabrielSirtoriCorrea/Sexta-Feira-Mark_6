@@ -628,4 +628,13 @@ para a construção dos layouts.
    Após 3 meses trabalhando nesse projeto, finalmente cheguei em uma versão que me agrada. Porém considero longe 
    da versão final. Ainda existem implementações que devem ser feitas, como por exemplo, o Acesso da localização
    do telefone através do app, além de adicionar mais interações, comandos e devices.
-   
+
+# Me faça uma doação!
+   Gostou do projeto? Me faça uma doação! Assim você me incentiva a aprender mais e criar novos projetos :D
+
+   Você pode utilizar o App do seu banco para ler o QR Code abaixo, ou se preferir, utilizar minha chave pix:
+   :point_down::point_down:
+   0caf9f55-45dd-43a3-865c-70d005770ef7
+
+   ![Exemplo tabela](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/donate.JPG)
+
