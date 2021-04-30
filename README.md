@@ -648,7 +648,8 @@ para a construção dos layouts.
 
    Você pode utilizar o App do seu banco para ler o QR Code abaixo, ou se preferir, utilizar minha chave pix:
    :point_down::point_down:
+   
    0caf9f55-45dd-43a3-865c-70d005770ef7
 
-   ![Exemplo tabela](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/donate.JPG)
+   ![Donate](https://github.com/GabrielSirtoriCorrea/Sexta-Feira-Mark_6/blob/master/Planejamento/Projeto%20finalizado/donate.jpeg)
 
