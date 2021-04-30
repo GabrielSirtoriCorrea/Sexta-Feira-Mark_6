@@ -647,6 +647,7 @@ para a construção dos layouts.
    Gostou do projeto? Me faça uma doação! Assim você me incentiva a aprender mais e criar novos projetos :D
 
    Você pode utilizar o App do seu banco para ler o QR Code abaixo, ou se preferir, utilizar minha chave pix:
+   
    :point_down::point_down:
    
    0caf9f55-45dd-43a3-865c-70d005770ef7
