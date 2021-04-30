@@ -1,5 +1,6 @@
 import mysql.connector as mysqlConnector
 from datetime import datetime
+import sqlite3
 
 class DataBaseConnection:
     def __init__(self):
